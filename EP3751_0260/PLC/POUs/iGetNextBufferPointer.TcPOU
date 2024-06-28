@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="iGetNextBufferPointer" Id="{c4b40ba6-e249-4b6c-bc0d-9b679ded4000}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION iGetNextBufferPointer : INT
+VAR_INPUT
+	iBufferSize : INT;
+	iActualPointerValue : INT;
+END_VAR
+VAR
+	retVal : INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[retVal := iActualPointerValue + 1;
+IF retVal >= iBufferSize THEN retVal := 0; END_IF;
+iGetNextBufferPointer := retVal;
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="iGetNextBufferPointer">
+      <LineId Id="8" Count="4" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

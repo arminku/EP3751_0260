@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="iGetPriorBufferPointer" Id="{16d8be95-cfeb-4d6f-823c-e6a8c4264c82}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION iGetPriorBufferPointer : INT
+VAR_INPUT
+	iBufferSize : INT;
+	iActualPointerValue : INT;
+END_VAR
+VAR
+	retVal : INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[retVal := iActualPointerValue - 1;
+IF retVal < 0 THEN retVal := iBufferSize - 1; END_IF;
+iGetPriorBufferPointer := retVal;]]></ST>
+    </Implementation>
+    <LineIds Name="iGetPriorBufferPointer">
+      <LineId Id="8" Count="2" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

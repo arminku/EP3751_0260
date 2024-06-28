@@ -1,0 +1,388 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.55">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{12E80FF5-6251-C867-A464-3036E21E986D}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..5] OF BYTE</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{363BB1EC-1C0E-DD7E-7635-3B1B6C8F599E}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..2] OF DINT</Name>
+			<BitSize>96</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>3</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000008}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BYTE</Name>
+			<BitSize>8</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>1</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000003}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..2] OF BIT</Name>
+			<BitSize>3</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>3</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000010}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BYTE</Name>
+			<BitSize>16</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000E}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..13] OF BIT</Name>
+			<BitSize>14</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>14</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
+			<BitSize>2</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
+			<BitSize>13</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>13</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080808000000080808000000080808000000080808000000000000000000000000000000000ff0000ff0000000000000000ff0000000000ff0000000000ff0000000000ff0000000000000000000000000000000000ff0000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080808000000080808000000080808000000080808000000000000000000000000000000000ff0000ff0000000000000000ff0000000000ff0000000000ff0000000000ff0000000000000000000000000000000000ff0000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
+	</ImageDatas>
+	<Project ProjectGUID="{F86803D9-C064-4FBB-AF7F-9F72D3B26272}" Target64Bit="true" ShowHideConfigurations="#x6">
+		<System>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="10000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{A4D08A90-99AB-43AA-A6B4-4C07F0ECFD01}" Name="PLC" PrjFilePath="PLC\PLC.plcproj" TmcFilePath="PLC\PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{5D9F88D3-C9E8-A658-716A-496AFA2307CB}">
+					<Name>PLC Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>MAIN.ECATState</Name>
+							<Comment><![CDATA[ Slave Information ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.EcatPort</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.dNetID</Name>
+							<Type GUID="{12E80FF5-6251-C867-A464-3036E21E986D}">ARRAY [0..5] OF BYTE</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Axis</Name>
+							<Type GUID="{363BB1EC-1C0E-DD7E-7635-3B1B6C8F599E}">ARRAY [0..2] OF DINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AccAxis</Name>
+							<Comment><![CDATA[ Accelerometer values ]]></Comment>
+							<Type GUID="{363BB1EC-1C0E-DD7E-7635-3B1B6C8F599E}">ARRAY [0..2] OF DINT</Type>
+						</Var>
+					</Vars>
+					<Contexts>
+						<Context>
+							<Id>0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>1000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="10.1.160.20.4.1" RemoteName="Device 3 (EtherCAT)" InfoImageId="2">
+				<Name>Device 3 (EtherCAT)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc>Ethernet 2 (TwinCAT-Intel PCI Ethernet Adapter (Gig</DeviceDesc>
+						<DeviceName>\DEVICE\{003C29F8-D86A-4BF9-A6B1-6742BA8737CE}</DeviceName>
+						<DeviceData>000105385132</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="1" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 1 (EP3751-0260)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0605" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x0ea74052" RevisionNo="#x00100104" InfoDataAddr="true" RepeatSupport="true" SetFrameRepeatTime="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP3751-0260 Acceleration Sensor" Desc="EP3751-0260" PortABoxInfo="#x00ffffff">
+						<SyncMan>001000012600010001000000800000010001001026010000</SyncMan>
+						<SyncMan>001100012200010002000000800000010001001122010000</SyncMan>
+						<SyncMan>001204002400010003000000000000000400001224010000</SyncMan>
+						<SyncMan>001938002000010004000000000000003800001920010000</SyncMan>
+						<Fmmu>0000000000000000001200020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010f400f410f400</BootStrapData>
+						<DcMode>53796e6368726f6e00000000000000004672656552756e2f534d2d53796e6368726f6e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e00000000000000000000000000000000000000000000000000589effff00000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<Pdo Name="AI Acc X Inputs" Index="#x1a00" Flags="#x0010" SyncMan="3">
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Status__Self test status" Index="#x6000" Sub="#x09">
+								<Type>BIT2</Type>
+							</Entry>
+							<Entry Name="Status__Slope detected" Index="#x6000" Sub="#x0b">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO State" Index="#x6000" Sub="#x0f">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO Toggle" Index="#x6000" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000010}">ARRAY [0..1] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Value" Index="#x6000" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="AI Acc Y Inputs" Index="#x1a01" Flags="#x0010" SyncMan="3">
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Status__Self test status" Index="#x6010" Sub="#x09">
+								<Type>BIT2</Type>
+							</Entry>
+							<Entry Name="Status__Slope detected" Index="#x6010" Sub="#x0b">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO State" Index="#x6010" Sub="#x0f">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO Toggle" Index="#x6010" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000010}">ARRAY [0..1] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Value" Index="#x6010" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="AI Acc Z Inputs" Index="#x1a02" Flags="#x0010" SyncMan="3">
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Status__Self test status" Index="#x6020" Sub="#x09">
+								<Type>BIT2</Type>
+							</Entry>
+							<Entry Name="Status__Slope detected" Index="#x6020" Sub="#x0b">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO State" Index="#x6020" Sub="#x0f">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO Toggle" Index="#x6020" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000010}">ARRAY [0..1] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Value" Index="#x6020" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="AI Temp Inputs" Index="#x1a03" Flags="#x0010" SyncMan="3">
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-00200000000E}">ARRAY [0..13] OF BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO State" Index="#x6040" Sub="#x0f">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO Toggle" Index="#x6040" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000010}">ARRAY [0..1] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Value" Index="#x6040" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="AI Gyro X Inputs" Index="#x1a04" Flags="#x0010" SyncMan="3">
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Status__Self test status" Index="#x6050" Sub="#x09">
+								<Type>BIT2</Type>
+							</Entry>
+							<Entry Name="Status__Slope detected" Index="#x6050" Sub="#x0b">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO State" Index="#x6050" Sub="#x0f">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO Toggle" Index="#x6050" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000010}">ARRAY [0..1] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Value" Index="#x6050" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="AI Gyro Y Inputs" Index="#x1a05" Flags="#x0010" SyncMan="3">
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Status__Self test status" Index="#x6060" Sub="#x09">
+								<Type>BIT2</Type>
+							</Entry>
+							<Entry Name="Status__Slope detected" Index="#x6060" Sub="#x0b">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO State" Index="#x6060" Sub="#x0f">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO Toggle" Index="#x6060" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000010}">ARRAY [0..1] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Value" Index="#x6060" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="AI Gyro Z Inputs" Index="#x1a06" Flags="#x0010" SyncMan="3">
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Status__Self test status" Index="#x6070" Sub="#x09">
+								<Type>BIT2</Type>
+							</Entry>
+							<Entry Name="Status__Slope detected" Index="#x6070" Sub="#x0b">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO State" Index="#x6070" Sub="#x0f">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__TxPDO Toggle" Index="#x6070" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Status__">
+								<Type GUID="{18071995-0000-0000-0000-002000000010}">ARRAY [0..1] OF BYTE</Type>
+							</Entry>
+							<Entry Name="Value" Index="#x6070" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="AI Acc Outputs" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
+							</Entry>
+							<Entry Name="Start self test" Index="#x7030" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000D}">ARRAY [0..12] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIG Outputs" Index="#x1610" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="LED 1" Index="#x7080" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="LED 2" Index="#x7080" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="LED 3" Index="#x7080" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000D}">ARRAY [0..12] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="19665801"/>
+						<CoeProfile ProfileNo="19665801"/>
+						<CoeProfile ProfileNo="19665801"/>
+						<CoeProfile ProfileNo="19665801"/>
+						<CoeProfile ProfileNo="19665801"/>
+						<CoeProfile ProfileNo="19665801"/>
+						<CoeProfile ProfileNo="19665801"/>
+						<CoeProfile ProfileNo="19665801"/>
+						<CoeProfile ProfileNo="18355081"/>
+					</EtherCAT>
+				</Box>
+				<EtherCAT/>
+			</Device>
+		</Io>
+	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<OwnerA Name="TIPC^PLC^PLC Instance">
+			<OwnerB Name="TIID^Device 3 (EtherCAT)^Box 1 (EP3751-0260)">
+				<Link VarA="PlcTask Inputs^MAIN.AccAxis[0]" VarB="AI Acc X Inputs^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.AccAxis[1]" VarB="AI Acc Y Inputs^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.AccAxis[2]" VarB="AI Acc Z Inputs^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.Axis[0]" VarB="AI Gyro X Inputs^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.Axis[1]" VarB="AI Gyro Y Inputs^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.Axis[2]" VarB="AI Gyro Z Inputs^Value"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>

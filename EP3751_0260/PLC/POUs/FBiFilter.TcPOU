@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FBiFilter" Id="{fb4bdf37-50ff-49d7-91eb-c010553d18d0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FBiFilter
+VAR_INPUT
+	bExecute : BOOL;
+	ptInputValue : POINTER TO INT;
+	ptFilterArray : POINTER TO ARRAY [0..0] OF INT;
+	iBufferSize: INT;
+END_VAR
+VAR_OUTPUT
+	bRingbufferFilled : BOOL;
+	iFilterOutput : INT;
+END_VAR
+VAR
+	FilterSum : LREAL;
+	iPtBufferPointer : INT;
+	iValueCount : INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bExecute THEN
+	FilterSum := FilterSum - ptFilterArray^[iPtBufferPointer];
+	ptFilterArray^[iPtBufferPointer] := ptInputValue^;
+	FilterSum := FilterSum + ptInputValue^;
+	iPtBufferPointer := iGetNextBufferPointer(iBufferSize, iPtBufferPointer);
+	iFilterOutput := LREAL_TO_INT(FilterSum / INT_TO_LREAL(iBufferSize));
+	IF iValueCount >= iBufferSize THEN
+		bRingbufferFilled := 1;
+	ELSE
+		iValueCount := iValueCount + 1;
+	END_IF;
+ELSE
+	iValueCount := 0;
+	bRingbufferFilled := 0;
+END_IF;
+]]></ST>
+    </Implementation>
+    <LineIds Name="FBiFilter">
+      <LineId Id="16" Count="15" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

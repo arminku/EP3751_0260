@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{5ed6dd28-4e50-4912-a842-bd2821892fe5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+(* Slave Information *)
+	ECATState AT %I* : WORD;
+	EcatPort AT %I* : WORD;
+	netId : STRING(23);
+	dNetID AT %I* : ARRAY [0..5] OF BYTE;
+
+	Axis AT %I* : ARRAY [0..2] OF DINT;
+	corrAxis : ARRAY [0..2] OF DINT;
+	offset : ARRAY [0..2] OF DINT;
+
+	Integrator : ARRAY [0..2] OF LREAL;
+	Deg : ARRAY [0..2] OF LREAL;
+	DegMovingHead : ARRAY [0..2] OF INT;
+	z: INT;
+
+	iFltValue : ARRAY [0..2] OF DINT;
+	iFilter : ARRAY [0..2] OF FBiFilter;
+	aFltArray : ARRAY [0..2] OF ARRAY [0..10000] OF DINT;
+	
+(* Accelerometer values *)
+	AccAxis AT %I* : ARRAY [0..2] OF DINT;
+	normalizedAcceleration : ARRAY [0..2] OF LREAL;
+
+(* CoE Access *)
+	WrCoe : FB_EcCoESdoWrite;
+	RdCoe : FB_EcCoESdoRead;
+	buf : POINTER TO INT;
+	arBuf : ARRAY [0..5] OF BYTE;
+	
+(* Working variables *)
+	slope : R_TRIG;
+	bWriteOffset: BOOL;
+	WriteOffsetState: INT;
+
+	slopeResetCalibration : R_TRIG;
+	bReset: BOOL;
+
+	slopeResetAngle : R_TRIG;
+	bResetAngle: BOOL;
+
+	slopeReadFIFO : R_TRIG;
+	bReadFIFO: BOOL;
+	readFIFOState: INT;
+	bytesToRead :INT := 1;
+	rcvBytes : ARRAY [0..15] OF INT;
+	bytesLeft: INT;
+	
+	dps : INT := 2000;
+	
+	(* state variables *)
+	actualRoll : LREAL;
+	actualPitch : LREAL;
+	actualYaw : LREAL;
+	
+	actualPhi : LREAL;
+	actualTheta : LREAL;
+	actualGamma : LREAL;
+	
+	degPhi :INT;
+	degTheta :INT;
+	degGamma :INT;
+	
+	droll : LREAL;
+	dpitch : LREAL;
+	dyaw : LREAL;
+
+	dphi : LREAL;
+	dtheta : LREAL;
+	dgamma : LREAL;
+
+	temp : LREAL;
+	
+	AccPhi : LREAL;
+	AccTheta : LREAL;
+	
+	sumAcc : LREAL;
+	
+	fusionWeight 			: LREAL := 1024;
+	fusionWindow 			: INT := 200;
+	fusionHorizontThreshold : LREAL := 0.4;
+	fCycleTime 				: LREAL := 0.001; // in s
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FOR z := 0 TO 2 DO
+	(* Integrate the gyro values to gain an overall angle -> this angle is RPY *)
+	corrAxis[z] := Axis[z] - offset[z];
+	
+	(* ignore values greater that +/-32000 *)
+	IF corrAxis[z] > 32000 THEN corrAxis[z] := 0; END_IF;
+	IF corrAxis[z] < -32000 THEN corrAxis[z] := 0; END_IF;
+
+	Integrator[z] := Integrator[z] + (corrAxis[z] / ((1/fCycleTime)*(32768/dps)*90*4));
+	Deg[z] := Integrator[z] * 360.0;
+	DegMovingHead[z] := REAL_TO_INT(Deg[z]) MOD 360;
+
+	(* Filter values for axis zero correction *)
+	IF Axis[z] < 32000 AND Axis[z] > -32000 THEN
+		iFilter[z](ptInputValue := ADR(Axis[z]), ptFilterArray := ADR(aFltArray[z]), iBufferSize := 2000, bExecute := 1);
+		iFltValue[z] := iFilter[z].iFilterOutput;
+	END_IF;
+END_FOR
+
+(* calculate the delta movements *)
+droll := actualRoll;
+dpitch := actualPitch;
+dyaw := actualYaw;
+
+actualRoll := (Deg[0] /360) * 2 * PI;
+actualPitch := (Deg[1] /360) * 2 * PI;
+actualYaw := (Deg[2] /360) * 2 * PI;
+
+droll := actualRoll - droll;
+dpitch := actualPitch - dpitch;
+dyaw := actualYaw - dyaw;
+
+(* Axis correction *)
+dyaw := -dyaw;
+temp := dpitch;
+dpitch := droll;
+droll := temp;
+
+(* Calculate the euler speeds *)
+dphi := droll + SIN(actualPhi)*TAN(actualTheta)*dpitch + COS(actualPhi)*TAN(actualTheta)*dyaw;
+dtheta := COS(actualPhi)*dpitch-SIN(actualPhi)*dyaw;
+dgamma := (SIN(actualPhi)/COS(actualTheta)) * dpitch + (COS(actualPhi)/COS(actualTheta)) * dyaw;
+
+(* Calculate new euler angles *)
+actualPhi := actualPhi + dphi;
+actualTheta := actualTheta + dtheta;
+actualGamma := actualGamma + dgamma;
+
+(* Collapse if passing thresholds of pi *)
+IF actualPhi < 0 THEN
+	actualPhi := actualPhi + 2*PI;
+END_IF
+IF actualPhi >= 2*PI THEN
+	actualPhi := actualPhi - 2*PI;
+END_IF
+IF actualTheta < 0 THEN
+	actualTheta := actualTheta + 2*PI;
+END_IF
+IF actualTheta >= 2*PI THEN
+	actualTheta := actualTheta - 2*PI;
+END_IF
+IF actualGamma < 0 THEN
+	actualGamma := actualGamma + 2*PI;
+END_IF
+IF actualGamma >= 2*PI THEN
+	actualGamma := actualGamma - 2*PI;
+END_IF
+
+(* Determine length of acceleration vector *)
+sumAcc := AccAxis[0] * AccAxis[0] + AccAxis[1] * AccAxis[1] + AccAxis[2] * AccAxis[2];
+sumAcc := SQRT(sumAcc);
+
+(* Normalize acceleration vector *)
+IF sumAcc <> 0 THEN
+	FOR z := 0 TO 2 DO
+		normalizedAcceleration[z] := AccAxis[z] / sumAcc;
+	END_FOR
+END_IF
+
+(* Due to normalized values, we do no need to cut off higher values than 1 *)
+IF normalizedAcceleration[2] = 0 THEN
+	normalizedAcceleration[2] := 0.000001;
+END_IF
+AccPhi := -ATAN(normalizedAcceleration[0] / normalizedAcceleration[2]) + PI;
+IF (AccAxis[2]) >=0 THEN
+	AccPhi := AccPhi + PI;
+END_IF
+IF AccPhi > 2*PI THEN AccPhi := AccPhi - 2*PI; END_IF;
+IF AccPhi < 0 THEN AccPhi := AccPhi + 2*PI; END_IF;
+AccTheta := ASIN(normalizedAcceleration[1]) + PI;
+(* Simple sensor fusion if we are not accelerated *)
+IF sumAcc >= (2048 - fusionWindow) AND sumAcc <= (2048 + fusionWindow) THEN
+	(* The AccPhi calculation is good, as long as Axis[2] ist not close to 0 *)
+	IF normalizedAcceleration[2] < -fusionHorizontThreshold OR normalizedAcceleration[2] > fusionHorizontThreshold THEN
+		IF (actualPhi - AccPhi) > PI OR (actualPhi - AccPhi) < -PI THEN
+			IF AccPhi > actualPhi THEN
+				AccPhi := AccPhi - 2 * PI;
+			ELSE
+				AccPhi := AccPhi + 2 * PI;
+			END_IF
+		END_IF
+		actualPhi := ((fusionWeight-1) * actualPhi + AccPhi) /fusionWeight;
+		(* error Zero crossing nicht beachtet!!! *)
+	END_IF
+	(* AccTheta is always accurate *)
+	actualTheta := ((fusionWeight-1) * actualTheta + AccTheta) /fusionWeight;
+END_IF
+
+slope(CLK := bWriteOffset);
+IF slope.Q THEN
+	IF WriteOffsetState = 0 THEN
+		WriteOffsetState := 0;
+		FOR z := 0 TO 2 DO
+			offset[z] := iFltValue[z];
+			Integrator[z] := 0.5; 
+		END_FOR
+	END_IF;
+END_IF
+
+slopeResetCalibration(CLK := bReset);
+IF slopeResetCalibration.Q THEN
+	FOR z := 0 TO 2 DO
+		offset[z] := 0;
+		iFilter[z](bExecute := 0);
+	END_FOR
+END_IF
+
+slopeResetAngle(CLK := bResetAngle);
+IF slopeResetAngle.Q THEN
+	FOR z := 0 TO 2 DO
+		Integrator[z] := 0.5;
+		actualRoll := PI;
+		actualPitch := PI;
+		actualYaw := PI;
+		
+		actualPhi := PI;
+		actualTheta := PI;
+		actualGamma := PI;
+	END_FOR
+END_IF
+
+slopeReadFIFO(CLK := bReadFIFO);
+IF slopeReadFIFO.Q THEN
+	readFIFOState := 1;
+	bytesLeft := bytesToRead;
+END_IF
+
+// calculation rad --> degree
+degPhi 		:= TO_INT(actualPhi *360 /(2*PI));
+degTheta	:= TO_INT(actualTheta *360 /(2*PI));
+degGamma	:= TO_INT(actualGamma *360 /(2*PI));]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="594" Count="145" />
+      <LineId Id="837" Count="0" />
+      <LineId Id="835" Count="0" />
+      <LineId Id="834" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="836" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
