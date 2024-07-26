@@ -190,7 +190,7 @@ IF sumAcc >= (2048 - fusionWindow) AND sumAcc <= (2048 + fusionWindow) THEN
 			END_IF
 		END_IF
 		actualPhi := ((fusionWeight-1) * actualPhi + AccPhi) /fusionWeight;
-		(* error Zero crossing nicht beachtet!!! *)
+		(* error Zero crossing not handled !!! *)
 	END_IF
 	(* AccTheta is always accurate *)
 	actualTheta := ((fusionWeight-1) * actualTheta + AccTheta) /fusionWeight;
