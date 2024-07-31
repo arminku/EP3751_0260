@@ -652,19 +652,23 @@
                     </o>
                     <o>
                       <v n="Id">2175578022L</v>
-                      <v n="Value">"16#ffffff"</v>
+                      <v n="Value">""</v>
                     </o>
                     <o>
                       <v n="Id">573394764L</v>
-                      <v n="Value">"rgba(0, 255, 0, 1)"</v>
+                      <v n="Value">""</v>
                     </o>
                     <o>
                       <v n="Id">1999528970L</v>
-                      <v n="Value">"MAIN.iFilter[0].bRingbufferFilled"</v>
+                      <v n="Value">""</v>
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
                       <v n="Value">"201"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2496894244L</v>
+                      <v n="Value">"(MAIN.iFilter[0].bRingbufferFilled=False)"</v>
                     </o>
                   </l>
                 </o>
