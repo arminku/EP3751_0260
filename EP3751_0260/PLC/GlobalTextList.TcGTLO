@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <GlobalTextList Name="GlobalTextList" Id="{eee78555-5d69-40e1-acfe-a70cececba73}">
     <XmlArchive>
       <Data>
@@ -91,8 +91,18 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"201"</v>
+              <v n="TextDefault">"Reset angles"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"848"</v>
               <v n="TextDefault">"Reset Euler angles"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"850"</v>
+              <v n="TextDefault">"Reset Euler Angles"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

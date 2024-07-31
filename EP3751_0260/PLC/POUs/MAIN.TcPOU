@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <POU Name="MAIN" Id="{5ed6dd28-4e50-4912-a842-bd2821892fe5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -87,7 +87,9 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[FOR z := 0 TO 2 DO
+      <ST><![CDATA[fCycletime:=UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].CycleTime) / 10_000_000;
+
+FOR z := 0 TO 2 DO
 	(* Integrate the gyro values to gain an overall angle -> this angle is RPY *)
 	corrAxis[z] := Axis[z] - offset[z];
 	
@@ -241,6 +243,7 @@ degTheta	:= TO_INT(actualTheta *360 /(2*PI));
 degGamma	:= TO_INT(actualGamma *360 /(2*PI));]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="1008" Count="1" />
       <LineId Id="594" Count="6" />
       <LineId Id="922" Count="0" />
       <LineId Id="602" Count="0" />
