@@ -80,9 +80,9 @@ VAR
 	
 	sumAcc : LREAL;
 	
-	fusionWeight 			: LREAL := 1024;
-	fusionWindow 			: INT 	:= 200;
-	fusionHorizontThreshold : LREAL := 0.4;
+	fusionWeight 			: LREAL := 1024; // parameter of sensorfusion: higher values result in a lower influence of the accelerationsensors
+	fusionWindow 			: INT 	:= 200;  // Check for resting position => Threshold for influence of accelerationsensors 
+	fusionHorizontThreshold : LREAL := 0.4;  // 
 	fCycleTime 				: LREAL; // PLC cycle time in s (has to match with ODR of sensor => for prototype this is static 4000Hz)
 	nTaskIndex				: DINT;
 	bReady					: BOOL;
@@ -227,8 +227,8 @@ END_IF
 
 // calculation rad --> degree
 degPhi 		:= (actualPhi *360 /(2*PI));
-degTheta	:= (actualTheta *360 /(2*PI));
-degGamma	:= (actualGamma *360 /(2*PI));]]></ST>
+degTheta	:= 360.0-(actualTheta *360 /(2*PI));
+degGamma	:= 360.0-(actualGamma *360 /(2*PI));]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="1096" Count="0" />
