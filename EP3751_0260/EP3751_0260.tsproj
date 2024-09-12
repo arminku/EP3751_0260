@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.59">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.56">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{12E80FF5-6251-C867-A464-3036E21E986D}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..5] OF BYTE</Name>
@@ -79,15 +79,18 @@
 	</ImageDatas>
 	<Project ProjectGUID="{F86803D9-C064-4FBB-AF7F-9F72D3B26272}" Target64Bit="true" ShowHideConfigurations="#x6">
 		<System>
+			<Settings>
+				<Cpu BaseTime="2500"/>
+			</Settings>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="10000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" Priority="20" CycleTime="2500" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
 			</Tasks>
 		</System>
 		<Plc>
 			<Project GUID="{A4D08A90-99AB-43AA-A6B4-4C07F0ECFD01}" Name="PLC" PrjFilePath="PLC\PLC.plcproj" TmcFilePath="PLC\PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{0F9C36C2-46F1-7F43-09C4-68E44FFAE871}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{38FD5FC2-62A4-EA05-5BB5-37372434B64A}">
 					<Name>PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -123,7 +126,7 @@
 								<OTCID>#x02010030</OTCID>
 							</ManualConfig>
 							<Priority>20</Priority>
-							<CycleTime>1000000</CycleTime>
+							<CycleTime>250000</CycleTime>
 						</Context>
 					</Contexts>
 					<TaskPouOids>
@@ -133,7 +136,7 @@
 			</Project>
 		</Plc>
 		<Io>
-			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="10.1.160.20.4.1" RemoteName="Device 3 (EtherCAT)" InfoImageId="2">
+			<Device Id="3" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="10.1.160.20.4.1" RemoteName="Device 3 (EtherCAT)" InfoImageId="2">
 				<Name>Device 3 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>
@@ -373,7 +376,6 @@
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^PLC^PLC Instance">
 			<OwnerB Name="TIID^Device 3 (EtherCAT)^Box 1 (EP3751-0260)">
 				<Link VarA="PlcTask Inputs^MAIN.AccAxis[0]" VarB="AI Acc X Inputs^Value"/>

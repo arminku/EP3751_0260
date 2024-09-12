@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="MAIN" Id="{5ed6dd28-4e50-4912-a842-bd2821892fe5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -84,10 +84,14 @@ VAR
 	fusionWindow 			: INT := 200;
 	fusionHorizontThreshold : LREAL := 0.4;
 	fCycleTime 				: LREAL := 0.001; // PLC cycle time in s
+	nTaskIndex				: DINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fCycletime:=UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].CycleTime) / 10_000_000;
+      <ST><![CDATA[nTaskIndex:=GETCURTASKINDEXEX();
+IF nTaskIndex>0 THEN
+	fCycletime:=UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].CycleTime) / 10_000_000;
+END_IF
 
 FOR z := 0 TO 2 DO
 	(* Integrate the gyro values to gain an overall angle -> this angle is RPY *)
@@ -243,7 +247,11 @@ degTheta	:= TO_INT(actualTheta *360 /(2*PI));
 degGamma	:= TO_INT(actualGamma *360 /(2*PI));]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="1008" Count="1" />
+      <LineId Id="1096" Count="0" />
+      <LineId Id="1094" Count="0" />
+      <LineId Id="1008" Count="0" />
+      <LineId Id="1097" Count="0" />
+      <LineId Id="1009" Count="0" />
       <LineId Id="594" Count="6" />
       <LineId Id="922" Count="0" />
       <LineId Id="602" Count="0" />
