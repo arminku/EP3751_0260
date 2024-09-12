@@ -651,10 +651,6 @@
                       <v n="Value">false</v>
                     </o>
                     <o>
-                      <v n="Id">823443203L</v>
-                      <v n="Value">"221"</v>
-                    </o>
-                    <o>
                       <v n="Id">1999528970L</v>
                       <v n="Value">"MAIN.bReady"</v>
                     </o>
@@ -665,6 +661,10 @@
                     <o>
                       <v n="Id">573394764L</v>
                       <v n="Value">"16#FF80FF80"</v>
+                    </o>
+                    <o>
+                      <v n="Id">823443203L</v>
+                      <v n="Value">"221"</v>
                     </o>
                   </l>
                 </o>
@@ -2238,7 +2238,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.degTheta"</v>
+                      <v n="Value">"MAIN.degPhi"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -2549,7 +2549,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.degPhi"</v>
+                      <v n="Value">"MAIN.degTheta"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -2883,7 +2883,7 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"Euler Angle Theta: %.3f"</v>
+                      <v n="Value">"Euler Angle Phi: %.3f"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -2895,7 +2895,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"48"</v>
+                      <v n="Value">"868"</v>
                     </o>
                   </l>
                 </o>
@@ -3052,7 +3052,7 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"Euler Anlge Phi: %.3f"</v>
+                      <v n="Value">"Euler Anlge Theta: %.3f"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3064,7 +3064,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"626"</v>
+                      <v n="Value">"690"</v>
                     </o>
                   </l>
                 </o>

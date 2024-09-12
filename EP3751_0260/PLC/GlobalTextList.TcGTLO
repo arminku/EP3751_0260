@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <GlobalTextList Name="GlobalTextList" Id="{eee78555-5d69-40e1-acfe-a70cececba73}">
     <XmlArchive>
       <Data>
@@ -46,6 +46,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"868"</v>
+              <v n="TextDefault">"Euler Angle Phi: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"48"</v>
               <v n="TextDefault">"Euler Angle Theta: %.3f"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -58,6 +63,11 @@
             <o>
               <v n="TextID">"626"</v>
               <v n="TextDefault">"Euler Anlge Phi: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"690"</v>
+              <v n="TextDefault">"Euler Anlge Theta: %.3f"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
