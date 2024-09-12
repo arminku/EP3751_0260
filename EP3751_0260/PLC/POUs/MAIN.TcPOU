@@ -85,6 +85,7 @@ VAR
 	fusionHorizontThreshold : LREAL := 0.4;
 	fCycleTime 				: LREAL := 0.001; // PLC cycle time in s
 	nTaskIndex				: DINT;
+	bReady					: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -202,36 +203,31 @@ IF sumAcc >= (2048 - fusionWindow) AND sumAcc <= (2048 + fusionWindow) THEN
 	actualTheta := ((fusionWeight-1) * actualTheta + AccTheta) /fusionWeight;
 END_IF
 
-slope(CLK := bWriteOffset);
+slope(CLK := iFilter[0].bRingbufferFilled);
 IF slope.Q THEN
 	IF WriteOffsetState = 0 THEN
 		WriteOffsetState := 0;
 		FOR z := 0 TO 2 DO
 			offset[z] := iFltValue[z];
-			Integrator[z] := 0.5; 
+				
+			//reset angles
+			Integrator[z] := 0.5;
+			actualRoll := PI;
+			actualPitch := PI;
+			actualYaw := PI;		
+			actualPhi := PI;
+			actualTheta := PI;
+			actualGamma := PI;
 		END_FOR
 	END_IF;
 END_IF
+bReady:=iFilter[0].bRingbufferFilled;
 
 slopeResetCalibration(CLK := bReset);
 IF slopeResetCalibration.Q THEN
 	FOR z := 0 TO 2 DO
 		offset[z] := 0;
 		iFilter[z](bExecute := 0);
-	END_FOR
-END_IF
-
-slopeResetAngle(CLK := bResetAngle);
-IF slopeResetAngle.Q THEN
-	FOR z := 0 TO 2 DO
-		Integrator[z] := 0.5;
-		actualRoll := PI;
-		actualPitch := PI;
-		actualYaw := PI;
-		
-		actualPhi := PI;
-		actualTheta := PI;
-		actualGamma := PI;
 	END_FOR
 END_IF
 
@@ -256,7 +252,10 @@ degGamma	:= TO_INT(actualGamma *360 /(2*PI));]]></ST>
       <LineId Id="922" Count="0" />
       <LineId Id="602" Count="0" />
       <LineId Id="923" Count="0" />
-      <LineId Id="603" Count="136" />
+      <LineId Id="603" Count="98" />
+      <LineId Id="1098" Count="17" />
+      <LineId Id="711" Count="9" />
+      <LineId Id="735" Count="4" />
       <LineId Id="837" Count="0" />
       <LineId Id="835" Count="0" />
       <LineId Id="834" Count="0" />
