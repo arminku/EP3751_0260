@@ -1,24 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <POU Name="MAIN" Id="{5ed6dd28-4e50-4912-a842-bd2821892fe5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-(* Slave Information *)
-	ECATState AT %I* : WORD;
-	EcatPort AT %I* : WORD;
-	netId : STRING(23);
-	dNetID AT %I* : ARRAY [0..5] OF BYTE;
-
-	Axis AT %I* : ARRAY [0..2] OF DINT;
-	corrAxis : ARRAY [0..2] OF DINT;
-	offset : ARRAY [0..2] OF DINT;
+	GyroAxis AT %I* : ARRAY [0..2] OF DINT;
+	corrAxis : ARRAY [0..2] OF LREAL;
+	offset : ARRAY [0..2] OF LREAL;
 
 	Integrator : ARRAY [0..2] OF LREAL;
 	Deg : ARRAY [0..2] OF LREAL;
 	DegMovingHead : ARRAY [0..2] OF INT;
 	z: INT;
 
-	iFltValue : ARRAY [0..2] OF DINT;
+	fFltValue : ARRAY [0..2] OF LREAL;
 	iFilter : ARRAY [0..2] OF FBiFilter;
 	aFltArray : ARRAY [0..2] OF ARRAY [0..10000] OF DINT;
 	
@@ -43,14 +37,12 @@ VAR
 	slopeResetAngle : R_TRIG;
 	bResetAngle: BOOL;
 
-	slopeReadFIFO : R_TRIG;
-	bReadFIFO: BOOL;
-	readFIFOState: INT;
+
 	bytesToRead :INT := 1;
 	rcvBytes : ARRAY [0..15] OF INT;
 	bytesLeft: INT;
 	
-	dps : LREAL := 2000.0; // full scale range of gyro in °/s (in prototype this is static)
+	dps : LREAL := 2000.0; // full scale range of gyro in °/s (CoE F800:11; in prototype this is static)
 	
 	(* state variables *)
 	actualRoll : LREAL;
@@ -81,11 +73,15 @@ VAR
 	sumAcc : LREAL;
 	
 	fusionWeight 			: LREAL := 1024; // parameter of sensorfusion: higher values result in a lower influence of the accelerationsensors
-	fusionWindow 			: INT 	:= 200;  // Check for resting position => Threshold for influence of accelerationsensors 
+	fusionWindow 			: INT 	:= 100;  // Check for resting position => Threshold for influence of accelerationsensors 
 	fusionHorizontThreshold : LREAL := 0.4;  // 
 	fCycleTime 				: LREAL; // PLC cycle time in s (has to match with ODR of sensor => for prototype this is static 4000Hz)
 	nTaskIndex				: DINT;
 	bReady					: BOOL;
+	
+(*Disclaimer: This is a sample still in prototype phase.
+Please be aware that functionalities/ PDOs / CoEs can differ in series variant.
+*)
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -93,25 +89,62 @@ END_VAR
 IF nTaskIndex>0 THEN
 	fCycletime:=UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].CycleTime) / 10_000_000;
 END_IF
+SensorFusion();
+ResetPosition();
 
-FOR z := 0 TO 2 DO
+// calculation rad --> degree
+degPhi 		:= (actualPhi *360 /(2*PI));
+degTheta	:= (actualTheta *360 /(2*PI));
+degGamma	:= 360.0-(actualGamma *360 /(2*PI));]]></ST>
+    </Implementation>
+    <Action Name="ResetPosition" Id="{34049b67-76d6-44c6-a4a8-0807fe7f998b}">
+      <Implementation>
+        <ST><![CDATA[(*
+Hint: Reset position is box laying flat on table.
+z-axis is looking to sky.
+If another reference position shall be used, the initial values have to be changed.
+e.g. y-axis looking to sky:
+		Integrator[0] := 0.25;
+		Integrator[1] := 0.5;
+		Integrator[2] := 0.5;
+		actualRoll := PI;
+		actualPitch := PI;
+		actualYaw := PI;		
+		actualPhi := PI;
+		actualTheta := 0;
+		actualGamma := PI;
+*)
+slopeResetCalibration(CLK := bReset);
+IF slopeResetCalibration.Q THEN
+	FOR z := 0 TO 2 DO
+		offset[z] := fFltValue[z];	
+		//reset angles: initial values
+		Integrator[z] := 0.5;
+	END_FOR
+	actualRoll := PI;
+	actualPitch := PI;
+	actualYaw := PI;		
+	actualPhi := PI;
+	actualTheta := PI;
+	actualGamma := PI;
+END_IF
+bReady:=iFilter[0].bRingbufferFilled;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="SensorFusion" Id="{7fc0ffcc-2263-458c-a699-622ebd5e8736}">
+      <Implementation>
+        <ST><![CDATA[FOR z := 0 TO 2 DO
 	(* Integrate the gyro values to gain an overall angle -> this angle is RPY *)
-	corrAxis[z] := Axis[z] - offset[z];
+	corrAxis[z] := GyroAxis[z] - offset[z];
 	
-	(* ignore values greater that +/-32000 *)
-	IF corrAxis[z] > 32000 THEN corrAxis[z] := 0; END_IF;
-	IF corrAxis[z] < -32000 THEN corrAxis[z] := 0; END_IF;
-
-	Integrator[z] := Integrator[z] + (corrAxis[z] / ((1/fCycleTime)*(32768.0/dps)*90*4));
+	Integrator[z] := Integrator[z] + (corrAxis[z] / ((1/fCycleTime)*(32768.0/dps)*360.0));
 	
 	Deg[z] := Integrator[z] * 360.0;
 	DegMovingHead[z] := REAL_TO_INT(Deg[z]) MOD 360;
 
 	(* Filter values for axis zero correction *)
-	IF Axis[z] < 32000 AND Axis[z] > -32000 THEN
-		iFilter[z](ptInputValue := ADR(Axis[z]), ptFilterArray := ADR(aFltArray[z]), iBufferSize := 2000, bExecute := 1);
-		iFltValue[z] := iFilter[z].iFilterOutput;
-	END_IF;
+	iFilter[z](ptInputValue := ADR(GyroAxis[z]), ptFilterArray := ADR(aFltArray[z]), iBufferSize := 2000, bExecute := 1);
+	fFltValue[z] := iFilter[z].fFilterOutput;
 END_FOR
 
 (* calculate the delta movements *)
@@ -128,9 +161,9 @@ dpitch := actualPitch - dpitch;
 dyaw := actualYaw - dyaw;
 
 (* Axis correction *)
-dyaw := -dyaw;
+dyaw := dyaw;
 temp := dpitch;
-dpitch := droll;
+dpitch := -droll;
 droll := temp;
 
 (* Calculate the euler speeds *)
@@ -138,10 +171,11 @@ dphi := droll + SIN(actualPhi)*TAN(actualTheta)*dpitch + COS(actualPhi)*TAN(actu
 dtheta := COS(actualPhi)*dpitch-SIN(actualPhi)*dyaw;
 dgamma := (SIN(actualPhi)/COS(actualTheta)) * dpitch + (COS(actualPhi)/COS(actualTheta)) * dyaw;
 
+
 (* Calculate new euler angles *)
-actualPhi := actualPhi + dphi;  
-actualTheta := actualTheta - dtheta;
-actualGamma := actualGamma - dgamma; 
+actualPhi := actualPhi + dphi;
+actualTheta := actualTheta + dtheta;
+actualGamma := actualGamma + dgamma;
 
 (* Collapse if passing thresholds of pi *)
 IF actualPhi < 0 THEN actualPhi := actualPhi + 2*PI; END_IF
@@ -167,14 +201,14 @@ IF normalizedAcceleration[2] = 0 THEN
 	normalizedAcceleration[2] := 0.000001;
 END_IF
 AccPhi := -ATAN(normalizedAcceleration[0] / normalizedAcceleration[2]) + PI;
-IF (AccAxis[2]) >=0 THEN
+IF (AccAxis[2]) <=0 THEN
 	AccPhi := AccPhi + PI;
 END_IF
 IF AccPhi > 2*PI THEN AccPhi := AccPhi - 2*PI; END_IF;
 IF AccPhi < 0 THEN AccPhi := AccPhi + 2*PI; END_IF;
 AccTheta := ASIN(normalizedAcceleration[1]) + PI;
 (* Simple sensor fusion if we are not accelerated *)
-IF sumAcc >= (2048 - fusionWindow) AND sumAcc <= (2048 + fusionWindow) THEN
+IF sumAcc >= (1000 - fusionWindow) AND sumAcc <= (1000 + fusionWindow) THEN
 	(* The AccPhi calculation is good, as long as Axis[2] ist not close to 0 *)
 	IF normalizedAcceleration[2] < -fusionHorizontThreshold OR normalizedAcceleration[2] > fusionHorizontThreshold THEN
 		IF (actualPhi - AccPhi) > PI OR (actualPhi - AccPhi) < -PI THEN
@@ -189,72 +223,35 @@ IF sumAcc >= (2048 - fusionWindow) AND sumAcc <= (2048 + fusionWindow) THEN
 	END_IF
 	(* AccTheta is always accurate *)
 	actualTheta := ((fusionWeight-1) * actualTheta + AccTheta) /fusionWeight;
-END_IF
-
-slope(CLK := iFilter[0].bRingbufferFilled);
-IF slope.Q THEN
-	IF WriteOffsetState = 0 THEN
-		WriteOffsetState := 0;
-		FOR z := 0 TO 2 DO
-			offset[z] := iFltValue[z];
-				
-			//reset angles
-			Integrator[z] := 0.5;
-			actualRoll := PI;
-			actualPitch := PI;
-			actualYaw := PI;		
-			actualPhi := PI;
-			actualTheta := PI;
-			actualGamma := PI;
-		END_FOR
-	END_IF;
-END_IF
-bReady:=iFilter[0].bRingbufferFilled;
-
-slopeResetCalibration(CLK := bReset);
-IF slopeResetCalibration.Q THEN
-	FOR z := 0 TO 2 DO
-		offset[z] := 0;
-		iFilter[z](bExecute := 0);
-	END_FOR
-END_IF
-
-slopeReadFIFO(CLK := bReadFIFO);
-IF slopeReadFIFO.Q THEN
-	readFIFOState := 1;
-	bytesLeft := bytesToRead;
-END_IF
-
-// calculation rad --> degree
-degPhi 		:= (actualPhi *360 /(2*PI));
-degTheta	:= 360.0-(actualTheta *360 /(2*PI));
-degGamma	:= 360.0-(actualGamma *360 /(2*PI));]]></ST>
-    </Implementation>
+END_IF]]></ST>
+      </Implementation>
+    </Action>
     <LineIds Name="MAIN">
       <LineId Id="1096" Count="0" />
       <LineId Id="1094" Count="0" />
       <LineId Id="1008" Count="0" />
       <LineId Id="1097" Count="0" />
       <LineId Id="1009" Count="0" />
-      <LineId Id="594" Count="6" />
-      <LineId Id="922" Count="0" />
-      <LineId Id="602" Count="0" />
-      <LineId Id="923" Count="0" />
-      <LineId Id="603" Count="40" />
-      <LineId Id="646" Count="0" />
-      <LineId Id="649" Count="0" />
-      <LineId Id="652" Count="0" />
-      <LineId Id="655" Count="0" />
-      <LineId Id="658" Count="0" />
-      <LineId Id="661" Count="40" />
-      <LineId Id="1098" Count="17" />
-      <LineId Id="711" Count="9" />
-      <LineId Id="735" Count="4" />
+      <LineId Id="1228" Count="0" />
       <LineId Id="837" Count="0" />
       <LineId Id="835" Count="0" />
       <LineId Id="834" Count="0" />
       <LineId Id="46" Count="0" />
       <LineId Id="836" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.ResetPosition">
+      <LineId Id="2" Count="28" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.SensorFusion">
+      <LineId Id="2" Count="8" />
+      <LineId Id="93" Count="1" />
+      <LineId Id="15" Count="24" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="40" Count="1" />
+      <LineId Id="99" Count="2" />
+      <LineId Id="45" Count="47" />
+      <LineId Id="1" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -1,15 +1,6 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.56">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.59">
 	<DataTypes>
-		<DataType>
-			<Name GUID="{12E80FF5-6251-C867-A464-3036E21E986D}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..5] OF BYTE</Name>
-			<BitSize>48</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>6</Elements>
-			</ArrayInfo>
-		</DataType>
 		<DataType>
 			<Name GUID="{363BB1EC-1C0E-DD7E-7635-3B1B6C8F599E}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..2] OF DINT</Name>
 			<BitSize>96</BitSize>
@@ -90,26 +81,13 @@
 		</System>
 		<Plc>
 			<Project GUID="{A4D08A90-99AB-43AA-A6B4-4C07F0ECFD01}" Name="PLC" PrjFilePath="PLC\PLC.plcproj" TmcFilePath="PLC\PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{38FD5FC2-62A4-EA05-5BB5-37372434B64A}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{8A15AED8-5654-E5C3-F2CA-E3FFE5153189}">
 					<Name>PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>MAIN.ECATState</Name>
-							<Comment><![CDATA[ Slave Information ]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.EcatPort</Name>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.dNetID</Name>
-							<Type GUID="{12E80FF5-6251-C867-A464-3036E21E986D}">ARRAY [0..5] OF BYTE</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Axis</Name>
+							<Name>MAIN.GyroAxis</Name>
 							<Type GUID="{363BB1EC-1C0E-DD7E-7635-3B1B6C8F599E}">ARRAY [0..2] OF DINT</Type>
 						</Var>
 						<Var>
@@ -136,32 +114,33 @@
 			</Project>
 		</Plc>
 		<Io>
-			<Device Id="3" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="10.1.160.20.4.1" RemoteName="Device 3 (EtherCAT)" InfoImageId="2">
-				<Name>Device 3 (EtherCAT)</Name>
+			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="10.1.160.20.4.1" RemoteName="Gerät 3 (EtherCAT)" InfoImageId="2">
+				<Name>Gerät 3 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>
-						<DeviceDesc>Ethernet 2 (TwinCAT-Intel PCI Ethernet Adapter (Gig</DeviceDesc>
-						<DeviceName>\DEVICE\{003C29F8-D86A-4BF9-A6B1-6742BA8737CE}</DeviceName>
-						<DeviceData>000105385132</DeviceData>
+						<DeviceDesc></DeviceDesc>
+						<DeviceName></DeviceName>
+						<DeviceData>000000000000</DeviceData>
 					</Pnp>
 				</AddressInfo>
 				<Image Id="1" AddrType="9" ImageType="3">
-					<Name>Image</Name>
+					<Name>Prozessabbild</Name>
 				</Image>
 				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
 					<Name>Box 1 (EP3751-0260)</Name>
 					<ImageId>1000</ImageId>
-					<EtherCAT SlaveType="2" PdiType="#x0605" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x0ea74052" RevisionNo="#x00100104" InfoDataAddr="true" RepeatSupport="true" SetFrameRepeatTime="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP3751-0260 Acceleration Sensor" Desc="EP3751-0260" PortABoxInfo="#x00ffffff">
+					<EtherCAT SlaveType="2" PdiType="#x0605" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x0ea74052" RevisionNo="#x00100104" InfoDataAddr="true" InfoDataDcTimes="true" RepeatSupport="true" SetFrameRepeatTime="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP3751-0260 Acceleration Sensor" Desc="EP3751-0260" PortABoxInfo="#x00ffffff">
 						<SyncMan>001000012600010001000000800000010001001026010000</SyncMan>
 						<SyncMan>001100012200010002000000800000010001001122010000</SyncMan>
-						<SyncMan>001204002400010003000000000000000400001224010000</SyncMan>
+						<SyncMan>001202002400010003000000000000000200001224010000</SyncMan>
 						<SyncMan>001938002000010004000000000000003800001920010000</SyncMan>
 						<Fmmu>0000000000000000001200020100000001000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
 						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010f400f410f400</BootStrapData>
+						<DcData>0003000000000000000000000000000001000000010000000000000000000000</DcData>
 						<DcMode>53796e6368726f6e00000000000000004672656552756e2f534d2d53796e6368726f6e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
-						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e00000000000000000000000000000000000000000000000000589effff00000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<Pdo Name="AI Acc X Inputs" Index="#x1a00" Flags="#x0010" SyncMan="3">
 							<Entry Name="Status__">
 								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
@@ -240,7 +219,12 @@
 								<Type>DINT</Type>
 							</Entry>
 						</Pdo>
-						<Pdo Name="AI Temp Inputs" Index="#x1a03" Flags="#x0010" SyncMan="3">
+						<Pdo Name="AI Acc Inputs" Index="#x1a03" Flags="#x0010">
+							<Entry Name="Sync Indicator" Index="#x6030" Sub="#x11">
+								<Type>INT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="AI Temp Inputs" Index="#x1a20" Flags="#x0010" SyncMan="3">
 							<Entry Name="Status__">
 								<Type GUID="{18071995-0000-0000-0000-00200000000E}">ARRAY [0..13] OF BIT</Type>
 							</Entry>
@@ -257,7 +241,7 @@
 								<Type>DINT</Type>
 							</Entry>
 						</Pdo>
-						<Pdo Name="AI Gyro X Inputs" Index="#x1a04" Flags="#x0010" SyncMan="3">
+						<Pdo Name="AI Gyro X Inputs" Index="#x1a21" Flags="#x0010" SyncMan="3">
 							<Entry Name="Status__">
 								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
 							</Entry>
@@ -283,7 +267,7 @@
 								<Type>DINT</Type>
 							</Entry>
 						</Pdo>
-						<Pdo Name="AI Gyro Y Inputs" Index="#x1a05" Flags="#x0010" SyncMan="3">
+						<Pdo Name="AI Gyro Y Inputs" Index="#x1a22" Flags="#x0010" SyncMan="3">
 							<Entry Name="Status__">
 								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
 							</Entry>
@@ -309,7 +293,7 @@
 								<Type>DINT</Type>
 							</Entry>
 						</Pdo>
-						<Pdo Name="AI Gyro Z Inputs" Index="#x1a06" Flags="#x0010" SyncMan="3">
+						<Pdo Name="AI Gyro Z Inputs" Index="#x1a23" Flags="#x0010" SyncMan="3">
 							<Entry Name="Status__">
 								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
 							</Entry>
@@ -335,7 +319,7 @@
 								<Type>DINT</Type>
 							</Entry>
 						</Pdo>
-						<Pdo Name="AI Acc Outputs" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+						<Pdo Name="AI Acc Outputs" Index="#x1600" InOut="1" Flags="#x0010">
 							<Entry>
 								<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
 							</Entry>
@@ -371,19 +355,20 @@
 						<CoeProfile ProfileNo="18355081"/>
 					</EtherCAT>
 				</Box>
-				<EtherCAT/>
+				<EtherCAT DcSyncMode="3"/>
 			</Device>
 		</Io>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^PLC^PLC Instance">
 			<OwnerB Name="TIID^Device 3 (EtherCAT)^Box 1 (EP3751-0260)">
 				<Link VarA="PlcTask Inputs^MAIN.AccAxis[0]" VarB="AI Acc X Inputs^Value"/>
 				<Link VarA="PlcTask Inputs^MAIN.AccAxis[1]" VarB="AI Acc Y Inputs^Value"/>
 				<Link VarA="PlcTask Inputs^MAIN.AccAxis[2]" VarB="AI Acc Z Inputs^Value"/>
-				<Link VarA="PlcTask Inputs^MAIN.Axis[0]" VarB="AI Gyro X Inputs^Value"/>
-				<Link VarA="PlcTask Inputs^MAIN.Axis[1]" VarB="AI Gyro Y Inputs^Value"/>
-				<Link VarA="PlcTask Inputs^MAIN.Axis[2]" VarB="AI Gyro Z Inputs^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.GyroAxis[0]" VarB="AI Gyro X Inputs^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.GyroAxis[1]" VarB="AI Gyro Y Inputs^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.GyroAxis[2]" VarB="AI Gyro Z Inputs^Value"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

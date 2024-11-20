@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <POU Name="FBiFilter" Id="{fb4bdf37-50ff-49d7-91eb-c010553d18d0}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FBiFilter
 VAR_INPUT
@@ -11,6 +11,7 @@ END_VAR
 VAR_OUTPUT
 	bRingbufferFilled : BOOL;
 	iFilterOutput : INT;
+	fFilterOutput : LREAL;
 END_VAR
 VAR
 	FilterSum : LREAL;
@@ -24,6 +25,7 @@ END_VAR]]></Declaration>
 	FilterSum := FilterSum + ptInputValue^;
 	iPtBufferPointer := iGetNextBufferPointer(iBufferSize, iPtBufferPointer);
 	iFilterOutput := LREAL_TO_INT(FilterSum / INT_TO_LREAL(iBufferSize));
+	fFilterOutput := FilterSum / INT_TO_LREAL(iBufferSize);
 	IF iValueCount >= iBufferSize THEN
 		bRingbufferFilled := 1;
 	ELSE
@@ -36,7 +38,9 @@ END_IF;
 ]]></ST>
     </Implementation>
     <LineIds Name="FBiFilter">
-      <LineId Id="16" Count="15" />
+      <LineId Id="16" Count="5" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="22" Count="9" />
     </LineIds>
   </POU>
 </TcPlcObject>
