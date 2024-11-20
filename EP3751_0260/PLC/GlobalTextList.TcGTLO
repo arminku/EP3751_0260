@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <GlobalTextList Name="GlobalTextList" Id="{eee78555-5d69-40e1-acfe-a70cececba73}">
     <XmlArchive>
       <Data>
@@ -123,6 +123,86 @@
             <o>
               <v n="TextID">"221"</v>
               <v n="TextDefault">"Set Zero Position"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"176"</v>
+              <v n="TextDefault">"X-Axis: %.0f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"300"</v>
+              <v n="TextDefault">"X-Axis: %.0f mg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"5"</v>
+              <v n="TextDefault">"X-Axis: %.0fmg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"295"</v>
+              <v n="TextDefault">"X-Axis: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"74"</v>
+              <v n="TextDefault">"X-Axis: %f mg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"884"</v>
+              <v n="TextDefault">"X-Axis: %f.0 mg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"794"</v>
+              <v n="TextDefault">"Y-Axis: %.0f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"590"</v>
+              <v n="TextDefault">"Y-Axis: %.0fmg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"132"</v>
+              <v n="TextDefault">"Y-Axis: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"190"</v>
+              <v n="TextDefault">"Y-Axis: %f mg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"637"</v>
+              <v n="TextDefault">"Y-Axis: %f.0 mg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"272"</v>
+              <v n="TextDefault">"Z-Axis: %.0f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"602"</v>
+              <v n="TextDefault">"Z-Axis: %.0fmg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"518"</v>
+              <v n="TextDefault">"Z-Axis: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"678"</v>
+              <v n="TextDefault">"Z-Axis: %f mg"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"248"</v>
+              <v n="TextDefault">"Z-Axis: %f.0 mg"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

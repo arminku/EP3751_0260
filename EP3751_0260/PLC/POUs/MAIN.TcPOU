@@ -100,19 +100,7 @@ degGamma	:= 360.0-(actualGamma *360 /(2*PI));]]></ST>
     <Action Name="ResetPosition" Id="{34049b67-76d6-44c6-a4a8-0807fe7f998b}">
       <Implementation>
         <ST><![CDATA[(*
-Hint: Reset position is box laying flat on table.
-z-axis is looking to sky.
-If another reference position shall be used, the initial values have to be changed.
-e.g. y-axis looking to sky:
-		Integrator[0] := 0.25;
-		Integrator[1] := 0.5;
-		Integrator[2] := 0.5;
-		actualRoll := PI;
-		actualPitch := PI;
-		actualYaw := PI;		
-		actualPhi := PI;
-		actualTheta := 0;
-		actualGamma := PI;
+Hint: Reference position is box laying flat on table and z-axis looking into sky.
 *)
 slopeResetCalibration(CLK := bReset);
 IF slopeResetCalibration.Q THEN
@@ -240,7 +228,8 @@ END_IF]]></ST>
       <LineId Id="836" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.ResetPosition">
-      <LineId Id="2" Count="28" />
+      <LineId Id="2" Count="1" />
+      <LineId Id="16" Count="14" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.SensorFusion">
