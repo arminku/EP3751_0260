@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <Visu Name="Visualization" Id="{2bcdb9c8-65b9-4a3d-9749-96111609333d}">
     <XmlArchive>
       <Data>
@@ -3597,20 +3597,6 @@
                       <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                         <o>
                           <v n="Id">1186196937L</v>
-                          <v n="Value">"MAIN.bReset"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <v n="SignatureName">"Visu_TapInput"</v>
-                    <v n="Name">"Tap"</v>
-                    <v n="Description">"Konfiguration des Tastens einer booleschen Variablen"</v>
-                  </o>
-                  <o>
-                    <n n="DescriptionTree" />
-                    <o n="VisualElemMemberList" t="VisualElemMemberList">
-                      <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                        <o>
-                          <v n="Id">1186196937L</v>
                           <v n="Value">"MAIN.bUseSensorFusion"</v>
                         </o>
                       </l>
@@ -3767,7 +3753,7 @@
                     </o>
                     <o>
                       <v n="Id">1999528970L</v>
-                      <v n="Value">"MAIN.bReady"</v>
+                      <v n="Value">"MAIN.bUseSensorFusion"</v>
                     </o>
                     <o>
                       <v n="Id">2175578022L</v>
