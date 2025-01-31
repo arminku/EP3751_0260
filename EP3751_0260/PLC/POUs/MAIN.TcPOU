@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="MAIN" Id="{5ed6dd28-4e50-4912-a842-bd2821892fe5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -72,6 +72,7 @@ VAR
 	
 	sumAcc : LREAL;
 	
+	bUseSensorFusion		: bool;
 	fusionWeight 			: LREAL := 1024; // parameter of sensorfusion: higher values result in a lower influence of the accelerationsensors
 	fusionWindow 			: INT 	:= 100;  // Check for resting position => Threshold for influence of accelerationsensors 
 	fusionHorizontThreshold : LREAL := 0.4;  // 
@@ -196,7 +197,7 @@ IF AccPhi > 2*PI THEN AccPhi := AccPhi - 2*PI; END_IF;
 IF AccPhi < 0 THEN AccPhi := AccPhi + 2*PI; END_IF;
 AccTheta := ASIN(normalizedAcceleration[1]) + PI;
 (* Simple sensor fusion if we are not accelerated *)
-IF sumAcc >= (1000 - fusionWindow) AND sumAcc <= (1000 + fusionWindow) THEN
+IF sumAcc >= (1000 - fusionWindow) AND sumAcc <= (1000 + fusionWindow)AND bUseSensorFusion THEN
 	(* The AccPhi calculation is good, as long as Axis[2] ist not close to 0 *)
 	IF normalizedAcceleration[2] < -fusionHorizontThreshold OR normalizedAcceleration[2] > fusionHorizontThreshold THEN
 		IF (actualPhi - AccPhi) > PI OR (actualPhi - AccPhi) < -PI THEN
