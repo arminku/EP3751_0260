@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <POU Name="MAIN" Id="{5ed6dd28-4e50-4912-a842-bd2821892fe5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -72,7 +72,8 @@ VAR
 	
 	sumAcc : LREAL;
 	
-	bUseSensorFusion		: bool;
+	bReferncePositionSetOnce: Bool;
+	bUseSensorFusion		: BOOL;
 	fusionWeight 			: LREAL := 1024; // parameter of sensorfusion: higher values result in a lower influence of the accelerationsensors
 	fusionWindow 			: INT 	:= 100;  // Check for resting position => Threshold for influence of accelerationsensors 
 	fusionHorizontThreshold : LREAL := 0.4;  // 
@@ -116,8 +117,9 @@ IF slopeResetCalibration.Q THEN
 	actualPhi := PI;
 	actualTheta := PI;
 	actualGamma := PI;
+	bReferncePositionSetOnce:=TRUE;
 END_IF
-bReady:=iFilter[0].bRingbufferFilled;]]></ST>
+bReady:=iFilter[0].bRingbufferFilled and bReferncePositionSetOnce;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SensorFusion" Id="{7fc0ffcc-2263-458c-a699-622ebd5e8736}">
@@ -230,7 +232,9 @@ END_IF]]></ST>
     </LineIds>
     <LineIds Name="MAIN.ResetPosition">
       <LineId Id="2" Count="1" />
-      <LineId Id="16" Count="14" />
+      <LineId Id="16" Count="13" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="30" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.SensorFusion">
