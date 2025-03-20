@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="FB_MovingAverageFilter" Id="{b91621d2-03b6-4b65-ae02-e16422842b2a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MovingAverageFilter
+VAR_IN_OUT
+    a_fSamples : ARRAY[0..GVL_SensorFusion.buffersize_filter-1] OF REAL; // Array to store samples (adjust size as needed)
+END_VAR
+VAR_INPUT
+	bEnable: BOOL;		// Enable flag
+    fInputValue : REAL; // New input value
+    nNumSamples : UINT;  // Number of samples for the moving average
+END_VAR
+VAR_OUTPUT	
+    fAvgValue : REAL;   // Output average value
+    bBufferFilled : BOOL; // Flag indicating if the buffer is filled
+END_VAR
+VAR
+    fSum : REAL;
+    nIndex : UINT;
+    nCount : UINT;
+    nMaxSamples : UINT := SIZEOF(a_fSamples) / SIZEOF(REAL); // Maximum samples based on array size
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF nNumSamples > nMaxSamples THEN
+    nNumSamples := nMaxSamples; // Ensure NumSamples does not exceed array size
+END_IF
+
+IF bEnable THEN
+    nCount := MIN(nCount + 1, nNumSamples);
+    fSum := fSum - a_fSamples[nIndex] + fInputValue;
+    a_fSamples[nIndex] := fInputValue;
+    nIndex := (nIndex + 1) MOD nNumSamples;
+    fAvgValue := fSum / nCount;
+    bBufferFilled := (nCount = nNumSamples);
+ELSE
+    nCount := 0;
+    nIndex := 0;
+    fSum := 0;
+    fAvgValue := 0;
+    bBufferFilled := FALSE;
+    MEMSET(ADR(a_fSamples), 0, SIZEOF(a_fSamples));
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_MovingAverageFilter">
+      <LineId Id="73" Count="0" />
+      <LineId Id="75" Count="2" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="67" Count="5" />
+      <LineId Id="59" Count="7" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
