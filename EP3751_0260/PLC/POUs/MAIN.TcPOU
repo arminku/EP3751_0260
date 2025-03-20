@@ -11,9 +11,6 @@ VAR
 	Deg : ARRAY [0..2] OF REAL;
 	z: INT;
 
-	//fFltValue : ARRAY [0..2] OF LREAL;
-	//iFilter : ARRAY [0..2] OF FBiFilter;
-	//aFltArray : ARRAY [0..2] OF ARRAY [0..10000] OF DINT;
 	fbMovingAverage_3D: FB_MovingAverageFilter_3D;
 	a_fBuffer : ARRAY[0..2] OF ARRAY[ 0..GVL_SensorFusion.buffersize_filter-1] OF REAL;
 	
@@ -45,11 +42,11 @@ VAR
 	
 	actualPhi : LREAL;
 	actualTheta : LREAL;
-	actualGamma : LREAL;
+	actualPsi : LREAL;
 	
 	fdegPhi :LREAL;
 	fdegTheta :LREAL;
-	fdegGamma :LREAL;
+	fdegPsi :LREAL;
 	
 	droll:LREAL;
 	dpitch:LREAL;
@@ -57,7 +54,7 @@ VAR
 	
 	fPhi : LREAL;
 	fTheta : LREAL;
-	fgamma : LREAL;
+	fPsi : LREAL;
 
 	temp : LREAL;
 	
@@ -91,7 +88,7 @@ ResetPosition();
 // calculation rad --> degree
 fdegPhi 		:= (actualPhi *360 /(2*PI));
 fdegTheta	:= (actualTheta *360 /(2*PI));
-fdegGamma		:= 360.0-(actualGamma *360 /(2*PI));]]></ST>
+fdegPsi		:= 360.0-(actualPsi *360 /(2*PI));]]></ST>
     </Implementation>
     <Action Name="ResetPosition" Id="{34049b67-76d6-44c6-a4a8-0807fe7f998b}">
       <Implementation>
@@ -106,17 +103,14 @@ IF slopeResetCalibration.Q THEN
 	Integrator[0] := 0.5;
 	Integrator[1] := 0.5;
 	Integrator[2] := 0.5;
-	//FOR z := 0 TO 2 DO
-	//	offset[z] := fFltValue[z];	
-		//reset angles: initial values
-	//	Integrator[z] := 0.5;
-	//END_FOR
+	
 	actualRoll := PI;
 	actualPitch := PI;
 	actualYaw := PI;		
 	actualPhi := PI;
 	actualTheta := PI;
-	actualGamma := PI;
+	actualPsi := PI;
+	
 	bReferencePositionSetOnce:=TRUE;
 END_IF
 bReady:=fbMovingAverage_3D.bBufferFilledX AND bReferencePositionSetOnce;]]></ST>
@@ -124,20 +118,7 @@ bReady:=fbMovingAverage_3D.bBufferFilledX AND bReferencePositionSetOnce;]]></ST>
     </Action>
     <Action Name="SensorFusion" Id="{7fc0ffcc-2263-458c-a699-622ebd5e8736}">
       <Implementation>
-        <ST><![CDATA[(*FOR z := 0 TO 2 DO
-	(* Integrate the gyro values to gain an overall angle -> this angle is RPY *)
-	corrAxis[z] := GyroAxis[z] - offset[z];
-	
-	Integrator[z] := Integrator[z] + (corrAxis[z] / ((1/fCycleTime)*(32768.0/dps)*360.0));
-	
-	Deg[z] := Integrator[z] * 360.0;
-	DegMovingHead[z] := REAL_TO_INT(Deg[z]) MOD 360;
-
-	(* Filter values for axis zero correction *)
-	iFilter[z](ptInputValue := ADR(GyroAxis[z]), ptFilterArray := ADR(aFltArray[z]), iBufferSize := 2000, bExecute := 1);
-	fFltValue[z] := iFilter[z].fFilterOutput;
-END_FOR*)
-FOR z := 0 TO 2 DO
+        <ST><![CDATA[FOR z := 0 TO 2 DO
 	corrAxis[z] := a_fGyroAxis[z] - offset[z];	
 	Integrator[z] := Integrator[z] + (corrAxis[z] / ((1/fCycleTime)*360.0));	
 	Deg[z] := Integrator[z] * 360.0;
@@ -166,21 +147,21 @@ droll := temp;
 (* Calculate the euler speeds *)
 fphi := droll + SIN(actualPhi)*TAN(actualTheta)*dpitch + COS(actualPhi)*TAN(actualTheta)*dyaw;
 ftheta := COS(actualPhi)*dpitch-SIN(actualPhi)*dyaw;
-fgamma := (SIN(actualPhi)/COS(actualTheta)) * dpitch + (COS(actualPhi)/COS(actualTheta))*dyaw;
+fPsi := (SIN(actualPhi)/COS(actualTheta)) * dpitch + (COS(actualPhi)/COS(actualTheta))*dyaw;
 
 
 (* Calculate new euler angles *)
 actualPhi := actualPhi + fphi;
 actualTheta := actualTheta + ftheta;
-actualGamma := actualGamma + fgamma;
+actualPsi := actualPsi + fPsi;
 
 (* Collapse if passing thresholds of pi *)
 IF actualPhi < 0 THEN actualPhi := actualPhi + 2*PI; END_IF
 IF actualPhi >= 2*PI THEN actualPhi := actualPhi - 2*PI; END_IF
 IF actualTheta < 0 THEN	actualTheta := actualTheta + 2*PI; END_IF
 IF actualTheta >= 2*PI THEN	actualTheta := actualTheta - 2*PI; END_IF
-IF actualGamma < 0 THEN	actualGamma := actualGamma + 2*PI;END_IF
-IF actualGamma >= 2*PI THEN	actualGamma := actualGamma - 2*PI;END_IF
+IF actualPsi < 0 THEN	actualPsi := actualPsi + 2*PI;END_IF
+IF actualPsi >= 2*PI THEN	actualPsi := actualPsi - 2*PI;END_IF
 
 (* Determine length of acceleration vector *)
 sumAcc := a_fAccAxis[0] * a_fAccAxis[0] + a_fAccAxis[1] * a_fAccAxis[1] + a_fAccAxis[2] * a_fAccAxis[2];
@@ -240,27 +221,23 @@ END_IF]]></ST>
       <LineId Id="2" Count="1" />
       <LineId Id="16" Count="2" />
       <LineId Id="33" Count="2" />
-      <LineId Id="37" Count="2" />
-      <LineId Id="19" Count="10" />
+      <LineId Id="37" Count="3" />
+      <LineId Id="24" Count="5" />
+      <LineId Id="41" Count="0" />
       <LineId Id="31" Count="0" />
       <LineId Id="30" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="MAIN.SensorFusion">
-      <LineId Id="2" Count="8" />
-      <LineId Id="93" Count="1" />
-      <LineId Id="15" Count="2" />
+      <LineId Id="17" Count="0" />
       <LineId Id="104" Count="0" />
       <LineId Id="106" Count="0" />
       <LineId Id="108" Count="0" />
       <LineId Id="103" Count="0" />
       <LineId Id="109" Count="0" />
       <LineId Id="112" Count="0" />
-      <LineId Id="18" Count="21" />
-      <LineId Id="95" Count="0" />
-      <LineId Id="40" Count="1" />
-      <LineId Id="99" Count="2" />
-      <LineId Id="45" Count="47" />
+      <LineId Id="18" Count="18" />
+      <LineId Id="135" Count="56" />
       <LineId Id="1" Count="0" />
     </LineIds>
   </POU>
