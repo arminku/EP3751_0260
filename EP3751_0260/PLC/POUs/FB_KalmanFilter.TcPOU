@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="FB_KalmanFilter" Id="{581c826b-cb6d-4d78-bee9-04712b3a631b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_KalmanFilter
+VAR_INPUT
+    fGyroRateX : REAL;    // Gyroscope data in degrees per second for X-axis
+    fGyroRateY : REAL;    // Gyroscope data in degrees per second for Y-axis
+    fGyroRateZ : REAL;    // Gyroscope data in degrees per second for Z-axis 
+    fAccelDataX : REAL;   // Accelerometer data in g for X-axis
+    fAccelDataY : REAL;   // Accelerometer data in g for Y-axis
+    fAccelDataZ : REAL;   // Accelerometer data in g for Z-axis
+	fCycleTime: REAL; 				   // CycleTime of sensor data in s
+	fQ_angle : REAL := 0.001;     // Process noise variance for the angle
+    fQ_bias : REAL := 0.003;      // Process noise variance for the bias
+    fR_measure : REAL := 0.03;    // Measurement noise variance
+    bSetReference : BOOL := FALSE; // Flag to set the current position as the reference position
+END_VAR
+VAR_OUTPUT
+    fAngleX_rad : REAL;   // Estimated angle for X-axis (pitch) from Kalman filter in radians
+    fAngleY_rad : REAL;   // Estimated angle for Y-axis (roll) from Kalman filter in radians
+    fAngleZ_rad : REAL;   // Estimated angle for Z-axis (yaw) from Kalman filter in radians
+	
+	fAngleX_deg : REAL;   // Estimated angle for X-axis (pitch) from Kalman filter in degrees
+    fAngleY_deg : REAL;   // Estimated angle for Y-axis (roll) from Kalman filter in degrees
+    fAngleZ_deg : REAL;   // Estimated angle for Z-axis (yaw) from Kalman filter in degrees
+END_VAR
+VAR
+    // Variables for X-axis
+    fAngle_prevX_rad : REAL := 0.0;   // Previous angle for X-axis in radians
+    fBiasX : REAL := 0.0;             // Gyroscope bias for X-axis
+    fRateX : REAL := 0.0;             // Rate of change of the angle for X-axis
+
+    fP_00X : REAL := 1.0;             // Covariance matrix for X-axis
+    fP_01X : REAL := 0.0;
+    fP_10X : REAL := 0.0;
+    fP_11X : REAL := 1.0;
+
+    fY_X : REAL;                      // Angle difference for X-axis
+    fS_X : REAL;                      // Estimate error for X-axis
+    fK_0X : REAL;                     // Kalman gain for X-axis
+    fK_1X : REAL;                     // Kalman gain for X-axis
+
+    // Variables for Y-axis
+    fAngle_prevY_rad : REAL := 0.0;   // Previous angle for Y-axis in radians
+    fBiasY : REAL := 0.0;             // Gyroscope bias for Y-axis
+    fRateY : REAL := 0.0;             // Rate of change of the angle for Y-axis
+
+    fP_00Y : REAL := 1.0;             // Covariance matrix for Y-axis
+    fP_01Y : REAL := 0.0;
+    fP_10Y : REAL := 0.0;
+    fP_11Y : REAL := 1.0;
+
+    fY_Y : REAL;                      // Angle difference for Y-axis
+    fS_Y : REAL;                      // Estimate error for Y-axis
+    fK_0Y : REAL;                     // Kalman gain for Y-axis
+    fK_1Y : REAL;                     // Kalman gain for Y-axis
+
+    // Variables for Z-axis
+    fAngle_prevZ_rad : REAL := 0.0;   // Previous angle for Z-axis in radians
+    fBiasZ : REAL := 0.0;             // Gyroscope bias for Z-axis
+    fRateZ : REAL := 0.0;             // Rate of change of the angle for Z-axis
+
+    fP_00Z : REAL := 1.0;             // Covariance matrix for Z-axis
+    fP_01Z : REAL := 0.0;
+    fP_10Z : REAL := 0.0;
+    fP_11Z : REAL := 1.0;
+
+    fY_Z : REAL;                      // Angle difference for Z-axis
+    fS_Z : REAL;                      // Estimate error for Z-axis
+    fK_0Z : REAL;                     // Kalman gain for Z-axis
+    fK_1Z : REAL;                     // Kalman gain for Z-axis
+	// Reference angles
+    fRefAngleX_rad : REAL := 0.0;     // Referenzwinkel für X-Achse in Radiant
+    fRefAngleY_rad : REAL := 0.0;     // Referenzwinkel für Y-Achse in Radiant
+    fRefAngleZ_rad : REAL := 0.0;     // Referenzwinkel für Z-Achse in Radiant
+END_VAR
+
+// Convert accelerometer data to angles (pitch, roll) in radians
+VAR
+    fPitchAccel_rad : REAL;
+    fRollAccel_rad : REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fPitchAccel_rad := ATAN(fAccelDataY / SQRT(fAccelDataX * fAccelDataX + fAccelDataZ * fAccelDataZ));
+fRollAccel_rad := ATAN(fAccelDataX / SQRT(fAccelDataY * fAccelDataY + fAccelDataZ * fAccelDataZ));
+
+// Vorhersageschritt für X-Achse (Pitch)
+fRateX := fGyroRateX - fBiasX;
+fAngle_prevX_rad := fAngle_prevX_rad + fCycleTime * fRateX * PI / 180.0; // Konvertierung der Rate von Grad/Sekunde zu Rad/Sekunde
+
+fP_00X := fP_00X + fCycleTime * (fCycleTime * fP_11X - fP_01X - fP_10X + fQ_angle);
+fP_01X := fP_01X - fCycleTime * fP_11X;
+fP_10X := fP_10X - fCycleTime * fP_11X;
+fP_11X := fP_11X + fQ_bias * fCycleTime;
+
+// Messupdate für X-Achse (Pitch)
+fY_X := fPitchAccel_rad - fAngle_prevX_rad; // Verwendung des Pitch-Winkels in Radiant
+fS_X := fP_00X + fR_measure;
+fK_0X := fP_00X / fS_X;
+fK_1X := fP_10X / fS_X;
+
+fAngle_prevX_rad := fAngle_prevX_rad + fK_0X * fY_X;
+fBiasX := fBiasX + fK_1X * fY_X;
+
+fP_00X := fP_00X - fK_0X * fP_00X;
+fP_01X := fP_01X - fK_0X * fP_01X;
+fP_10X := fP_10X - fK_1X * fP_00X;
+fP_11X := fP_11X - fK_1X * fP_01X;
+
+// Vorhersageschritt für Y-Achse (Roll)
+fRateY := fGyroRateY - fBiasY;
+fAngle_prevY_rad := fAngle_prevY_rad + fCycleTime * fRateY * PI / 180.0; // Konvertierung der Rate von Grad/Sekunde zu Rad/Sekunde
+
+fP_00Y := fP_00Y + fCycleTime * (fCycleTime * fP_11Y - fP_01Y - fP_10Y + fQ_angle);
+fP_01Y := fP_01Y - fCycleTime * fP_11Y;
+fP_10Y := fP_10Y - fCycleTime * fP_11Y;
+fP_11Y := fP_11Y + fQ_bias * fCycleTime;
+
+// Messupdate für Y-Achse (Roll)
+fY_Y := fRollAccel_rad - fAngle_prevY_rad; // Verwendung des Roll-Winkels in Radiant
+fS_Y := fP_00Y + fR_measure;
+fK_0Y := fP_00Y / fS_Y;
+fK_1Y := fP_10Y / fS_Y;
+
+fAngle_prevY_rad := fAngle_prevY_rad + fK_0Y * fY_Y;
+fBiasY := fBiasY + fK_1Y * fY_Y;
+
+fP_00Y := fP_00Y - fK_0Y * fP_00Y;
+fP_01Y := fP_01Y - fK_0Y * fP_01Y;
+fP_10Y := fP_10Y - fK_1Y * fP_00Y;
+fP_11Y := fP_11Y - fK_1Y * fP_01Y;
+
+// Vorhersageschritt für Z-Achse (Yaw)
+fRateZ := fGyroRateZ - fBiasZ;
+fAngle_prevZ_rad := fAngle_prevZ_rad + fCycleTime * fRateZ * PI / 180.0; // Konvertierung der Rate von Grad/Sekunde zu Rad/Sekunde
+
+fP_00Z := fP_00Z + fCycleTime * (fCycleTime * fP_11Z - fP_01Z - fP_10Z + fQ_angle);
+fP_01Z := fP_01Z - fCycleTime * fP_11Z;
+fP_10Z := fP_10Z - fCycleTime * fP_11Z;
+fP_11Z := fP_11Z + fQ_bias * fCycleTime;
+
+// Messupdate für Z-Achse (Yaw)
+// Da der Beschleunigungssensor keine direkte Yaw-Messung liefert, verwenden wir Gyroskop-Daten für das Yaw-Update.
+fY_Z := fRateZ; // Gyroskop-Rate in Grad/Sekunde
+fS_Z := fP_00Z + fR_measure;
+fK_0Z := fP_00Z / fS_Z;
+fK_1Z := fP_10Z / fS_Z;
+
+fAngle_prevZ_rad := fAngle_prevZ_rad + fK_0Z * fY_Z * fCycleTime * PI / 180.0; // Aktualisierung des Yaw-Winkels mit Gyroskop-Daten und Konvertierung in Radiant
+fBiasZ := fBiasZ + fK_1Z * fY_Z * fCycleTime * PI / 180.0;
+
+fP_00Z := fP_00Z - fK_0Z * fP_00Z;
+fP_01Z := fP_01Z - fK_0Z * fP_01Z;
+fP_10Z := fP_10Z - fK_1Z * fP_00Z;
+fP_11Z := fP_11Z - fK_1Z * fP_01Z;
+
+// Set reference position if the flag is set
+IF bSetReference THEN
+    fRefAngleX_rad := fAngle_prevX_rad;
+    fRefAngleY_rad := fAngle_prevY_rad;
+    fRefAngleZ_rad := fAngle_prevZ_rad;
+END_IF
+
+// Ausgabe der geschätzten Winkel vom Kalman-Filter in Radiant und Grad
+fAngleX_rad := fAngle_prevX_rad - fRefAngleX_rad;               // Kalman-gefilterter Pitch in Radiant relativ zur Referenzposition
+fAngleY_rad := fAngle_prevY_rad - fRefAngleY_rad;               // Kalman-gefilterter Roll in Radiant relativ zur Referenzposition
+fAngleZ_rad := fAngle_prevZ_rad - fRefAngleZ_rad;               // Kalman-gefilterter Yaw in Radiant relativ zur Referenzposition
+
+fAngleX_deg := (fAngle_prevX_rad - fRefAngleX_rad) * 180.0 / PI;  // Kalman-gefilterter Pitch in Grad relativ zur Referenzposition
+fAngleY_deg := (fAngle_prevY_rad - fRefAngleY_rad) * 180.0 / PI;  // Kalman-gefilterter Roll in Grad relativ zur Referenzposition
+fAngleZ_deg := (fAngle_prevZ_rad - fRefAngleZ_rad) * 180.0 / PI;  // Kalman-gefilterter Yaw in Grad relativ zur Referenzposition
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_KalmanFilter">
+      <LineId Id="824" Count="84" />
+      <LineId Id="915" Count="2" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -75,6 +75,7 @@ VAR
 (*Disclaimer: This is a sample still in prototype phase.
 Please be aware that functionalities/ PDOs / CoEs can differ in series variant.
 *)
+	fbKalmanFilter:FB_KalmanFilter;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -85,10 +86,20 @@ END_IF
 SensorFusion();
 ResetPosition();
 
+fbKalmanFilter(
+	fGyroRateX:= corrAxis[0], 
+	fGyroRateY:= corrAxis[1], 
+	fGyroRateZ:= corrAxis[2], 
+	fAccelDataX:= a_fAccAxis[0], 
+	fAccelDataY:= a_fAccAxis[1], 
+	fAccelDataZ:= a_fAccAxis[2], 
+	fCycleTime:= fCycletime,
+	bSetReference:= bReset );
+
 // calculation rad --> degree
-fdegPhi 		:= (actualPhi *360 /(2*PI));
-fdegTheta	:= (actualTheta *360 /(2*PI));
-fdegPsi		:= 360.0-(actualPsi *360 /(2*PI));]]></ST>
+fdegPhi 		:= (actualPhi *360.0 /(2*PI));
+fdegTheta	:= (actualTheta *360.0 /(2*PI));
+fdegPsi		:= 360.0-(actualPsi *360.0 /(2*PI));]]></ST>
     </Implementation>
     <Action Name="ResetPosition" Id="{34049b67-76d6-44c6-a4a8-0807fe7f998b}">
       <Implementation>
@@ -130,9 +141,9 @@ droll := actualRoll;
 dpitch := actualPitch;
 dyaw := actualYaw;
 
-actualRoll := (Deg[0] /360) * 2 * PI;
-actualPitch := (Deg[1] /360) * 2 * PI;
-actualYaw := (Deg[2] /360) * 2 * PI;
+actualRoll := (Deg[0] /360.0) * 2 * PI;
+actualPitch := (Deg[1] /360.0) * 2 * PI;
+actualYaw := (Deg[2] /360.0) * 2 * PI;
 
 droll := actualRoll - droll;
 dpitch := actualPitch - dpitch;
@@ -211,6 +222,10 @@ END_IF]]></ST>
       <LineId Id="1097" Count="0" />
       <LineId Id="1009" Count="0" />
       <LineId Id="1228" Count="0" />
+      <LineId Id="1320" Count="0" />
+      <LineId Id="1324" Count="6" />
+      <LineId Id="1321" Count="0" />
+      <LineId Id="1337" Count="0" />
       <LineId Id="837" Count="0" />
       <LineId Id="835" Count="0" />
       <LineId Id="834" Count="0" />
