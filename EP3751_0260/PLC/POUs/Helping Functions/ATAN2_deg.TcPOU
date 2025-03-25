@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="ATAN2_deg" Id="{b0d4148c-2f7d-449c-ab08-e08d9f539b26}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION ATAN2_deg : LREAL
+VAR_INPUT	
+    y : REAL; // y-coordinate
+    x : REAL; // x-coordinate
+END_VAR
+VAR_OUTPUT
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF x > 0 THEN
+    ATAN2_deg := ATAN(y / x);
+ELSIF x < 0 AND y >= 0 THEN
+    ATAN2_deg := ATAN(y / x) + pi;
+ELSIF x < 0 AND y < 0 THEN
+    ATAN2_deg := ATAN(y / x) - pi;
+ELSIF x = 0 AND y > 0 THEN
+    ATAN2_deg := pi / 2;
+ELSIF x = 0 AND y < 0 THEN
+    ATAN2_deg := -pi / 2;
+ELSIF x = 0 AND y = 0 THEN
+    ATAN2_deg := 0.0; // Undefined, but conventionally set to 0
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="ATAN2_deg">
+      <LineId Id="12" Count="11" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

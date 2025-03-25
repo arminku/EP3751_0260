@@ -76,6 +76,9 @@ VAR
 Please be aware that functionalities/ PDOs / CoEs can differ in series variant.
 *)
 	fbKalmanFilter:FB_KalmanFilter;
+	fbMadgwickFilter:FB_MadgwickFilter;
+	fbComplementaryFilter:FB_ComplementaryFilter;
+	fbMahonyFilter:FB_MahonyFilter;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -94,6 +97,36 @@ fbKalmanFilter(
 	fAccelDataY:= a_fAccAxis[1], 
 	fAccelDataZ:= a_fAccAxis[2], 
 	fCycleTime:= fCycletime,
+	bSetReference:= bReset );
+	
+fbMadgwickFilter(
+	fAccelDataX:= a_fAccAxis[0], 
+	fAccelDataY:= a_fAccAxis[1], 
+	fAccelDataZ:= a_fAccAxis[2], 
+	fGyroRateX:=corrAxis[0] , 
+	fGyroRateY:=corrAxis[1] , 
+	fGyroRateZ:=corrAxis[2] ,  
+	fcycletime:=fCycletime , 
+	bSetReference:= bReset );
+	
+fbComplementaryFilter(
+	fAccelDataX:= a_fAccAxis[0], 
+	fAccelDataY:= a_fAccAxis[1], 
+	fAccelDataZ:= a_fAccAxis[2], 
+	fGyroRateX:=corrAxis[0] , 
+	fGyroRateY:=corrAxis[1] , 
+	fGyroRateZ:=corrAxis[2] ,  
+	fcycletime:=fCycletime , 
+	bSetReference:= bReset );
+	
+fbMahonyFilter(
+	fAccelDataX:= a_fAccAxis[0], 
+	fAccelDataY:= a_fAccAxis[1], 
+	fAccelDataZ:= a_fAccAxis[2], 
+	fGyroRateX:=corrAxis[0] , 
+	fGyroRateY:=corrAxis[1] , 
+	fGyroRateZ:=corrAxis[2] ,  
+	fcycletime:=fCycletime , 
 	bSetReference:= bReset );
 
 // calculation rad --> degree
@@ -225,7 +258,17 @@ END_IF]]></ST>
       <LineId Id="1320" Count="0" />
       <LineId Id="1324" Count="6" />
       <LineId Id="1321" Count="0" />
-      <LineId Id="1337" Count="0" />
+      <LineId Id="1337" Count="1" />
+      <LineId Id="1341" Count="6" />
+      <LineId Id="1349" Count="0" />
+      <LineId Id="1339" Count="0" />
+      <LineId Id="1360" Count="0" />
+      <LineId Id="1362" Count="7" />
+      <LineId Id="1361" Count="0" />
+      <LineId Id="1374" Count="0" />
+      <LineId Id="1382" Count="0" />
+      <LineId Id="1375" Count="6" />
+      <LineId Id="1373" Count="0" />
       <LineId Id="837" Count="0" />
       <LineId Id="835" Count="0" />
       <LineId Id="834" Count="0" />

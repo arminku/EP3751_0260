@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
-  <Visu Name="Visualization_Kalman" Id="{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}">
+  <Visu Name="Visualization_Madgwick" Id="{24cee329-c33c-493a-947d-b9313c52ef6b}">
     <XmlArchive>
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"13"</v>
+          <v n="UniqueIdGenerator">"11"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -313,7 +313,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{4221bb57-e0c6-4917-b930-91a9ff9887a5}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">0</v>
@@ -482,7 +482,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{9b75a4b6-0f02-4c8f-a7ec-a70a7189a343}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">4</v>
@@ -676,7 +676,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{e8e053bd-3f0d-49d2-b769-2b34d741c3ea}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">7</v>
@@ -845,7 +845,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{2954015c-ac8d-4995-932a-b28e692d8c9a}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">13</v>
@@ -1014,7 +1014,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{e4375d0e-5c9f-4dbe-905a-0e737129c4ad}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">17</v>
@@ -1183,7 +1183,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{5e23c154-83d2-40ed-b355-a10b1c6692ef}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">54</v>
@@ -1352,7 +1352,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{e5bc8357-e534-4b36-88bb-a97a3e7e4d73}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">56</v>
@@ -1521,7 +1521,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{74155f6e-f4e5-465b-8e8a-de0c8e26c2c3}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">58</v>
@@ -1715,7 +1715,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{147a39c1-eabd-45c8-90dd-1eb494a957d5}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">60</v>
@@ -2026,7 +2026,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{9720fce1-1d3b-4667-a4d0-2987222fb622}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">63</v>
@@ -2337,7 +2337,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{81c161c7-b566-4425-89cc-a395e16c1d47}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">65</v>
@@ -2628,7 +2628,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleX_deg"</v>
+                      <v n="Value">"MAIN.fbMadgwickFilter.fAngleRoll_deg"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -2648,7 +2648,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{204453d7-fe5b-4699-aa6f-a2ffb81febc1}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">68</v>
@@ -2939,7 +2939,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleY_deg"</v>
+                      <v n="Value">"MAIN.fbMadgwickFilter.fAnglePitch_deg"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -2959,7 +2959,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{0a5f8414-589b-480f-9bc5-6160c4dcc60c}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">70</v>
@@ -3250,7 +3250,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleZ_deg"</v>
+                      <v n="Value">"MAIN.fbMadgwickFilter.fAngleYaw_deg"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -3270,7 +3270,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{26fae6d1-6548-41fe-8f7e-df4512e23db5}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">72</v>
@@ -3423,7 +3423,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleX_deg"</v>
+                      <v n="Value">"MAIN.fbMadgwickFilter.fAngleRoll_deg"</v>
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
@@ -3439,7 +3439,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{77830e0d-b54e-481a-974e-8162d7a4ac43}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">74</v>
@@ -3592,7 +3592,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleY_deg"</v>
+                      <v n="Value">"MAIN.fbMadgwickFilter.fAnglePitch_deg"</v>
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
@@ -3608,7 +3608,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{bbe1c864-a976-4bcb-b94b-f9f91ebf61f4}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">76</v>
@@ -3761,7 +3761,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleZ_deg"</v>
+                      <v n="Value">"MAIN.fbMadgwickFilter.fAngleYaw_deg"</v>
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
@@ -3777,7 +3777,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{ae37b185-3a1b-4e97-aa64-cf9136a292f9}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">78</v>
@@ -3800,148 +3800,148 @@
             <o n="GeneratedVisuFbDescription" t="GenericFbDescription">
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>ContainsPoint</v>
-                <v>16db8840-d761-4376-9a80-b8f47b8f7f57</v>
+                <v>9fcd09ef-ec0d-4d97-a2d1-03e8b3256a90</v>
                 <v>Destruct</v>
-                <v>bf6d8b1b-4389-4d99-85db-fc6391895ae6</v>
+                <v>518feeed-5ac5-4028-a802-68d7dcd6bf15</v>
                 <v>ElementInfo</v>
-                <v>dac373a8-c3c3-4e77-8b98-1828b9ca5d64</v>
+                <v>2396b401-3c13-4788-98bf-34bc567e806a</v>
                 <v>FB_Exit</v>
-                <v>aea44fe6-1dc3-4cef-ac04-51f88866edf7</v>
+                <v>9019c739-6dd9-4928-8417-3671a84f0989</v>
                 <v>FB_Reinit</v>
-                <v>2e7c7512-c31d-4494-bcb2-f46da4a21f21</v>
+                <v>2e76faa7-66bd-47f6-9730-f8475c252861</v>
                 <v>GetClientData</v>
-                <v>12af3198-48cd-48a0-8528-5d53e7ed1c88</v>
+                <v>cc000476-e8d0-411d-b5cd-6af96b115c4e</v>
                 <v>GetDialogInterface</v>
-                <v>f5bb63ac-75ea-414d-9bf4-41ad6253a469</v>
+                <v>818423e9-b55f-4a6e-b127-88c65484d83b</v>
                 <v>GetDialogInterfaceSize</v>
-                <v>2e17f9b6-8f1c-464d-aab1-457f4a51861f</v>
+                <v>c274abe6-c6d5-4895-aa40-e409db6e8741</v>
                 <v>GetElementArray</v>
-                <v>64a08df5-1f99-42a8-87aa-f4702537c4ab</v>
+                <v>120f5b1b-0952-4f94-bdb3-af45ccf5ee89</v>
                 <v>GetElementIdArray</v>
-                <v>43e609bf-4216-4529-a5cf-effec2610775</v>
+                <v>88acba9e-f14c-4914-9fda-628e4542a15b</v>
                 <v>GetInitializeVersion</v>
-                <v>45e50d8c-8289-446a-834d-e03cd7a82ac2</v>
+                <v>467efad7-4d36-4798-ba01-29e91a176e97</v>
                 <v>GetInstance</v>
-                <v>42013c43-830f-4bfe-b664-475e35440e16</v>
+                <v>f83525bf-6072-4091-9cbe-9e73e8b25047</v>
                 <v>GetLocalUsergroup</v>
-                <v>ca30eb7c-5e35-4832-b06f-c88dcb79a43a</v>
+                <v>157ee97f-f491-4f2e-ae46-c54e5152e024</v>
                 <v>GetName</v>
-                <v>30d15b36-5f37-44be-aba4-4a088267a069</v>
+                <v>3ef577c8-3b1a-45bc-9017-1870e3e4ed8c</v>
                 <v>GetNamespace</v>
-                <v>600fc455-7302-435f-b1bd-c4618d686c6d</v>
+                <v>d228d896-ccb4-48dd-a54c-3074b54d466e</v>
                 <v>GetResult</v>
-                <v>3729cb6e-9d34-4472-9163-9fa5a1b7e8cb</v>
+                <v>d0d5c619-c9f3-40ac-9d7a-7fb5bb67bf40</v>
                 <v>GetSize</v>
-                <v>8bb79f02-c521-409c-b2e5-9efdf5d535ed</v>
+                <v>89617fee-91bd-46fc-963e-a649883edbbd</v>
                 <v>GetSurroundingRect</v>
-                <v>1eb6ab22-7124-41a1-bf91-3b662577ea27</v>
+                <v>f7761acc-031b-4c2c-9778-b1beadcd02ee</v>
                 <v>GetText</v>
-                <v>a1389c99-dfb7-47a1-b047-a02b1ea64869</v>
+                <v>78bd2108-3337-4876-8cad-2293920f89f6</v>
                 <v>GetTextProperties</v>
-                <v>3fb97290-3860-4631-b58c-6c344273402e</v>
+                <v>63a7f1a2-13e1-455f-bea0-2171f34c113d</v>
                 <v>GetTooltip</v>
-                <v>b3eb9fe3-8ea2-4b5e-8185-2fac1fdf15b4</v>
+                <v>ddc824c8-b6bc-47e1-add2-eca147c4248a</v>
                 <v>GetTranslator</v>
-                <v>77286df6-7a98-40eb-b33c-21af76671055</v>
+                <v>3168fa00-6017-4d97-88a9-d23a57eba83e</v>
                 <v>GetUpdateRects</v>
-                <v>b6b09875-4f61-42e4-94ea-c6af13bed0d7</v>
+                <v>b452b2bd-ff61-4785-8aa9-05c03b22458c</v>
                 <v>HandleInput</v>
-                <v>2906901b-c2dd-42df-b357-c94a3ff5aa2d</v>
+                <v>85a90966-81a2-4946-9ee5-a239a88edabc</v>
                 <v>HasInputAccess</v>
-                <v>3c4cb049-62ec-4537-9484-68e3b51a497b</v>
+                <v>c1809fdd-febe-4b78-8348-a061729fdcf2</v>
                 <v>HasInputAccessIntern</v>
-                <v>ca00db85-e804-4920-be24-5713dd970498</v>
+                <v>093ea04d-5116-4ef5-b792-4881f6351709</v>
                 <v>HasVisibilityAccess</v>
-                <v>6f7415c6-65f2-4d57-ab60-99093b20267a</v>
+                <v>73e498d5-a7ce-497d-b126-80c1370dedb3</v>
                 <v>HasVisibilityAccessIntern</v>
-                <v>012a45f2-24e5-4d70-96fe-c015465df6b2</v>
+                <v>d2afb98d-f6a2-4938-9c52-83c5cae98f90</v>
                 <v>Initialize</v>
-                <v>9075f6f3-5bfb-4f41-b0f5-afb85f142ca7</v>
+                <v>8e9704c7-8a4d-4bae-a251-a4657cd450ae</v>
                 <v>IsAntialiasingInactive</v>
-                <v>ed436036-48c1-4f64-93a4-4e65d26ac8a1</v>
+                <v>5bf7615d-2bee-4c29-927a-c5039cf21c48</v>
                 <v>Paint</v>
-                <v>d4f4e6f2-4e25-41e0-9009-f72f295578ff</v>
+                <v>e149e4c3-2a18-458c-8edb-86f2ffb90a32</v>
                 <v>SetClientData</v>
-                <v>ebd6c172-2fba-4db8-9dd6-42f7690399be</v>
+                <v>435e22e9-a4f7-4062-878e-5570ab7953c0</v>
                 <v>SetDialogInterface</v>
-                <v>3ae90c25-8af8-4587-b186-230f5bb29159</v>
+                <v>b2653997-9532-4008-8cbf-11066defb399</v>
                 <v>SetResult</v>
-                <v>1dde7302-935e-4656-929b-ad5f40379bfa</v>
+                <v>3ed5a5df-874d-4f5b-b168-65d7ee30c74f</v>
                 <v>SetStaticState</v>
-                <v>5390692d-d0b9-41a1-a70f-85be7290e804</v>
+                <v>47e88e4d-e665-4b7e-b32b-d2d5a811ce32</v>
                 <v>SetVisuFlagsInternal</v>
-                <v>d0570c5e-ed6f-4b66-bd30-bba4e9f41cd5</v>
+                <v>1445abdd-e84d-4f14-bc62-0d65ef6919c1</v>
                 <v>Update</v>
-                <v>bb411614-d513-4c3e-93e6-ba398d655512</v>
+                <v>59d4b073-eaab-4468-88a3-9a9c04588f06</v>
               </d>
               <v n="FbName">"NotImportant"</v>
-              <v n="FbGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+              <v n="FbGuid">{24cee329-c33c-493a-947d-b9313c52ef6b}</v>
             </o>
-            <v n="GeneratedGlobalVisuVarsGuid">{38186a1f-9b1a-4bee-84e9-1465aa4cc616}</v>
-            <v n="GeneratedGlobalTheVisuVarlistGuid">{5ec302c9-d8f6-4bae-852c-296956758c23}</v>
-            <v n="GeneratedGlobalVisuConstants">{2a5a8d60-5a2a-4576-b90f-dc56cf816df1}</v>
+            <v n="GeneratedGlobalVisuVarsGuid">{e0d05de2-cad9-45ea-802d-6700ea603845}</v>
+            <v n="GeneratedGlobalTheVisuVarlistGuid">{0e79b0b5-caea-4b75-802b-66fccca60e08}</v>
+            <v n="GeneratedGlobalVisuConstants">{4c769bda-81ae-413c-a664-9a3ebc6ecaba}</v>
             <d n="GeneratedAllElementsEntries" t="Hashtable" />
             <o n="VisuRegDesc" t="GenericFbDescription">
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>FB_Exit</v>
-                <v>33b77eeb-afcf-4e57-a910-c1eb30492694</v>
+                <v>bd3eeafc-089e-435a-8ac4-2f0a87a12b5b</v>
                 <v>FB_Init</v>
-                <v>6afa69b9-2691-42f5-ab95-9d3ed543431d</v>
+                <v>4d04c122-564c-4230-bbd8-b06721872e38</v>
                 <v>FB_Reinit</v>
-                <v>f4a9672e-6967-4499-9937-bc388cdf455e</v>
+                <v>f57f8bfd-588a-43d4-90d6-f3b62f4eeaaf</v>
               </d>
               <v n="FbName">"NotImportant"</v>
-              <v n="FbGuid">{2c7c72e1-9c45-455b-92ad-a0bcd6b37c59}</v>
+              <v n="FbGuid">{9d24061a-df2a-4f15-8fd6-1064f26ce1a5}</v>
             </o>
-            <v n="VisuRegisterGvl">{ab2cc988-6b3e-4389-b731-84c46683963f}</v>
+            <v n="VisuRegisterGvl">{cb25128d-40b3-4741-a7df-f4ea219e2ee8}</v>
             <n n="SettingsPou" />
             <n n="MemManPou" />
             <o n="InputsPou" t="GenericFbDescription">
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>abstrGetDefaultCursor</v>
-                <v>3ca37663-8d39-4b45-ba3c-8a1a304c8fc8</v>
+                <v>e909bdd0-be85-46c5-b5c4-aede7b0bbe04</v>
                 <v>ExecuteDialogClosed</v>
-                <v>c21b1e2f-cce6-4aab-acbd-9a1ec7fbabb1</v>
+                <v>47c7e923-f595-4833-bfe6-996ef3ac1d34</v>
                 <v>ExecuteKeyDown</v>
-                <v>1e996ae4-cb2b-4bac-85c6-c86df59db01f</v>
+                <v>1a2b1fa1-50a6-4c29-a767-afdb1d03f8f2</v>
                 <v>ExecuteKeyUp</v>
-                <v>91570020-584c-4a95-8905-0e19fb6b2ed1</v>
+                <v>985efe15-3b09-4d0f-bb44-f2de30859223</v>
                 <v>ExecuteLooseCapture</v>
-                <v>27d60703-c0e4-475b-b0a6-7e9aee727214</v>
+                <v>9c72a531-19b7-4226-894c-28cf6336869f</v>
                 <v>ExecuteMouseClick</v>
-                <v>51a0461f-a156-4d51-8398-99207b343b07</v>
+                <v>906faec1-2000-4aeb-bf92-bf3bb9660750</v>
                 <v>ExecuteMouseDblClick</v>
-                <v>11d998c1-4ff7-4d12-827a-5a61bee8d2f7</v>
+                <v>d058ac8d-a579-4702-ad75-1fb46940fd6e</v>
                 <v>ExecuteMouseDown</v>
-                <v>f941a71f-2fc8-4068-98d5-7bf0ee956e3f</v>
+                <v>946ba780-6e72-433f-9eee-b9740947f1c6</v>
                 <v>ExecuteMouseEnter</v>
-                <v>39427111-e3e0-42b3-88eb-7d955c63fa06</v>
+                <v>53677209-1b72-4686-86be-f969cf16de2b</v>
                 <v>ExecuteMouseLeave</v>
-                <v>3ed0cea3-e1be-4352-bdfa-a06f5c09c5d4</v>
+                <v>15a7d1a8-be59-4816-9537-8e4fd6a378fc</v>
                 <v>ExecuteMouseMove</v>
-                <v>c42d3a9a-1161-4d14-be8a-0200f52d665e</v>
+                <v>33e1198c-6085-44f1-bef9-12f339bf8565</v>
                 <v>ExecuteMouseUp</v>
-                <v>1a4763f0-55dd-46dd-afd0-bf1dc85c8d2a</v>
+                <v>f739a105-ed3a-4c35-9da5-c2bf6f0baf60</v>
                 <v>GetElementInfo</v>
-                <v>00aac312-60c2-4b64-9717-997c7c0c059a</v>
+                <v>8e196562-0664-4232-9907-a3f7409f6737</v>
                 <v>Initialize</v>
-                <v>f46e74a0-0a92-461f-80b8-468240997233</v>
+                <v>391e28e0-ab16-4d07-97e2-84671d4cc20a</v>
               </d>
               <v n="FbName">"NotImportant"</v>
-              <v n="FbGuid">{8795e589-a63e-47fa-bab9-a2fc95294370}</v>
+              <v n="FbGuid">{8148c70d-01b1-4a87-aadd-619b3e68dd6d}</v>
             </o>
-            <v n="DialogDut">{f6c4da19-4bb6-4875-adc3-1629849b2ae0}</v>
+            <v n="DialogDut">{797b0b24-29ca-4335-9ec6-bedd439140dc}</v>
           </o>
           <v n="LastUsedIdForIdentifier">74</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>
-                <v n="Id">12L</v>
+                <v n="Id">10L</v>
                 <n n="Tag" />
                 <v n="Text">"VAR_IN_OUT"</v>
               </o>
               <o>
-                <v n="Id">13L</v>
+                <v n="Id">11L</v>
                 <n n="Tag" />
                 <v n="Text">"	"</v>
               </o>

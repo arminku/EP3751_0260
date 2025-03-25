@@ -3,13 +3,13 @@
   <POU Name="FB_MovingAverageFilter_3D" Id="{cfc77347-1872-41de-ac52-a9ef65cd48b5}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_MovingAverageFilter_3D
 VAR_INPUT
-    a_fNewValues : ARRAY[0..2] OF REAL; // New input values for three axes
-    nNumSamples : UINT:= gvl_sensorFusion.buffersize_filter;                // Number of samples for the moving average
+    stSampleData : ST_3D_values; // New Data in 3 axes
+    nNumSamples : UINT:= gvl_sensorFusion.buffersize_filter;              // Number of samples for the moving average
     bEnable : BOOL;                   // Enable flag
 END_VAR
 
 VAR_OUTPUT
-    a_fAvgValues : ARRAY[0..2] OF REAL; // Output average values for three axes
+    stAvgData : ST_3D_values; // New Data in 3 axes
     bBufferFilledX : BOOL;            // Flag indicating if the buffer for X axis is filled
     bBufferFilledY : BOOL;            // Flag indicating if the buffer for Y axis is filled
     bBufferFilledZ : BOOL;            // Flag indicating if the buffer for Z axis is filled
@@ -26,28 +26,28 @@ VAR
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbMovingAverageX(
-    fInputValue := a_fNewValues[0],
+    fInputValue := stSampleData.X,
     nNumSamples := nNumSamples,
     bEnable := bEnable,
-    fAvgValue => a_fAvgValues[0],
+    fAvgValue => stAvgData.x,
     bBufferFilled => bBufferFilledX,
     a_fSamples := a_fSamples[0]
 );
 
 fbMovingAverageY(
-    fInputValue := a_fNewValues[1],
+    fInputValue := stSampleData.y,
     nNumSamples := nNumSamples,
     bEnable := bEnable,
-    fAvgValue => a_fAvgValues[1],
+    fAvgValue => stAvgData.y,
     bBufferFilled => bBufferFilledY,
     a_fSamples := a_fSamples[1]
 );
 
 fbMovingAverageZ(
-    fInputValue := a_fNewValues[2],
+    fInputValue := stSampleData.z,
     nNumSamples := nNumSamples,
     bEnable := bEnable,
-    fAvgValue => a_fAvgValues[2],
+    fAvgValue => stAvgData.z,
     bBufferFilled => bBufferFilledZ,
     a_fSamples := a_fSamples[2]
 );]]></ST>

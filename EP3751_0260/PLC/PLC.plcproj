@@ -18,6 +18,9 @@
     <LibraryReferences>{593850e8-2e5f-44f4-b7de-abc6c1d474dd}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\ST_3D_Values.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
@@ -27,22 +30,37 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FBiFilter.TcPOU">
+    <Compile Include="POUs\Filter\FB_ComplementaryFilter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FB_KalmanFilter.TcPOU">
+    <Compile Include="POUs\Filter\FB_KalmanFilter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FB_MovingAverageFilter.TcPOU">
+    <Compile Include="POUs\Filter\FB_MadgwickFilter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FB_MovingAverageFilter_3D.TcPOU">
+    <Compile Include="POUs\Filter\FB_MahonyFilter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\iGetNextBufferPointer.TcPOU">
+    <Compile Include="POUs\Filter\FB_MovingAverageFilter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\iGetPriorBufferPointer.TcPOU">
+    <Compile Include="POUs\Filter\FB_MovingAverageFilter_3D.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Filter\obsolete\FBiFilter.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Helping Functions\ATAN2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Helping Functions\ATAN2_deg.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Helping Functions\obsolete\iGetNextBufferPointer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Helping Functions\obsolete\iGetPriorBufferPointer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -55,7 +73,23 @@
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
     </Compile>
+    <Compile Include="VISUs\Visualization_all.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="VISUs\Visualization_Complementary.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="VISUs\Visualization_Mahony.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
+    </Compile>
     <Compile Include="VISUs\Visualization_Kalman.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="VISUs\Visualization_Madgwick.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
     </Compile>
@@ -63,6 +97,10 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Filter" />
+    <Folder Include="POUs\Filter\obsolete" />
+    <Folder Include="POUs\Helping Functions" />
+    <Folder Include="POUs\Helping Functions\obsolete" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

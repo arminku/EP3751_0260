@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
-  <Visu Name="Visualization_Kalman" Id="{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}">
+  <Visu Name="Visualization_Complementary" Id="{46d4d137-9623-45c1-92a9-7bba6fb7ebed}">
     <XmlArchive>
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"13"</v>
+          <v n="UniqueIdGenerator">"7"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -313,7 +313,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{4221bb57-e0c6-4917-b930-91a9ff9887a5}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">0</v>
@@ -482,7 +482,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{9b75a4b6-0f02-4c8f-a7ec-a70a7189a343}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">4</v>
@@ -676,7 +676,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{e8e053bd-3f0d-49d2-b769-2b34d741c3ea}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">7</v>
@@ -845,7 +845,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{2954015c-ac8d-4995-932a-b28e692d8c9a}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">13</v>
@@ -1014,10 +1014,1450 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{e4375d0e-5c9f-4dbe-905a-0e737129c4ad}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">17</v>
+                <l n="UserManagementAccessRights" t="ArrayList" />
+              </o>
+              <o>
+                <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                <l n="Elements" t="ArrayList" />
+                <n n="VisualElementDescription" />
+                <o n="VisualElemMemberList" t="VisualElemMemberList">
+                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                    <o>
+                      <v n="Id">1362193026L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"Element-Meter-ArrowColor"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">3176031255L</v>
+                      <v n="Value" t="Int16">265</v>
+                    </o>
+                    <o>
+                      <v n="Id">2457173913L</v>
+                      <v n="Value" t="Int16">-85</v>
+                    </o>
+                    <o>
+                      <v n="Id">3277628950L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">229573994L</v>
+                      <v n="Value" t="Int16">100</v>
+                    </o>
+                    <o>
+                      <v n="Id">2057794560L</v>
+                      <v n="Value" t="Int16">51</v>
+                    </o>
+                    <o>
+                      <v n="Id">1849277259L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">279462651L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">2469282224L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">956296584L</v>
+                      <v n="Value" t="Int16">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">3277965554L</v>
+                      <v n="Value">"STYLE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1472280613L</v>
+                      <v n="Value" t="Int16">100</v>
+                    </o>
+                    <o>
+                      <v n="Id">289743102L</v>
+                      <v n="Value" t="Int16">51</v>
+                    </o>
+                    <o>
+                      <v n="Id">3088583634L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">3330929250L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">1681731600L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">4135565798L</v>
+                      <v n="Value" t="Int16">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">3451962224L</v>
+                      <v n="Value">"&lt;default&gt;"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2662675643L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">407095135L</v>
+                      <v n="Value">"OUTSIDE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">339945632L</v>
+                      <v n="Value">"DOTS"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1404881523L</v>
+                      <v n="Value" t="Single">-180</v>
+                    </o>
+                    <o>
+                      <v n="Id">3837067714L</v>
+                      <v n="Value" t="Single">180</v>
+                    </o>
+                    <o>
+                      <v n="Id">2867424708L</v>
+                      <v n="Value" t="Single">90</v>
+                    </o>
+                    <o>
+                      <v n="Id">440407611L</v>
+                      <v n="Value" t="Single">45</v>
+                    </o>
+                    <o>
+                      <v n="Id">2114303691L</v>
+                      <v n="Value" t="Int16">1</v>
+                    </o>
+                    <o>
+                      <v n="Id">1527935698L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"Element-Meter-ScaleColor"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">3242473866L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2969766029L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3645302305L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">904667769L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">2798229494L</v>
+                      <v n="Value">"Arial"</v>
+                    </o>
+                    <o>
+                      <v n="Id">942122628L</v>
+                      <v n="Value" t="Int16">12</v>
+                    </o>
+                    <o>
+                      <v n="Id">3057670479L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">4249794590L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3675475996L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">993465544L</v>
+                      <v n="Value">39</v>
+                    </o>
+                    <o>
+                      <v n="Id">743178379L</v>
+                      <v n="Value">15</v>
+                    </o>
+                    <o>
+                      <v n="Id">2812299069L</v>
+                      <v n="Value">4294967295U</v>
+                    </o>
+                    <o>
+                      <v n="Id">494569607L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3719097617L</v>
+                      <v n="Value">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">1649127785L</v>
+                      <v n="Value">24</v>
+                    </o>
+                    <o>
+                      <v n="Id">357335551L</v>
+                      <v n="Value">449</v>
+                    </o>
+                    <o>
+                      <v n="Id">2422045748L</v>
+                      <v n="Value">250</v>
+                    </o>
+                    <o>
+                      <v n="Id">2134141914L</v>
+                      <v n="Value">250</v>
+                    </o>
+                    <o>
+                      <v n="Id">2511968087L</v>
+                      <v n="Value">"Zeigerinstrument"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2431819421L</v>
+                      <v n="Value">"INSIDE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1500670465L</v>
+                      <v n="Value">"%d"</v>
+                    </o>
+                    <o>
+                      <v n="Id">533464156L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3549563837L</v>
+                      <v n="Value">"FIXED"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1937167831L</v>
+                      <v n="Value">"THIN_3D_ARROW"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4062784938L</v>
+                      <v n="Value">"Element-Meter-Meter360-Gray"</v>
+                    </o>
+                    <o>
+                      <v n="Id">518627256L</v>
+                      <v n="Value">"°"</v>
+                    </o>
+                    <o>
+                      <v n="Id">381541060L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3994970671L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
+                        <o>
+                          <v n="FontStyle">0</v>
+                          <v n="AdditionalFontStyle" t="UInt16">0</v>
+                          <v n="ExplicitColor">-16777216</v>
+                          <v n="CanonicalName">"Font-Standard"</v>
+                          <v n="FontName">"Arial"</v>
+                          <v n="FontSize">12</v>
+                          <v n="ScriptIdentification">0</v>
+                          <v n="DoubleFontSize" t="Double">0</v>
+                          <o n="NamedColor" t="NamedStyleColor">
+                            <v n="Color">-16777216</v>
+                            <v n="CanonicalName">"Element-Meter-LabelFontColor"</v>
+                          </o>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">493260384L</v>
+                      <v n="Value">4294967295U</v>
+                    </o>
+                    <o>
+                      <v n="Id">135947015L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">2678395525L</v>
+                      <v n="Value">1U</v>
+                    </o>
+                    <o>
+                      <v n="Id">2340015797L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2565699834L</v>
+                      <v n="Value">"VCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">390574330L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">571893170L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2216112L</v>
+                      <v n="Value">"MAIN.fbComplementaryFilter.fAngleRoll_deg"</v>
+                    </o>
+                    <o>
+                      <v n="Id">637329562L</v>
+                      <v n="Value">"253"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2750573338L</v>
+                      <v n="Value">"142"</v>
+                    </o>
+                  </l>
+                </o>
+                <v n="VisualElementName">"Meter360"</v>
+                <v n="VisualElementTypeName">"VisuFbElemMeter360"</v>
+                <v n="VisualElementIsRectangle">true</v>
+                <v n="VisualElementIdentifier">"GenElemInst_30"</v>
+                <n n="VisualElementOfflinePaintCommands" />
+                <n n="VisualElementFrameInformation" />
+                <d n="VisualElementInputActions" t="Hashtable" />
+                <v n="VisualElementIdentification">{0c246d7c-a4d9-4351-ab93-63010ceccf19}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
+                <a n="LMGuids" et="Guid" />
+                <d n="SubElements" t="Hashtable" />
+                <v n="VisualElementId">29</v>
+                <l n="UserManagementAccessRights" t="ArrayList" />
+              </o>
+              <o>
+                <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                <l n="Elements" t="ArrayList" />
+                <n n="VisualElementDescription" />
+                <o n="VisualElemMemberList" t="VisualElemMemberList">
+                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                    <o>
+                      <v n="Id">1362193026L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"Element-Meter-ArrowColor"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">3176031255L</v>
+                      <v n="Value" t="Int16">265</v>
+                    </o>
+                    <o>
+                      <v n="Id">2457173913L</v>
+                      <v n="Value" t="Int16">-85</v>
+                    </o>
+                    <o>
+                      <v n="Id">3277628950L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">229573994L</v>
+                      <v n="Value" t="Int16">100</v>
+                    </o>
+                    <o>
+                      <v n="Id">2057794560L</v>
+                      <v n="Value" t="Int16">51</v>
+                    </o>
+                    <o>
+                      <v n="Id">1849277259L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">279462651L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">2469282224L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">956296584L</v>
+                      <v n="Value" t="Int16">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">3277965554L</v>
+                      <v n="Value">"STYLE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1472280613L</v>
+                      <v n="Value" t="Int16">100</v>
+                    </o>
+                    <o>
+                      <v n="Id">289743102L</v>
+                      <v n="Value" t="Int16">51</v>
+                    </o>
+                    <o>
+                      <v n="Id">3088583634L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">3330929250L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">1681731600L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">4135565798L</v>
+                      <v n="Value" t="Int16">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">3451962224L</v>
+                      <v n="Value">"&lt;default&gt;"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2662675643L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">407095135L</v>
+                      <v n="Value">"OUTSIDE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">339945632L</v>
+                      <v n="Value">"DOTS"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1404881523L</v>
+                      <v n="Value" t="Single">-180</v>
+                    </o>
+                    <o>
+                      <v n="Id">3837067714L</v>
+                      <v n="Value" t="Single">180</v>
+                    </o>
+                    <o>
+                      <v n="Id">2867424708L</v>
+                      <v n="Value" t="Single">90</v>
+                    </o>
+                    <o>
+                      <v n="Id">440407611L</v>
+                      <v n="Value" t="Single">45</v>
+                    </o>
+                    <o>
+                      <v n="Id">2114303691L</v>
+                      <v n="Value" t="Int16">1</v>
+                    </o>
+                    <o>
+                      <v n="Id">1527935698L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"Element-Meter-ScaleColor"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">3242473866L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2969766029L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3645302305L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">904667769L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">2798229494L</v>
+                      <v n="Value">"Arial"</v>
+                    </o>
+                    <o>
+                      <v n="Id">942122628L</v>
+                      <v n="Value" t="Int16">12</v>
+                    </o>
+                    <o>
+                      <v n="Id">3057670479L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">4249794590L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3675475996L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">993465544L</v>
+                      <v n="Value">39</v>
+                    </o>
+                    <o>
+                      <v n="Id">743178379L</v>
+                      <v n="Value">15</v>
+                    </o>
+                    <o>
+                      <v n="Id">2812299069L</v>
+                      <v n="Value">4294967295U</v>
+                    </o>
+                    <o>
+                      <v n="Id">494569607L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3719097617L</v>
+                      <v n="Value">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">1649127785L</v>
+                      <v n="Value">304</v>
+                    </o>
+                    <o>
+                      <v n="Id">357335551L</v>
+                      <v n="Value">449</v>
+                    </o>
+                    <o>
+                      <v n="Id">2422045748L</v>
+                      <v n="Value">250</v>
+                    </o>
+                    <o>
+                      <v n="Id">2134141914L</v>
+                      <v n="Value">250</v>
+                    </o>
+                    <o>
+                      <v n="Id">2511968087L</v>
+                      <v n="Value">"Zeigerinstrument"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2431819421L</v>
+                      <v n="Value">"INSIDE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1500670465L</v>
+                      <v n="Value">"%d"</v>
+                    </o>
+                    <o>
+                      <v n="Id">533464156L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3549563837L</v>
+                      <v n="Value">"FIXED"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1937167831L</v>
+                      <v n="Value">"THIN_3D_ARROW"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4062784938L</v>
+                      <v n="Value">"Element-Meter-Meter360-Gray"</v>
+                    </o>
+                    <o>
+                      <v n="Id">518627256L</v>
+                      <v n="Value">"°"</v>
+                    </o>
+                    <o>
+                      <v n="Id">381541060L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3994970671L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
+                        <o>
+                          <v n="FontStyle">0</v>
+                          <v n="AdditionalFontStyle" t="UInt16">0</v>
+                          <v n="ExplicitColor">-16777216</v>
+                          <v n="CanonicalName">"Font-Standard"</v>
+                          <v n="FontName">"Arial"</v>
+                          <v n="FontSize">12</v>
+                          <v n="ScriptIdentification">0</v>
+                          <v n="DoubleFontSize" t="Double">0</v>
+                          <o n="NamedColor" t="NamedStyleColor">
+                            <v n="Color">-16777216</v>
+                            <v n="CanonicalName">"Element-Meter-LabelFontColor"</v>
+                          </o>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">493260384L</v>
+                      <v n="Value">4294967295U</v>
+                    </o>
+                    <o>
+                      <v n="Id">135947015L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">2678395525L</v>
+                      <v n="Value">1U</v>
+                    </o>
+                    <o>
+                      <v n="Id">2340015797L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2565699834L</v>
+                      <v n="Value">"VCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">390574330L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">571893170L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2216112L</v>
+                      <v n="Value">"MAIN.fbComplementaryFilter.fAnglePitch_deg"</v>
+                    </o>
+                    <o>
+                      <v n="Id">637329562L</v>
+                      <v n="Value">"253"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2750573338L</v>
+                      <v n="Value">"142"</v>
+                    </o>
+                  </l>
+                </o>
+                <v n="VisualElementName">"Meter360"</v>
+                <v n="VisualElementTypeName">"VisuFbElemMeter360"</v>
+                <v n="VisualElementIsRectangle">true</v>
+                <v n="VisualElementIdentifier">"GenElemInst_32"</v>
+                <n n="VisualElementOfflinePaintCommands" />
+                <n n="VisualElementFrameInformation" />
+                <d n="VisualElementInputActions" t="Hashtable" />
+                <v n="VisualElementIdentification">{20ccf820-ba83-4552-a6dc-07aecf6b5e5a}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
+                <a n="LMGuids" et="Guid" />
+                <d n="SubElements" t="Hashtable" />
+                <v n="VisualElementId">31</v>
+                <l n="UserManagementAccessRights" t="ArrayList" />
+              </o>
+              <o>
+                <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                <l n="Elements" t="ArrayList" />
+                <n n="VisualElementDescription" />
+                <o n="VisualElemMemberList" t="VisualElemMemberList">
+                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                    <o>
+                      <v n="Id">1362193026L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"Element-Meter-ArrowColor"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">3176031255L</v>
+                      <v n="Value" t="Int16">265</v>
+                    </o>
+                    <o>
+                      <v n="Id">2457173913L</v>
+                      <v n="Value" t="Int16">-85</v>
+                    </o>
+                    <o>
+                      <v n="Id">3277628950L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">229573994L</v>
+                      <v n="Value" t="Int16">100</v>
+                    </o>
+                    <o>
+                      <v n="Id">2057794560L</v>
+                      <v n="Value" t="Int16">51</v>
+                    </o>
+                    <o>
+                      <v n="Id">1849277259L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">279462651L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">2469282224L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">956296584L</v>
+                      <v n="Value" t="Int16">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">3277965554L</v>
+                      <v n="Value">"STYLE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1472280613L</v>
+                      <v n="Value" t="Int16">100</v>
+                    </o>
+                    <o>
+                      <v n="Id">289743102L</v>
+                      <v n="Value" t="Int16">51</v>
+                    </o>
+                    <o>
+                      <v n="Id">3088583634L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">3330929250L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">1681731600L</v>
+                      <v n="Value" t="Int16">50</v>
+                    </o>
+                    <o>
+                      <v n="Id">4135565798L</v>
+                      <v n="Value" t="Int16">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">3451962224L</v>
+                      <v n="Value">"&lt;default&gt;"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2662675643L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">407095135L</v>
+                      <v n="Value">"OUTSIDE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">339945632L</v>
+                      <v n="Value">"DOTS"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1404881523L</v>
+                      <v n="Value" t="Single">-180</v>
+                    </o>
+                    <o>
+                      <v n="Id">3837067714L</v>
+                      <v n="Value" t="Single">180</v>
+                    </o>
+                    <o>
+                      <v n="Id">2867424708L</v>
+                      <v n="Value" t="Single">90</v>
+                    </o>
+                    <o>
+                      <v n="Id">440407611L</v>
+                      <v n="Value" t="Single">45</v>
+                    </o>
+                    <o>
+                      <v n="Id">2114303691L</v>
+                      <v n="Value" t="Int16">1</v>
+                    </o>
+                    <o>
+                      <v n="Id">1527935698L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"Element-Meter-ScaleColor"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">3242473866L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2969766029L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3645302305L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">904667769L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">2798229494L</v>
+                      <v n="Value">"Arial"</v>
+                    </o>
+                    <o>
+                      <v n="Id">942122628L</v>
+                      <v n="Value" t="Int16">12</v>
+                    </o>
+                    <o>
+                      <v n="Id">3057670479L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">4249794590L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3675475996L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">993465544L</v>
+                      <v n="Value">39</v>
+                    </o>
+                    <o>
+                      <v n="Id">743178379L</v>
+                      <v n="Value">15</v>
+                    </o>
+                    <o>
+                      <v n="Id">2812299069L</v>
+                      <v n="Value">4294967295U</v>
+                    </o>
+                    <o>
+                      <v n="Id">494569607L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3719097617L</v>
+                      <v n="Value">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">1649127785L</v>
+                      <v n="Value">584</v>
+                    </o>
+                    <o>
+                      <v n="Id">357335551L</v>
+                      <v n="Value">449</v>
+                    </o>
+                    <o>
+                      <v n="Id">2422045748L</v>
+                      <v n="Value">250</v>
+                    </o>
+                    <o>
+                      <v n="Id">2134141914L</v>
+                      <v n="Value">250</v>
+                    </o>
+                    <o>
+                      <v n="Id">2511968087L</v>
+                      <v n="Value">"Zeigerinstrument"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2431819421L</v>
+                      <v n="Value">"INSIDE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1500670465L</v>
+                      <v n="Value">"%d"</v>
+                    </o>
+                    <o>
+                      <v n="Id">533464156L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3549563837L</v>
+                      <v n="Value">"FIXED"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1937167831L</v>
+                      <v n="Value">"THIN_3D_ARROW"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4062784938L</v>
+                      <v n="Value">"Element-Meter-Meter360-Gray"</v>
+                    </o>
+                    <o>
+                      <v n="Id">518627256L</v>
+                      <v n="Value">"°"</v>
+                    </o>
+                    <o>
+                      <v n="Id">381541060L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3994970671L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
+                        <o>
+                          <v n="FontStyle">0</v>
+                          <v n="AdditionalFontStyle" t="UInt16">0</v>
+                          <v n="ExplicitColor">-16777216</v>
+                          <v n="CanonicalName">"Font-Standard"</v>
+                          <v n="FontName">"Arial"</v>
+                          <v n="FontSize">12</v>
+                          <v n="ScriptIdentification">0</v>
+                          <v n="DoubleFontSize" t="Double">0</v>
+                          <o n="NamedColor" t="NamedStyleColor">
+                            <v n="Color">-16777216</v>
+                            <v n="CanonicalName">"Element-Meter-LabelFontColor"</v>
+                          </o>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">493260384L</v>
+                      <v n="Value">4294967295U</v>
+                    </o>
+                    <o>
+                      <v n="Id">135947015L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">2678395525L</v>
+                      <v n="Value">1U</v>
+                    </o>
+                    <o>
+                      <v n="Id">2340015797L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2565699834L</v>
+                      <v n="Value">"VCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">390574330L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">571893170L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2216112L</v>
+                      <v n="Value">"MAIN.fbComplementaryFilter.fAngleYaw_deg"</v>
+                    </o>
+                    <o>
+                      <v n="Id">637329562L</v>
+                      <v n="Value">"253"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2750573338L</v>
+                      <v n="Value">"142"</v>
+                    </o>
+                  </l>
+                </o>
+                <v n="VisualElementName">"Meter360"</v>
+                <v n="VisualElementTypeName">"VisuFbElemMeter360"</v>
+                <v n="VisualElementIsRectangle">true</v>
+                <v n="VisualElementIdentifier">"GenElemInst_34"</v>
+                <n n="VisualElementOfflinePaintCommands" />
+                <n n="VisualElementFrameInformation" />
+                <d n="VisualElementInputActions" t="Hashtable" />
+                <v n="VisualElementIdentification">{34a3a330-6cc4-48e4-b1ee-a89720397eb7}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
+                <a n="LMGuids" et="Guid" />
+                <d n="SubElements" t="Hashtable" />
+                <v n="VisualElementId">33</v>
+                <l n="UserManagementAccessRights" t="ArrayList" />
+              </o>
+              <o>
+                <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                <l n="Elements" t="ArrayList" />
+                <n n="VisualElementDescription" />
+                <o n="VisualElemMemberList" t="VisualElemMemberList">
+                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                    <o>
+                      <v n="Id">571893170L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">494569607L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-16777216</v>
+                          <v n="CanonicalName">"BasicElement-Frame-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">2812299069L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"BasicElement-Fill-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">135947015L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-65536</v>
+                          <v n="CanonicalName">"BasicElement-Alarm-Frame-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">493260384L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-12337</v>
+                          <v n="CanonicalName">"BasicElement-Alarm-Fill-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">2340015797L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2565699834L</v>
+                      <v n="Value">"VCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4134387352L</v>
+                      <v n="Value">"NONE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1603690730L</v>
+                      <v n="Value">"Arial"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4253639993L</v>
+                      <v n="Value" t="Int16">12</v>
+                    </o>
+                    <o>
+                      <v n="Id">2729990903L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">1213979116L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3488306084L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">1999528970L</v>
+                      <v n="Value">"&lt;toggle/tap variable&gt;"</v>
+                    </o>
+                    <o>
+                      <v n="Id">3719097617L</v>
+                      <v n="Value">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">1649127785L</v>
+                      <v n="Value">58</v>
+                    </o>
+                    <o>
+                      <v n="Id">357335551L</v>
+                      <v n="Value">716</v>
+                    </o>
+                    <o>
+                      <v n="Id">2422045748L</v>
+                      <v n="Value" t="Int16">180</v>
+                    </o>
+                    <o>
+                      <v n="Id">2134141914L</v>
+                      <v n="Value">30</v>
+                    </o>
+                    <o>
+                      <v n="Id">3729828405L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
+                        <o>
+                          <v n="FontStyle">0</v>
+                          <v n="AdditionalFontStyle" t="UInt16">0</v>
+                          <v n="ExplicitColor">-16777216</v>
+                          <v n="CanonicalName">"Font-Standard"</v>
+                          <v n="FontName">"Arial"</v>
+                          <v n="FontSize">12</v>
+                          <v n="ScriptIdentification">0</v>
+                          <v n="DoubleFontSize" t="Double">0</v>
+                          <o n="NamedColor" t="NamedStyleColor">
+                            <v n="Color">-16777216</v>
+                            <v n="CanonicalName">"Font-Default-Color"</v>
+                          </o>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">550940142L</v>
+                      <v n="Value">148</v>
+                    </o>
+                    <o>
+                      <v n="Id">1473355128L</v>
+                      <v n="Value">731</v>
+                    </o>
+                    <o>
+                      <v n="Id">2678395525L</v>
+                      <v n="Value">1U</v>
+                    </o>
+                    <o>
+                      <v n="Id">564465120L</v>
+                      <v n="Value">"VISU_ST_RECTANGLE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">390574330L</v>
+                      <v n="Value">"Euler Angle Phi: %.3f"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2477733581L</v>
+                      <v n="Value">"MAIN.fbComplementaryFilter.fAngleRoll_deg"</v>
+                    </o>
+                    <o>
+                      <v n="Id">823443203L</v>
+                      <v n="Value">"868"</v>
+                    </o>
+                  </l>
+                </o>
+                <v n="VisualElementName">"Rectangle"</v>
+                <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
+                <v n="VisualElementIsRectangle">true</v>
+                <v n="VisualElementIdentifier">"GenElemInst_46"</v>
+                <n n="VisualElementOfflinePaintCommands" />
+                <n n="VisualElementFrameInformation" />
+                <d n="VisualElementInputActions" t="Hashtable" />
+                <v n="VisualElementIdentification">{aab85e5b-b9af-4eca-808d-9555e3ce3720}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
+                <a n="LMGuids" et="Guid" />
+                <d n="SubElements" t="Hashtable" />
+                <v n="VisualElementId">47</v>
+                <l n="UserManagementAccessRights" t="ArrayList" />
+              </o>
+              <o>
+                <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                <l n="Elements" t="ArrayList" />
+                <n n="VisualElementDescription" />
+                <o n="VisualElemMemberList" t="VisualElemMemberList">
+                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                    <o>
+                      <v n="Id">571893170L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">494569607L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-16777216</v>
+                          <v n="CanonicalName">"BasicElement-Frame-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">2812299069L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"BasicElement-Fill-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">135947015L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-65536</v>
+                          <v n="CanonicalName">"BasicElement-Alarm-Frame-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">493260384L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-12337</v>
+                          <v n="CanonicalName">"BasicElement-Alarm-Fill-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">2340015797L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2565699834L</v>
+                      <v n="Value">"VCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4134387352L</v>
+                      <v n="Value">"NONE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1603690730L</v>
+                      <v n="Value">"Arial"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4253639993L</v>
+                      <v n="Value" t="Int16">12</v>
+                    </o>
+                    <o>
+                      <v n="Id">2729990903L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">1213979116L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3488306084L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">1999528970L</v>
+                      <v n="Value">"&lt;toggle/tap variable&gt;"</v>
+                    </o>
+                    <o>
+                      <v n="Id">3719097617L</v>
+                      <v n="Value">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">1649127785L</v>
+                      <v n="Value">338</v>
+                    </o>
+                    <o>
+                      <v n="Id">357335551L</v>
+                      <v n="Value">716</v>
+                    </o>
+                    <o>
+                      <v n="Id">2422045748L</v>
+                      <v n="Value" t="Int16">180</v>
+                    </o>
+                    <o>
+                      <v n="Id">2134141914L</v>
+                      <v n="Value">30</v>
+                    </o>
+                    <o>
+                      <v n="Id">3729828405L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
+                        <o>
+                          <v n="FontStyle">0</v>
+                          <v n="AdditionalFontStyle" t="UInt16">0</v>
+                          <v n="ExplicitColor">-16777216</v>
+                          <v n="CanonicalName">"Font-Standard"</v>
+                          <v n="FontName">"Arial"</v>
+                          <v n="FontSize">12</v>
+                          <v n="ScriptIdentification">0</v>
+                          <v n="DoubleFontSize" t="Double">0</v>
+                          <o n="NamedColor" t="NamedStyleColor">
+                            <v n="Color">-16777216</v>
+                            <v n="CanonicalName">"Font-Default-Color"</v>
+                          </o>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">550940142L</v>
+                      <v n="Value">428</v>
+                    </o>
+                    <o>
+                      <v n="Id">1473355128L</v>
+                      <v n="Value">731</v>
+                    </o>
+                    <o>
+                      <v n="Id">2678395525L</v>
+                      <v n="Value">1U</v>
+                    </o>
+                    <o>
+                      <v n="Id">564465120L</v>
+                      <v n="Value">"VISU_ST_RECTANGLE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">390574330L</v>
+                      <v n="Value">"Euler Angle Theta: %.3f"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2477733581L</v>
+                      <v n="Value">"MAIN.fbComplementaryFilter.fAnglePitch_deg"</v>
+                    </o>
+                    <o>
+                      <v n="Id">823443203L</v>
+                      <v n="Value">"48"</v>
+                    </o>
+                  </l>
+                </o>
+                <v n="VisualElementName">"Rectangle"</v>
+                <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
+                <v n="VisualElementIsRectangle">true</v>
+                <v n="VisualElementIdentifier">"GenElemInst_48"</v>
+                <n n="VisualElementOfflinePaintCommands" />
+                <n n="VisualElementFrameInformation" />
+                <d n="VisualElementInputActions" t="Hashtable" />
+                <v n="VisualElementIdentification">{b698cdaa-1cc9-402f-bc94-4c861b8df48a}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
+                <a n="LMGuids" et="Guid" />
+                <d n="SubElements" t="Hashtable" />
+                <v n="VisualElementId">49</v>
+                <l n="UserManagementAccessRights" t="ArrayList" />
+              </o>
+              <o>
+                <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                <l n="Elements" t="ArrayList" />
+                <n n="VisualElementDescription" />
+                <o n="VisualElemMemberList" t="VisualElemMemberList">
+                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                    <o>
+                      <v n="Id">571893170L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">494569607L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-16777216</v>
+                          <v n="CanonicalName">"BasicElement-Frame-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">2812299069L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-1</v>
+                          <v n="CanonicalName">"BasicElement-Fill-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">135947015L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-65536</v>
+                          <v n="CanonicalName">"BasicElement-Alarm-Frame-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">493260384L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
+                        <o>
+                          <v n="Color">-12337</v>
+                          <v n="CanonicalName">"BasicElement-Alarm-Fill-Color"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">2340015797L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2565699834L</v>
+                      <v n="Value">"VCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4134387352L</v>
+                      <v n="Value">"NONE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1603690730L</v>
+                      <v n="Value">"Arial"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4253639993L</v>
+                      <v n="Value" t="Int16">12</v>
+                    </o>
+                    <o>
+                      <v n="Id">2729990903L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">1213979116L</v>
+                      <v n="Value">0U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3488306084L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">1999528970L</v>
+                      <v n="Value">"&lt;toggle/tap variable&gt;"</v>
+                    </o>
+                    <o>
+                      <v n="Id">3719097617L</v>
+                      <v n="Value">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">1649127785L</v>
+                      <v n="Value">620</v>
+                    </o>
+                    <o>
+                      <v n="Id">357335551L</v>
+                      <v n="Value">716</v>
+                    </o>
+                    <o>
+                      <v n="Id">2422045748L</v>
+                      <v n="Value" t="Int16">180</v>
+                    </o>
+                    <o>
+                      <v n="Id">2134141914L</v>
+                      <v n="Value">30</v>
+                    </o>
+                    <o>
+                      <v n="Id">3729828405L</v>
+                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
+                        <o>
+                          <v n="FontStyle">0</v>
+                          <v n="AdditionalFontStyle" t="UInt16">0</v>
+                          <v n="ExplicitColor">-16777216</v>
+                          <v n="CanonicalName">"Font-Standard"</v>
+                          <v n="FontName">"Arial"</v>
+                          <v n="FontSize">12</v>
+                          <v n="ScriptIdentification">0</v>
+                          <v n="DoubleFontSize" t="Double">0</v>
+                          <o n="NamedColor" t="NamedStyleColor">
+                            <v n="Color">-16777216</v>
+                            <v n="CanonicalName">"Font-Default-Color"</v>
+                          </o>
+                        </o>
+                      </l>
+                    </o>
+                    <o>
+                      <v n="Id">550940142L</v>
+                      <v n="Value">710</v>
+                    </o>
+                    <o>
+                      <v n="Id">1473355128L</v>
+                      <v n="Value">731</v>
+                    </o>
+                    <o>
+                      <v n="Id">2678395525L</v>
+                      <v n="Value">1U</v>
+                    </o>
+                    <o>
+                      <v n="Id">564465120L</v>
+                      <v n="Value">"VISU_ST_RECTANGLE"</v>
+                    </o>
+                    <o>
+                      <v n="Id">390574330L</v>
+                      <v n="Value">"Euler Angle Psi: %.3f"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2477733581L</v>
+                      <v n="Value">"MAIN.fbComplementaryFilter.fAngleYaw_deg"</v>
+                    </o>
+                    <o>
+                      <v n="Id">823443203L</v>
+                      <v n="Value">"605"</v>
+                    </o>
+                  </l>
+                </o>
+                <v n="VisualElementName">"Rectangle"</v>
+                <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
+                <v n="VisualElementIsRectangle">true</v>
+                <v n="VisualElementIdentifier">"GenElemInst_50"</v>
+                <n n="VisualElementOfflinePaintCommands" />
+                <n n="VisualElementFrameInformation" />
+                <d n="VisualElementInputActions" t="Hashtable" />
+                <v n="VisualElementIdentification">{660cc2ea-8362-45f7-8e47-bf7c9329d056}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
+                <a n="LMGuids" et="Guid" />
+                <d n="SubElements" t="Hashtable" />
+                <v n="VisualElementId">51</v>
                 <l n="UserManagementAccessRights" t="ArrayList" />
               </o>
               <o>
@@ -1183,7 +2623,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{5e23c154-83d2-40ed-b355-a10b1c6692ef}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">54</v>
@@ -1352,7 +2792,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{e5bc8357-e534-4b36-88bb-a97a3e7e4d73}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">56</v>
@@ -1521,7 +2961,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{74155f6e-f4e5-465b-8e8a-de0c8e26c2c3}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">58</v>
@@ -1715,7 +3155,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{147a39c1-eabd-45c8-90dd-1eb494a957d5}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">60</v>
@@ -2026,7 +3466,7 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{9720fce1-1d3b-4667-a4d0-2987222fb622}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">63</v>
@@ -2337,1450 +3777,10 @@
                 <n n="VisualElementFrameInformation" />
                 <d n="VisualElementInputActions" t="Hashtable" />
                 <v n="VisualElementIdentification">{81c161c7-b566-4425-89cc-a395e16c1d47}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+                <v n="VisualElementOwningObjectGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">65</v>
-                <l n="UserManagementAccessRights" t="ArrayList" />
-              </o>
-              <o>
-                <a n="ConfiguredComplexInputs" et="ComplexInput" />
-                <l n="Elements" t="ArrayList" />
-                <n n="VisualElementDescription" />
-                <o n="VisualElemMemberList" t="VisualElemMemberList">
-                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                    <o>
-                      <v n="Id">1362193026L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"Element-Meter-ArrowColor"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">3176031255L</v>
-                      <v n="Value" t="Int16">265</v>
-                    </o>
-                    <o>
-                      <v n="Id">2457173913L</v>
-                      <v n="Value" t="Int16">-85</v>
-                    </o>
-                    <o>
-                      <v n="Id">3277628950L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">229573994L</v>
-                      <v n="Value" t="Int16">100</v>
-                    </o>
-                    <o>
-                      <v n="Id">2057794560L</v>
-                      <v n="Value" t="Int16">51</v>
-                    </o>
-                    <o>
-                      <v n="Id">1849277259L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">279462651L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">2469282224L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">956296584L</v>
-                      <v n="Value" t="Int16">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">3277965554L</v>
-                      <v n="Value">"STYLE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1472280613L</v>
-                      <v n="Value" t="Int16">100</v>
-                    </o>
-                    <o>
-                      <v n="Id">289743102L</v>
-                      <v n="Value" t="Int16">51</v>
-                    </o>
-                    <o>
-                      <v n="Id">3088583634L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">3330929250L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">1681731600L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">4135565798L</v>
-                      <v n="Value" t="Int16">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">3451962224L</v>
-                      <v n="Value">"&lt;default&gt;"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2662675643L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">407095135L</v>
-                      <v n="Value">"OUTSIDE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">339945632L</v>
-                      <v n="Value">"DOTS"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1404881523L</v>
-                      <v n="Value" t="Single">-180</v>
-                    </o>
-                    <o>
-                      <v n="Id">3837067714L</v>
-                      <v n="Value" t="Single">180</v>
-                    </o>
-                    <o>
-                      <v n="Id">2867424708L</v>
-                      <v n="Value" t="Single">90</v>
-                    </o>
-                    <o>
-                      <v n="Id">440407611L</v>
-                      <v n="Value" t="Single">45</v>
-                    </o>
-                    <o>
-                      <v n="Id">2114303691L</v>
-                      <v n="Value" t="Int16">1</v>
-                    </o>
-                    <o>
-                      <v n="Id">1527935698L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"Element-Meter-ScaleColor"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">3242473866L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2969766029L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3645302305L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">904667769L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">2798229494L</v>
-                      <v n="Value">"Arial"</v>
-                    </o>
-                    <o>
-                      <v n="Id">942122628L</v>
-                      <v n="Value" t="Int16">12</v>
-                    </o>
-                    <o>
-                      <v n="Id">3057670479L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">4249794590L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3675475996L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">993465544L</v>
-                      <v n="Value">39</v>
-                    </o>
-                    <o>
-                      <v n="Id">743178379L</v>
-                      <v n="Value">15</v>
-                    </o>
-                    <o>
-                      <v n="Id">2812299069L</v>
-                      <v n="Value">4294967295U</v>
-                    </o>
-                    <o>
-                      <v n="Id">494569607L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3719097617L</v>
-                      <v n="Value">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">1649127785L</v>
-                      <v n="Value">20</v>
-                    </o>
-                    <o>
-                      <v n="Id">357335551L</v>
-                      <v n="Value">450</v>
-                    </o>
-                    <o>
-                      <v n="Id">2422045748L</v>
-                      <v n="Value">250</v>
-                    </o>
-                    <o>
-                      <v n="Id">2134141914L</v>
-                      <v n="Value">250</v>
-                    </o>
-                    <o>
-                      <v n="Id">2511968087L</v>
-                      <v n="Value">"Zeigerinstrument"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2431819421L</v>
-                      <v n="Value">"INSIDE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1500670465L</v>
-                      <v n="Value">"%d"</v>
-                    </o>
-                    <o>
-                      <v n="Id">533464156L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3549563837L</v>
-                      <v n="Value">"FIXED"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1937167831L</v>
-                      <v n="Value">"THIN_3D_ARROW"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4062784938L</v>
-                      <v n="Value">"Element-Meter-Meter360-Gray"</v>
-                    </o>
-                    <o>
-                      <v n="Id">518627256L</v>
-                      <v n="Value">"°"</v>
-                    </o>
-                    <o>
-                      <v n="Id">381541060L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3994970671L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
-                        <o>
-                          <v n="FontStyle">0</v>
-                          <v n="AdditionalFontStyle" t="UInt16">0</v>
-                          <v n="ExplicitColor">-16777216</v>
-                          <v n="CanonicalName">"Font-Standard"</v>
-                          <v n="FontName">"Arial"</v>
-                          <v n="FontSize">12</v>
-                          <v n="ScriptIdentification">0</v>
-                          <v n="DoubleFontSize" t="Double">0</v>
-                          <o n="NamedColor" t="NamedStyleColor">
-                            <v n="Color">-16777216</v>
-                            <v n="CanonicalName">"Element-Meter-LabelFontColor"</v>
-                          </o>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">493260384L</v>
-                      <v n="Value">4294967295U</v>
-                    </o>
-                    <o>
-                      <v n="Id">135947015L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">2678395525L</v>
-                      <v n="Value">1U</v>
-                    </o>
-                    <o>
-                      <v n="Id">2340015797L</v>
-                      <v n="Value">"HCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2565699834L</v>
-                      <v n="Value">"VCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">390574330L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">571893170L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">2597686782L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleX_deg"</v>
-                    </o>
-                    <o>
-                      <v n="Id">637329562L</v>
-                      <v n="Value">"253"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2750573338L</v>
-                      <v n="Value">"142"</v>
-                    </o>
-                  </l>
-                </o>
-                <v n="VisualElementName">"Meter360"</v>
-                <v n="VisualElementTypeName">"VisuFbElemMeter360"</v>
-                <v n="VisualElementIsRectangle">true</v>
-                <v n="VisualElementIdentifier">"GenElemInst_64"</v>
-                <n n="VisualElementOfflinePaintCommands" />
-                <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" />
-                <v n="VisualElementIdentification">{204453d7-fe5b-4699-aa6f-a2ffb81febc1}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
-                <a n="LMGuids" et="Guid" />
-                <d n="SubElements" t="Hashtable" />
-                <v n="VisualElementId">68</v>
-                <l n="UserManagementAccessRights" t="ArrayList" />
-              </o>
-              <o>
-                <a n="ConfiguredComplexInputs" et="ComplexInput" />
-                <l n="Elements" t="ArrayList" />
-                <n n="VisualElementDescription" />
-                <o n="VisualElemMemberList" t="VisualElemMemberList">
-                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                    <o>
-                      <v n="Id">1362193026L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"Element-Meter-ArrowColor"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">3176031255L</v>
-                      <v n="Value" t="Int16">265</v>
-                    </o>
-                    <o>
-                      <v n="Id">2457173913L</v>
-                      <v n="Value" t="Int16">-85</v>
-                    </o>
-                    <o>
-                      <v n="Id">3277628950L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">229573994L</v>
-                      <v n="Value" t="Int16">100</v>
-                    </o>
-                    <o>
-                      <v n="Id">2057794560L</v>
-                      <v n="Value" t="Int16">51</v>
-                    </o>
-                    <o>
-                      <v n="Id">1849277259L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">279462651L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">2469282224L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">956296584L</v>
-                      <v n="Value" t="Int16">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">3277965554L</v>
-                      <v n="Value">"STYLE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1472280613L</v>
-                      <v n="Value" t="Int16">100</v>
-                    </o>
-                    <o>
-                      <v n="Id">289743102L</v>
-                      <v n="Value" t="Int16">51</v>
-                    </o>
-                    <o>
-                      <v n="Id">3088583634L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">3330929250L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">1681731600L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">4135565798L</v>
-                      <v n="Value" t="Int16">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">3451962224L</v>
-                      <v n="Value">"&lt;default&gt;"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2662675643L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">407095135L</v>
-                      <v n="Value">"OUTSIDE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">339945632L</v>
-                      <v n="Value">"DOTS"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1404881523L</v>
-                      <v n="Value" t="Single">-180</v>
-                    </o>
-                    <o>
-                      <v n="Id">3837067714L</v>
-                      <v n="Value" t="Single">180</v>
-                    </o>
-                    <o>
-                      <v n="Id">2867424708L</v>
-                      <v n="Value" t="Single">90</v>
-                    </o>
-                    <o>
-                      <v n="Id">440407611L</v>
-                      <v n="Value" t="Single">45</v>
-                    </o>
-                    <o>
-                      <v n="Id">2114303691L</v>
-                      <v n="Value" t="Int16">1</v>
-                    </o>
-                    <o>
-                      <v n="Id">1527935698L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"Element-Meter-ScaleColor"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">3242473866L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2969766029L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3645302305L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">904667769L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">2798229494L</v>
-                      <v n="Value">"Arial"</v>
-                    </o>
-                    <o>
-                      <v n="Id">942122628L</v>
-                      <v n="Value" t="Int16">12</v>
-                    </o>
-                    <o>
-                      <v n="Id">3057670479L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">4249794590L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3675475996L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">993465544L</v>
-                      <v n="Value">39</v>
-                    </o>
-                    <o>
-                      <v n="Id">743178379L</v>
-                      <v n="Value">15</v>
-                    </o>
-                    <o>
-                      <v n="Id">2812299069L</v>
-                      <v n="Value">4294967295U</v>
-                    </o>
-                    <o>
-                      <v n="Id">494569607L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3719097617L</v>
-                      <v n="Value">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">1649127785L</v>
-                      <v n="Value">300</v>
-                    </o>
-                    <o>
-                      <v n="Id">357335551L</v>
-                      <v n="Value">450</v>
-                    </o>
-                    <o>
-                      <v n="Id">2422045748L</v>
-                      <v n="Value">250</v>
-                    </o>
-                    <o>
-                      <v n="Id">2134141914L</v>
-                      <v n="Value">250</v>
-                    </o>
-                    <o>
-                      <v n="Id">2511968087L</v>
-                      <v n="Value">"Zeigerinstrument"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2431819421L</v>
-                      <v n="Value">"INSIDE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1500670465L</v>
-                      <v n="Value">"%d"</v>
-                    </o>
-                    <o>
-                      <v n="Id">533464156L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3549563837L</v>
-                      <v n="Value">"FIXED"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1937167831L</v>
-                      <v n="Value">"THIN_3D_ARROW"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4062784938L</v>
-                      <v n="Value">"Element-Meter-Meter360-Gray"</v>
-                    </o>
-                    <o>
-                      <v n="Id">518627256L</v>
-                      <v n="Value">"°"</v>
-                    </o>
-                    <o>
-                      <v n="Id">381541060L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3994970671L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
-                        <o>
-                          <v n="FontStyle">0</v>
-                          <v n="AdditionalFontStyle" t="UInt16">0</v>
-                          <v n="ExplicitColor">-16777216</v>
-                          <v n="CanonicalName">"Font-Standard"</v>
-                          <v n="FontName">"Arial"</v>
-                          <v n="FontSize">12</v>
-                          <v n="ScriptIdentification">0</v>
-                          <v n="DoubleFontSize" t="Double">0</v>
-                          <o n="NamedColor" t="NamedStyleColor">
-                            <v n="Color">-16777216</v>
-                            <v n="CanonicalName">"Element-Meter-LabelFontColor"</v>
-                          </o>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">493260384L</v>
-                      <v n="Value">4294967295U</v>
-                    </o>
-                    <o>
-                      <v n="Id">135947015L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">2678395525L</v>
-                      <v n="Value">1U</v>
-                    </o>
-                    <o>
-                      <v n="Id">2340015797L</v>
-                      <v n="Value">"HCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2565699834L</v>
-                      <v n="Value">"VCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">390574330L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">571893170L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">2597686782L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleY_deg"</v>
-                    </o>
-                    <o>
-                      <v n="Id">637329562L</v>
-                      <v n="Value">"253"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2750573338L</v>
-                      <v n="Value">"142"</v>
-                    </o>
-                  </l>
-                </o>
-                <v n="VisualElementName">"Meter360"</v>
-                <v n="VisualElementTypeName">"VisuFbElemMeter360"</v>
-                <v n="VisualElementIsRectangle">true</v>
-                <v n="VisualElementIdentifier">"GenElemInst_66"</v>
-                <n n="VisualElementOfflinePaintCommands" />
-                <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" />
-                <v n="VisualElementIdentification">{0a5f8414-589b-480f-9bc5-6160c4dcc60c}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
-                <a n="LMGuids" et="Guid" />
-                <d n="SubElements" t="Hashtable" />
-                <v n="VisualElementId">70</v>
-                <l n="UserManagementAccessRights" t="ArrayList" />
-              </o>
-              <o>
-                <a n="ConfiguredComplexInputs" et="ComplexInput" />
-                <l n="Elements" t="ArrayList" />
-                <n n="VisualElementDescription" />
-                <o n="VisualElemMemberList" t="VisualElemMemberList">
-                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                    <o>
-                      <v n="Id">1362193026L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"Element-Meter-ArrowColor"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">3176031255L</v>
-                      <v n="Value" t="Int16">265</v>
-                    </o>
-                    <o>
-                      <v n="Id">2457173913L</v>
-                      <v n="Value" t="Int16">-85</v>
-                    </o>
-                    <o>
-                      <v n="Id">3277628950L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">229573994L</v>
-                      <v n="Value" t="Int16">100</v>
-                    </o>
-                    <o>
-                      <v n="Id">2057794560L</v>
-                      <v n="Value" t="Int16">51</v>
-                    </o>
-                    <o>
-                      <v n="Id">1849277259L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">279462651L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">2469282224L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">956296584L</v>
-                      <v n="Value" t="Int16">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">3277965554L</v>
-                      <v n="Value">"STYLE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1472280613L</v>
-                      <v n="Value" t="Int16">100</v>
-                    </o>
-                    <o>
-                      <v n="Id">289743102L</v>
-                      <v n="Value" t="Int16">51</v>
-                    </o>
-                    <o>
-                      <v n="Id">3088583634L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">3330929250L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">1681731600L</v>
-                      <v n="Value" t="Int16">50</v>
-                    </o>
-                    <o>
-                      <v n="Id">4135565798L</v>
-                      <v n="Value" t="Int16">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">3451962224L</v>
-                      <v n="Value">"&lt;default&gt;"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2662675643L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">407095135L</v>
-                      <v n="Value">"OUTSIDE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">339945632L</v>
-                      <v n="Value">"DOTS"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1404881523L</v>
-                      <v n="Value" t="Single">-180</v>
-                    </o>
-                    <o>
-                      <v n="Id">3837067714L</v>
-                      <v n="Value" t="Single">180</v>
-                    </o>
-                    <o>
-                      <v n="Id">2867424708L</v>
-                      <v n="Value" t="Single">90</v>
-                    </o>
-                    <o>
-                      <v n="Id">440407611L</v>
-                      <v n="Value" t="Single">45</v>
-                    </o>
-                    <o>
-                      <v n="Id">2114303691L</v>
-                      <v n="Value" t="Int16">1</v>
-                    </o>
-                    <o>
-                      <v n="Id">1527935698L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"Element-Meter-ScaleColor"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">3242473866L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2969766029L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3645302305L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">904667769L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">2798229494L</v>
-                      <v n="Value">"Arial"</v>
-                    </o>
-                    <o>
-                      <v n="Id">942122628L</v>
-                      <v n="Value" t="Int16">12</v>
-                    </o>
-                    <o>
-                      <v n="Id">3057670479L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">4249794590L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3675475996L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">993465544L</v>
-                      <v n="Value">39</v>
-                    </o>
-                    <o>
-                      <v n="Id">743178379L</v>
-                      <v n="Value">15</v>
-                    </o>
-                    <o>
-                      <v n="Id">2812299069L</v>
-                      <v n="Value">4294967295U</v>
-                    </o>
-                    <o>
-                      <v n="Id">494569607L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3719097617L</v>
-                      <v n="Value">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">1649127785L</v>
-                      <v n="Value">580</v>
-                    </o>
-                    <o>
-                      <v n="Id">357335551L</v>
-                      <v n="Value">450</v>
-                    </o>
-                    <o>
-                      <v n="Id">2422045748L</v>
-                      <v n="Value">250</v>
-                    </o>
-                    <o>
-                      <v n="Id">2134141914L</v>
-                      <v n="Value">250</v>
-                    </o>
-                    <o>
-                      <v n="Id">2511968087L</v>
-                      <v n="Value">"Zeigerinstrument"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2431819421L</v>
-                      <v n="Value">"INSIDE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1500670465L</v>
-                      <v n="Value">"%d"</v>
-                    </o>
-                    <o>
-                      <v n="Id">533464156L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3549563837L</v>
-                      <v n="Value">"FIXED"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1937167831L</v>
-                      <v n="Value">"THIN_3D_ARROW"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4062784938L</v>
-                      <v n="Value">"Element-Meter-Meter360-Gray"</v>
-                    </o>
-                    <o>
-                      <v n="Id">518627256L</v>
-                      <v n="Value">"°"</v>
-                    </o>
-                    <o>
-                      <v n="Id">381541060L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3994970671L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
-                        <o>
-                          <v n="FontStyle">0</v>
-                          <v n="AdditionalFontStyle" t="UInt16">0</v>
-                          <v n="ExplicitColor">-16777216</v>
-                          <v n="CanonicalName">"Font-Standard"</v>
-                          <v n="FontName">"Arial"</v>
-                          <v n="FontSize">12</v>
-                          <v n="ScriptIdentification">0</v>
-                          <v n="DoubleFontSize" t="Double">0</v>
-                          <o n="NamedColor" t="NamedStyleColor">
-                            <v n="Color">-16777216</v>
-                            <v n="CanonicalName">"Element-Meter-LabelFontColor"</v>
-                          </o>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">493260384L</v>
-                      <v n="Value">4294967295U</v>
-                    </o>
-                    <o>
-                      <v n="Id">135947015L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">2678395525L</v>
-                      <v n="Value">1U</v>
-                    </o>
-                    <o>
-                      <v n="Id">2340015797L</v>
-                      <v n="Value">"HCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2565699834L</v>
-                      <v n="Value">"VCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">390574330L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">571893170L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">2597686782L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleZ_deg"</v>
-                    </o>
-                    <o>
-                      <v n="Id">637329562L</v>
-                      <v n="Value">"253"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2750573338L</v>
-                      <v n="Value">"142"</v>
-                    </o>
-                  </l>
-                </o>
-                <v n="VisualElementName">"Meter360"</v>
-                <v n="VisualElementTypeName">"VisuFbElemMeter360"</v>
-                <v n="VisualElementIsRectangle">true</v>
-                <v n="VisualElementIdentifier">"GenElemInst_68"</v>
-                <n n="VisualElementOfflinePaintCommands" />
-                <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" />
-                <v n="VisualElementIdentification">{26fae6d1-6548-41fe-8f7e-df4512e23db5}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
-                <a n="LMGuids" et="Guid" />
-                <d n="SubElements" t="Hashtable" />
-                <v n="VisualElementId">72</v>
-                <l n="UserManagementAccessRights" t="ArrayList" />
-              </o>
-              <o>
-                <a n="ConfiguredComplexInputs" et="ComplexInput" />
-                <l n="Elements" t="ArrayList" />
-                <n n="VisualElementDescription" />
-                <o n="VisualElemMemberList" t="VisualElemMemberList">
-                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                    <o>
-                      <v n="Id">571893170L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">494569607L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-16777216</v>
-                          <v n="CanonicalName">"BasicElement-Frame-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">2812299069L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"BasicElement-Fill-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">135947015L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-65536</v>
-                          <v n="CanonicalName">"BasicElement-Alarm-Frame-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">493260384L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-12337</v>
-                          <v n="CanonicalName">"BasicElement-Alarm-Fill-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">2340015797L</v>
-                      <v n="Value">"HCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2565699834L</v>
-                      <v n="Value">"VCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4134387352L</v>
-                      <v n="Value">"NONE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1603690730L</v>
-                      <v n="Value">"Arial"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4253639993L</v>
-                      <v n="Value" t="Int16">12</v>
-                    </o>
-                    <o>
-                      <v n="Id">2729990903L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">1213979116L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3488306084L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">1999528970L</v>
-                      <v n="Value">"&lt;toggle/tap variable&gt;"</v>
-                    </o>
-                    <o>
-                      <v n="Id">3719097617L</v>
-                      <v n="Value">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">1649127785L</v>
-                      <v n="Value">58</v>
-                    </o>
-                    <o>
-                      <v n="Id">357335551L</v>
-                      <v n="Value">725</v>
-                    </o>
-                    <o>
-                      <v n="Id">2422045748L</v>
-                      <v n="Value" t="Int16">180</v>
-                    </o>
-                    <o>
-                      <v n="Id">2134141914L</v>
-                      <v n="Value">30</v>
-                    </o>
-                    <o>
-                      <v n="Id">3729828405L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
-                        <o>
-                          <v n="FontStyle">0</v>
-                          <v n="AdditionalFontStyle" t="UInt16">0</v>
-                          <v n="ExplicitColor">-16777216</v>
-                          <v n="CanonicalName">"Font-Standard"</v>
-                          <v n="FontName">"Arial"</v>
-                          <v n="FontSize">12</v>
-                          <v n="ScriptIdentification">0</v>
-                          <v n="DoubleFontSize" t="Double">0</v>
-                          <o n="NamedColor" t="NamedStyleColor">
-                            <v n="Color">-16777216</v>
-                            <v n="CanonicalName">"Font-Default-Color"</v>
-                          </o>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">550940142L</v>
-                      <v n="Value">148</v>
-                    </o>
-                    <o>
-                      <v n="Id">1473355128L</v>
-                      <v n="Value">740</v>
-                    </o>
-                    <o>
-                      <v n="Id">2678395525L</v>
-                      <v n="Value">1U</v>
-                    </o>
-                    <o>
-                      <v n="Id">564465120L</v>
-                      <v n="Value">"VISU_ST_RECTANGLE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">390574330L</v>
-                      <v n="Value">"Euler Angle Phi: %.3f"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2597686782L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleX_deg"</v>
-                    </o>
-                    <o>
-                      <v n="Id">823443203L</v>
-                      <v n="Value">"868"</v>
-                    </o>
-                  </l>
-                </o>
-                <v n="VisualElementName">"Rectangle"</v>
-                <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
-                <v n="VisualElementIsRectangle">true</v>
-                <v n="VisualElementIdentifier">"GenElemInst_70"</v>
-                <n n="VisualElementOfflinePaintCommands" />
-                <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" />
-                <v n="VisualElementIdentification">{77830e0d-b54e-481a-974e-8162d7a4ac43}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
-                <a n="LMGuids" et="Guid" />
-                <d n="SubElements" t="Hashtable" />
-                <v n="VisualElementId">74</v>
-                <l n="UserManagementAccessRights" t="ArrayList" />
-              </o>
-              <o>
-                <a n="ConfiguredComplexInputs" et="ComplexInput" />
-                <l n="Elements" t="ArrayList" />
-                <n n="VisualElementDescription" />
-                <o n="VisualElemMemberList" t="VisualElemMemberList">
-                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                    <o>
-                      <v n="Id">571893170L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">494569607L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-16777216</v>
-                          <v n="CanonicalName">"BasicElement-Frame-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">2812299069L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"BasicElement-Fill-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">135947015L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-65536</v>
-                          <v n="CanonicalName">"BasicElement-Alarm-Frame-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">493260384L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-12337</v>
-                          <v n="CanonicalName">"BasicElement-Alarm-Fill-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">2340015797L</v>
-                      <v n="Value">"HCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2565699834L</v>
-                      <v n="Value">"VCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4134387352L</v>
-                      <v n="Value">"NONE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1603690730L</v>
-                      <v n="Value">"Arial"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4253639993L</v>
-                      <v n="Value" t="Int16">12</v>
-                    </o>
-                    <o>
-                      <v n="Id">2729990903L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">1213979116L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3488306084L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">1999528970L</v>
-                      <v n="Value">"&lt;toggle/tap variable&gt;"</v>
-                    </o>
-                    <o>
-                      <v n="Id">3719097617L</v>
-                      <v n="Value">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">1649127785L</v>
-                      <v n="Value">338</v>
-                    </o>
-                    <o>
-                      <v n="Id">357335551L</v>
-                      <v n="Value">725</v>
-                    </o>
-                    <o>
-                      <v n="Id">2422045748L</v>
-                      <v n="Value" t="Int16">180</v>
-                    </o>
-                    <o>
-                      <v n="Id">2134141914L</v>
-                      <v n="Value">30</v>
-                    </o>
-                    <o>
-                      <v n="Id">3729828405L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
-                        <o>
-                          <v n="FontStyle">0</v>
-                          <v n="AdditionalFontStyle" t="UInt16">0</v>
-                          <v n="ExplicitColor">-16777216</v>
-                          <v n="CanonicalName">"Font-Standard"</v>
-                          <v n="FontName">"Arial"</v>
-                          <v n="FontSize">12</v>
-                          <v n="ScriptIdentification">0</v>
-                          <v n="DoubleFontSize" t="Double">0</v>
-                          <o n="NamedColor" t="NamedStyleColor">
-                            <v n="Color">-16777216</v>
-                            <v n="CanonicalName">"Font-Default-Color"</v>
-                          </o>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">550940142L</v>
-                      <v n="Value">428</v>
-                    </o>
-                    <o>
-                      <v n="Id">1473355128L</v>
-                      <v n="Value">740</v>
-                    </o>
-                    <o>
-                      <v n="Id">2678395525L</v>
-                      <v n="Value">1U</v>
-                    </o>
-                    <o>
-                      <v n="Id">564465120L</v>
-                      <v n="Value">"VISU_ST_RECTANGLE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">390574330L</v>
-                      <v n="Value">"Euler Angle Theta: %.3f"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2597686782L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleY_deg"</v>
-                    </o>
-                    <o>
-                      <v n="Id">823443203L</v>
-                      <v n="Value">"48"</v>
-                    </o>
-                  </l>
-                </o>
-                <v n="VisualElementName">"Rectangle"</v>
-                <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
-                <v n="VisualElementIsRectangle">true</v>
-                <v n="VisualElementIdentifier">"GenElemInst_72"</v>
-                <n n="VisualElementOfflinePaintCommands" />
-                <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" />
-                <v n="VisualElementIdentification">{bbe1c864-a976-4bcb-b94b-f9f91ebf61f4}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
-                <a n="LMGuids" et="Guid" />
-                <d n="SubElements" t="Hashtable" />
-                <v n="VisualElementId">76</v>
-                <l n="UserManagementAccessRights" t="ArrayList" />
-              </o>
-              <o>
-                <a n="ConfiguredComplexInputs" et="ComplexInput" />
-                <l n="Elements" t="ArrayList" />
-                <n n="VisualElementDescription" />
-                <o n="VisualElemMemberList" t="VisualElemMemberList">
-                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                    <o>
-                      <v n="Id">571893170L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">494569607L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-16777216</v>
-                          <v n="CanonicalName">"BasicElement-Frame-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">2812299069L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-1</v>
-                          <v n="CanonicalName">"BasicElement-Fill-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">135947015L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-65536</v>
-                          <v n="CanonicalName">"BasicElement-Alarm-Frame-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">493260384L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleColor">
-                        <o>
-                          <v n="Color">-12337</v>
-                          <v n="CanonicalName">"BasicElement-Alarm-Fill-Color"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">2340015797L</v>
-                      <v n="Value">"HCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2565699834L</v>
-                      <v n="Value">"VCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4134387352L</v>
-                      <v n="Value">"NONE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1603690730L</v>
-                      <v n="Value">"Arial"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4253639993L</v>
-                      <v n="Value" t="Int16">12</v>
-                    </o>
-                    <o>
-                      <v n="Id">2729990903L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">1213979116L</v>
-                      <v n="Value">0U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3488306084L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">1999528970L</v>
-                      <v n="Value">"&lt;toggle/tap variable&gt;"</v>
-                    </o>
-                    <o>
-                      <v n="Id">3719097617L</v>
-                      <v n="Value">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">1649127785L</v>
-                      <v n="Value">620</v>
-                    </o>
-                    <o>
-                      <v n="Id">357335551L</v>
-                      <v n="Value">725</v>
-                    </o>
-                    <o>
-                      <v n="Id">2422045748L</v>
-                      <v n="Value" t="Int16">180</v>
-                    </o>
-                    <o>
-                      <v n="Id">2134141914L</v>
-                      <v n="Value">30</v>
-                    </o>
-                    <o>
-                      <v n="Id">3729828405L</v>
-                      <l n="Value" t="ArrayList" cet="NamedStyleFont">
-                        <o>
-                          <v n="FontStyle">0</v>
-                          <v n="AdditionalFontStyle" t="UInt16">0</v>
-                          <v n="ExplicitColor">-16777216</v>
-                          <v n="CanonicalName">"Font-Standard"</v>
-                          <v n="FontName">"Arial"</v>
-                          <v n="FontSize">12</v>
-                          <v n="ScriptIdentification">0</v>
-                          <v n="DoubleFontSize" t="Double">0</v>
-                          <o n="NamedColor" t="NamedStyleColor">
-                            <v n="Color">-16777216</v>
-                            <v n="CanonicalName">"Font-Default-Color"</v>
-                          </o>
-                        </o>
-                      </l>
-                    </o>
-                    <o>
-                      <v n="Id">550940142L</v>
-                      <v n="Value">710</v>
-                    </o>
-                    <o>
-                      <v n="Id">1473355128L</v>
-                      <v n="Value">740</v>
-                    </o>
-                    <o>
-                      <v n="Id">2678395525L</v>
-                      <v n="Value">1U</v>
-                    </o>
-                    <o>
-                      <v n="Id">564465120L</v>
-                      <v n="Value">"VISU_ST_RECTANGLE"</v>
-                    </o>
-                    <o>
-                      <v n="Id">390574330L</v>
-                      <v n="Value">"Euler Angle Psi: %.3f"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2597686782L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.fbKalmanFilter.fAngleZ_deg"</v>
-                    </o>
-                    <o>
-                      <v n="Id">823443203L</v>
-                      <v n="Value">"605"</v>
-                    </o>
-                  </l>
-                </o>
-                <v n="VisualElementName">"Rectangle"</v>
-                <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
-                <v n="VisualElementIsRectangle">true</v>
-                <v n="VisualElementIdentifier">"GenElemInst_74"</v>
-                <n n="VisualElementOfflinePaintCommands" />
-                <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" />
-                <v n="VisualElementIdentification">{ae37b185-3a1b-4e97-aa64-cf9136a292f9}</v>
-                <v n="VisualElementOwningObjectGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
-                <a n="LMGuids" et="Guid" />
-                <d n="SubElements" t="Hashtable" />
-                <v n="VisualElementId">78</v>
                 <l n="UserManagementAccessRights" t="ArrayList" />
               </o>
             </l>
@@ -3800,148 +3800,148 @@
             <o n="GeneratedVisuFbDescription" t="GenericFbDescription">
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>ContainsPoint</v>
-                <v>16db8840-d761-4376-9a80-b8f47b8f7f57</v>
+                <v>cb1a4be6-10d8-482c-96f2-6153d6095323</v>
                 <v>Destruct</v>
-                <v>bf6d8b1b-4389-4d99-85db-fc6391895ae6</v>
+                <v>1f551668-d6e6-4a8c-b4da-a16112b5353d</v>
                 <v>ElementInfo</v>
-                <v>dac373a8-c3c3-4e77-8b98-1828b9ca5d64</v>
+                <v>43e6b60c-02da-4d20-a724-55f055eff2a2</v>
                 <v>FB_Exit</v>
-                <v>aea44fe6-1dc3-4cef-ac04-51f88866edf7</v>
+                <v>b3e9d37f-64f9-4829-9b04-ad0f4c79f00c</v>
                 <v>FB_Reinit</v>
-                <v>2e7c7512-c31d-4494-bcb2-f46da4a21f21</v>
+                <v>f08609e2-14ad-4119-89a6-94bf36c666d4</v>
                 <v>GetClientData</v>
-                <v>12af3198-48cd-48a0-8528-5d53e7ed1c88</v>
+                <v>9ccd7362-effb-4d98-b74b-df38a41325f9</v>
                 <v>GetDialogInterface</v>
-                <v>f5bb63ac-75ea-414d-9bf4-41ad6253a469</v>
+                <v>95412ddc-9c72-4b53-9186-d4f36d59e467</v>
                 <v>GetDialogInterfaceSize</v>
-                <v>2e17f9b6-8f1c-464d-aab1-457f4a51861f</v>
+                <v>c9f6a580-640c-4418-b410-ba04606e70e6</v>
                 <v>GetElementArray</v>
-                <v>64a08df5-1f99-42a8-87aa-f4702537c4ab</v>
+                <v>ab8a36d6-608f-47f1-bc90-979a12592ffd</v>
                 <v>GetElementIdArray</v>
-                <v>43e609bf-4216-4529-a5cf-effec2610775</v>
+                <v>9e044f80-4f5f-4f59-a80d-fe6916cb7cfe</v>
                 <v>GetInitializeVersion</v>
-                <v>45e50d8c-8289-446a-834d-e03cd7a82ac2</v>
+                <v>0f1dd1bb-3878-4766-9c10-92711d34ad20</v>
                 <v>GetInstance</v>
-                <v>42013c43-830f-4bfe-b664-475e35440e16</v>
+                <v>1269bddb-ad76-4191-9b72-06299b9fec7b</v>
                 <v>GetLocalUsergroup</v>
-                <v>ca30eb7c-5e35-4832-b06f-c88dcb79a43a</v>
+                <v>7c17b735-93c7-435e-8cc4-769034137a89</v>
                 <v>GetName</v>
-                <v>30d15b36-5f37-44be-aba4-4a088267a069</v>
+                <v>2c3749ee-4cc5-41ff-827f-12acc9139b34</v>
                 <v>GetNamespace</v>
-                <v>600fc455-7302-435f-b1bd-c4618d686c6d</v>
+                <v>191ca21c-7f1f-4ee7-8ae3-5e1f45e152a8</v>
                 <v>GetResult</v>
-                <v>3729cb6e-9d34-4472-9163-9fa5a1b7e8cb</v>
+                <v>2c4dfde7-2991-474e-b7b3-c6c68924b06c</v>
                 <v>GetSize</v>
-                <v>8bb79f02-c521-409c-b2e5-9efdf5d535ed</v>
+                <v>d2c8ed20-6428-4979-a627-e55625bdcdac</v>
                 <v>GetSurroundingRect</v>
-                <v>1eb6ab22-7124-41a1-bf91-3b662577ea27</v>
+                <v>3c73cba6-c0dc-4082-973e-cab6bcbf83da</v>
                 <v>GetText</v>
-                <v>a1389c99-dfb7-47a1-b047-a02b1ea64869</v>
+                <v>2cd4c55f-82e2-4a57-9337-ce4b06168467</v>
                 <v>GetTextProperties</v>
-                <v>3fb97290-3860-4631-b58c-6c344273402e</v>
+                <v>94f1d62b-c964-40f0-aabd-14fcff9bfe6e</v>
                 <v>GetTooltip</v>
-                <v>b3eb9fe3-8ea2-4b5e-8185-2fac1fdf15b4</v>
+                <v>fd9f3b13-b2bd-4a7d-ad32-eace348b96ad</v>
                 <v>GetTranslator</v>
-                <v>77286df6-7a98-40eb-b33c-21af76671055</v>
+                <v>71d19cfd-a263-432e-bf9a-7c91cc60d211</v>
                 <v>GetUpdateRects</v>
-                <v>b6b09875-4f61-42e4-94ea-c6af13bed0d7</v>
+                <v>35e8b6b8-3e93-44eb-b843-108bc510b4a3</v>
                 <v>HandleInput</v>
-                <v>2906901b-c2dd-42df-b357-c94a3ff5aa2d</v>
+                <v>24d06c0c-78c5-4c5f-8e24-eeb09c4dc79e</v>
                 <v>HasInputAccess</v>
-                <v>3c4cb049-62ec-4537-9484-68e3b51a497b</v>
+                <v>e4d44b2f-dc2c-4b2c-876a-a0122069d6c2</v>
                 <v>HasInputAccessIntern</v>
-                <v>ca00db85-e804-4920-be24-5713dd970498</v>
+                <v>f3b441f4-b907-433f-b037-a4dd5ac5ca17</v>
                 <v>HasVisibilityAccess</v>
-                <v>6f7415c6-65f2-4d57-ab60-99093b20267a</v>
+                <v>befe07b3-5ca2-4362-88a3-7f17d8f596c6</v>
                 <v>HasVisibilityAccessIntern</v>
-                <v>012a45f2-24e5-4d70-96fe-c015465df6b2</v>
+                <v>fd95810a-a66a-4a64-aac2-baefb05a2516</v>
                 <v>Initialize</v>
-                <v>9075f6f3-5bfb-4f41-b0f5-afb85f142ca7</v>
+                <v>aa23b674-527b-41db-9c05-58efe51552d2</v>
                 <v>IsAntialiasingInactive</v>
-                <v>ed436036-48c1-4f64-93a4-4e65d26ac8a1</v>
+                <v>20a55620-14bb-425e-9503-8765d65631d7</v>
                 <v>Paint</v>
-                <v>d4f4e6f2-4e25-41e0-9009-f72f295578ff</v>
+                <v>cd124f6e-5220-4c98-8f44-634b8bffb81e</v>
                 <v>SetClientData</v>
-                <v>ebd6c172-2fba-4db8-9dd6-42f7690399be</v>
+                <v>e9817da6-0506-4785-8b8c-9d86668c1c2a</v>
                 <v>SetDialogInterface</v>
-                <v>3ae90c25-8af8-4587-b186-230f5bb29159</v>
+                <v>ef2dd113-e645-45b9-b809-e4a17a390e7f</v>
                 <v>SetResult</v>
-                <v>1dde7302-935e-4656-929b-ad5f40379bfa</v>
+                <v>79fc2eca-4956-40f0-a078-c153a69ff6ff</v>
                 <v>SetStaticState</v>
-                <v>5390692d-d0b9-41a1-a70f-85be7290e804</v>
+                <v>4a1cb754-2e95-446d-beb3-b695a6b5d244</v>
                 <v>SetVisuFlagsInternal</v>
-                <v>d0570c5e-ed6f-4b66-bd30-bba4e9f41cd5</v>
+                <v>6dd1e508-2a36-4e10-bc9c-41eb9ad70bd9</v>
                 <v>Update</v>
-                <v>bb411614-d513-4c3e-93e6-ba398d655512</v>
+                <v>edd3f90e-292c-47ac-95a0-2dd92d1d20fe</v>
               </d>
               <v n="FbName">"NotImportant"</v>
-              <v n="FbGuid">{1fe48167-e7f5-4c5c-9e87-7e68e22971e0}</v>
+              <v n="FbGuid">{46d4d137-9623-45c1-92a9-7bba6fb7ebed}</v>
             </o>
-            <v n="GeneratedGlobalVisuVarsGuid">{38186a1f-9b1a-4bee-84e9-1465aa4cc616}</v>
-            <v n="GeneratedGlobalTheVisuVarlistGuid">{5ec302c9-d8f6-4bae-852c-296956758c23}</v>
-            <v n="GeneratedGlobalVisuConstants">{2a5a8d60-5a2a-4576-b90f-dc56cf816df1}</v>
+            <v n="GeneratedGlobalVisuVarsGuid">{f2ef1184-e22e-4354-8a50-c487c788660c}</v>
+            <v n="GeneratedGlobalTheVisuVarlistGuid">{5df42d1e-e3bb-426d-8991-6e21ac38c743}</v>
+            <v n="GeneratedGlobalVisuConstants">{e9b5e423-8e4b-448e-a086-a33560ac7803}</v>
             <d n="GeneratedAllElementsEntries" t="Hashtable" />
             <o n="VisuRegDesc" t="GenericFbDescription">
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>FB_Exit</v>
-                <v>33b77eeb-afcf-4e57-a910-c1eb30492694</v>
+                <v>65098633-23ce-4a9a-9f99-dda3d78bafcd</v>
                 <v>FB_Init</v>
-                <v>6afa69b9-2691-42f5-ab95-9d3ed543431d</v>
+                <v>21fbbe85-f75e-4cf4-8e58-3437b6fa6de6</v>
                 <v>FB_Reinit</v>
-                <v>f4a9672e-6967-4499-9937-bc388cdf455e</v>
+                <v>4005b1d7-5538-4156-8f1c-5fafe12296fe</v>
               </d>
               <v n="FbName">"NotImportant"</v>
-              <v n="FbGuid">{2c7c72e1-9c45-455b-92ad-a0bcd6b37c59}</v>
+              <v n="FbGuid">{711674a2-2eb3-47e0-b874-67acf144c805}</v>
             </o>
-            <v n="VisuRegisterGvl">{ab2cc988-6b3e-4389-b731-84c46683963f}</v>
+            <v n="VisuRegisterGvl">{df466110-a291-4de7-86d1-05726944289a}</v>
             <n n="SettingsPou" />
             <n n="MemManPou" />
             <o n="InputsPou" t="GenericFbDescription">
               <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
                 <v>abstrGetDefaultCursor</v>
-                <v>3ca37663-8d39-4b45-ba3c-8a1a304c8fc8</v>
+                <v>04ab001a-4391-4eeb-9b85-265778b9d9f6</v>
                 <v>ExecuteDialogClosed</v>
-                <v>c21b1e2f-cce6-4aab-acbd-9a1ec7fbabb1</v>
+                <v>ddaa590f-c486-48a4-b966-c0d14d3fb588</v>
                 <v>ExecuteKeyDown</v>
-                <v>1e996ae4-cb2b-4bac-85c6-c86df59db01f</v>
+                <v>950da60e-96fa-43c3-8d37-c1e3ce8a4abb</v>
                 <v>ExecuteKeyUp</v>
-                <v>91570020-584c-4a95-8905-0e19fb6b2ed1</v>
+                <v>89e1bf0b-0a94-46ff-af65-1567e9e75a72</v>
                 <v>ExecuteLooseCapture</v>
-                <v>27d60703-c0e4-475b-b0a6-7e9aee727214</v>
+                <v>40c98263-45f4-439c-8a55-94bb4bc7a07e</v>
                 <v>ExecuteMouseClick</v>
-                <v>51a0461f-a156-4d51-8398-99207b343b07</v>
+                <v>6a19926a-ba82-4e5e-bc0d-f2d2c2facaee</v>
                 <v>ExecuteMouseDblClick</v>
-                <v>11d998c1-4ff7-4d12-827a-5a61bee8d2f7</v>
+                <v>779f80c2-6318-4728-b578-0d8cf0f4157b</v>
                 <v>ExecuteMouseDown</v>
-                <v>f941a71f-2fc8-4068-98d5-7bf0ee956e3f</v>
+                <v>47c57e15-42a4-4202-adcd-421e1915db83</v>
                 <v>ExecuteMouseEnter</v>
-                <v>39427111-e3e0-42b3-88eb-7d955c63fa06</v>
+                <v>97f37520-d301-4543-a214-806fb8d16ec7</v>
                 <v>ExecuteMouseLeave</v>
-                <v>3ed0cea3-e1be-4352-bdfa-a06f5c09c5d4</v>
+                <v>bbaeaebe-8bb3-436e-9cfd-ec62462368b7</v>
                 <v>ExecuteMouseMove</v>
-                <v>c42d3a9a-1161-4d14-be8a-0200f52d665e</v>
+                <v>d475a13c-581c-4ebb-830d-518e3b7962c5</v>
                 <v>ExecuteMouseUp</v>
-                <v>1a4763f0-55dd-46dd-afd0-bf1dc85c8d2a</v>
+                <v>f0bb3c04-9ede-4d41-889e-324a88aacde7</v>
                 <v>GetElementInfo</v>
-                <v>00aac312-60c2-4b64-9717-997c7c0c059a</v>
+                <v>d49a922c-57e7-40d2-bf99-ea775b78f7e0</v>
                 <v>Initialize</v>
-                <v>f46e74a0-0a92-461f-80b8-468240997233</v>
+                <v>e25dbf0a-ef52-496c-9972-4f7bf2817617</v>
               </d>
               <v n="FbName">"NotImportant"</v>
-              <v n="FbGuid">{8795e589-a63e-47fa-bab9-a2fc95294370}</v>
+              <v n="FbGuid">{cf09d0f2-f023-439b-badd-f4f4925d4353}</v>
             </o>
-            <v n="DialogDut">{f6c4da19-4bb6-4875-adc3-1629849b2ae0}</v>
+            <v n="DialogDut">{384b43db-875f-4c74-b4a9-01893f4338fb}</v>
           </o>
           <v n="LastUsedIdForIdentifier">74</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>
-                <v n="Id">12L</v>
+                <v n="Id">6L</v>
                 <n n="Tag" />
                 <v n="Text">"VAR_IN_OUT"</v>
               </o>
               <o>
-                <v n="Id">13L</v>
+                <v n="Id">7L</v>
                 <n n="Tag" />
                 <v n="Text">"	"</v>
               </o>
@@ -3970,12 +3970,12 @@
               <v>0</v>
               <o>
                 <v n="Width">842</v>
-                <v n="Height">755</v>
+                <v n="Height">746</v>
               </o>
               <v>1</v>
               <o>
                 <v n="Width">841</v>
-                <v n="Height">756</v>
+                <v n="Height">747</v>
               </o>
             </d2>
             <v n="Version">1</v>

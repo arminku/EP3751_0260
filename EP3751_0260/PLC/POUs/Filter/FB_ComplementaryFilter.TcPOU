@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="FB_ComplementaryFilter" Id="{b52c30cc-d6ec-4f96-8950-1da13efb107a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ComplementaryFilter
+VAR_INPUT
+    stAccelData : ST_3D_values; // Acceleration Data in (g)
+    stGyroData : ST_3D_values; // Gyroscope Data in (°/s)
+    fCycleTime : REAL; // Cycle Time (s)
+    fAlpha : REAL := 0.98; // Filter coefficient
+    bSetReference : BOOL; // Flag to set reference position
+END_VAR
+
+VAR_OUTPUT
+    stEulerAngle_deg : ST_3D_values; // Euler angle in degrees X= Pitch, Y=Roll, Z=Yaw
+    stEulerAngle_rad : ST_3D_values; // Euler angle in rad X= Pitch, Y=Roll, Z=Yaw
+END_VAR
+
+VAR
+	stRef_Angles_deg :ST_3d_values; // Reference orientation (bSetReference; angles in degrees)
+
+    fAccAngleRoll : REAL;
+    fAccAnglePitch : REAL;
+	
+    fGyroAngleRoll : REAL;
+    fGyroAnglePitch : REAL;
+    fGyroAngleYaw : REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Calculate accelerometer angles using ATAN2, which returns radians
+IF ((stAccelData.X * stAccelData.X + stAccelData.Z * stAccelData.Z)> 0.0) THEN 	
+	fAccAngleRoll := ATAN2(stAccelData.Y, SQRT(stAccelData.X * stAccelData.X + stAccelData.Z * stAccelData.Z));
+END_IF
+IF ((stAccelData.Y * stAccelData.Y + stAccelData.Z * stAccelData.Z)> 0.0) THEN
+	fAccAnglePitch := ATAN2(-stAccelData.X, SQRT(stAccelData.Y * stAccelData.Y + stAccelData.Z * stAccelData.Z));
+END_IF
+
+// Convert gyroscope rates from °/s to rad/s before integration
+stGyroData.X := stGyroData.X * pi / 180.0;
+stGyroData.Y := stGyroData.Y * pi / 180.0;
+stGyroData.Z := stGyroData.Z * pi / 180.0;
+
+// Integrate gyroscope rates to get angles in radians
+fGyroAnglePitch := fGyroAnglePitch + stGyroData.X * fCycleTime;
+fGyroAngleRoll := fGyroAngleRoll + stGyroData.Y * fCycleTime;
+fGyroAngleYaw := fGyroAngleYaw + stGyroData.Z * fCycleTime;
+
+// Apply complementary filter
+stEulerAngle_rad.X := fAlpha * (fGyroAnglePitch) + (1.0 - fAlpha) * fAccAnglePitch;
+stEulerAngle_rad.Y := fAlpha * (fGyroAngleRoll) + (1.0 - fAlpha) * fAccAngleRoll;
+stEulerAngle_rad.Z := fGyroAngleYaw; // Yaw is integrated directly from gyroscope
+
+// Convert radians to degrees for output
+stEulerAngle_deg.X := stEulerAngle_rad.X * 180.0 / pi;
+stEulerAngle_deg.Y := stEulerAngle_rad.Y * 180.0 / pi;
+stEulerAngle_deg.Z := stEulerAngle_rad.Z * 180.0 / pi;
+
+// Set reference position if flag is active
+IF bSetReference THEN
+    stRef_Angles_deg.X := stEulerAngle_deg.X;
+    stRef_Angles_deg.Y := stEulerAngle_deg.Y;
+    stRef_Angles_deg.Z := stEulerAngle_deg.Z;
+END_IF
+
+// Apply reference position
+stEulerAngle_deg.X := stEulerAngle_deg.X - (stRef_Angles_deg.X);
+stEulerAngle_deg.Y := stEulerAngle_deg.Y - (stRef_Angles_deg.Y);
+stEulerAngle_deg.Z := stEulerAngle_deg.Z- (stRef_Angles_deg.Z);
+
+stEulerAngle_rad.X := stEulerAngle_rad.X - (stRef_Angles_deg.X) * pi / 180.0;
+stEulerAngle_rad.Y := stEulerAngle_rad.Y - (stRef_Angles_deg.Y) * pi / 180.0;
+stEulerAngle_rad.Z := stEulerAngle_rad.Z - (stRef_Angles_deg.Z) * pi / 180.0;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ComplementaryFilter">
+      <LineId Id="267" Count="0" />
+      <LineId Id="327" Count="0" />
+      <LineId Id="268" Count="0" />
+      <LineId Id="328" Count="1" />
+      <LineId Id="269" Count="0" />
+      <LineId Id="330" Count="0" />
+      <LineId Id="270" Count="6" />
+      <LineId Id="315" Count="0" />
+      <LineId Id="277" Count="0" />
+      <LineId Id="279" Count="2" />
+      <LineId Id="324" Count="0" />
+      <LineId Id="317" Count="0" />
+      <LineId Id="284" Count="2" />
+      <LineId Id="288" Count="0" />
+      <LineId Id="316" Count="0" />
+      <LineId Id="289" Count="3" />
+      <LineId Id="320" Count="0" />
+      <LineId Id="293" Count="0" />
+      <LineId Id="295" Count="3" />
+      <LineId Id="319" Count="0" />
+      <LineId Id="299" Count="0" />
+      <LineId Id="301" Count="0" />
+      <LineId Id="318" Count="0" />
+      <LineId Id="302" Count="1" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

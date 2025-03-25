@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="FB_MahonyFilter" Id="{730646d9-7b7a-4ebf-924b-ca3f8915b5b0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MahonyFilter
+VAR_INPUT
+    stAccelData : ST_3D_values; // Acceleration Data in (g)
+    stGyroData : ST_3D_values; // Gyroscope Data in (°/s)
+    fCycleTime : REAL; // Cycle Time (s)
+    fKp : REAL := 1.0; // Proportional gain
+    fKi : REAL := 0.01; // Integral gain
+    bSetReference : BOOL; // Flag to set reference position
+END_VAR
+
+VAR_OUTPUT
+	fQ0 : LREAL := 1.0; // Quaternion component
+    fQ1 : LREAL := 0.0; // Quaternion component
+    fQ2 : LREAL := 0.0; // Quaternion component
+    fQ3 : LREAL := 0.0; // Quaternion component
+    stEulerAngle_deg : ST_3D_values; // Estimated Euler angle in degrees X= Pitch, Y=Roll, Z=Yaw
+    stEulerAngle_rad : ST_3D_values; // Estimated Euler angle in rad X= Pitch, Y=Roll, Z=Yaw
+END_VAR
+
+VAR
+	// Reference angles
+	stRef_Angles_deg :ST_3d_values; // Reference orientation (bSetReference; angles in degrees)
+    fIntegralFBx : LREAL := 0.0; // Integral feedback x
+    fIntegralFBy : LREAL := 0.0; // Integral feedback y
+    fIntegralFBz : LREAL := 0.0; // Integral feedback z
+    fNorm : LREAL;
+    _2fQ0, _2fQ1, _2fQ2, _2fQ3 : LREAL;
+    _4fQ0, _4fQ1, _4fQ2, _4fQ3 : LREAL;
+    _8fQ1, _8fQ2 : LREAL;
+    fQ0fQ0, fQ1fQ1, fQ2fQ2, fQ3fQ3 : LREAL;
+    fAx, fAy, fAz : LREAL;
+    fEx, fEy, fEz : LREAL;
+	fSinRoll, fCosRoll : LREAL;
+    fSinPitch, fCosPitch : LREAL;
+    fSinYaw, fCosYaw : LREAL;
+	fGyroRateX_rad,fGyroRateY_rad, fGyroRateZ_rad:LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Normalize accelerometer measurements
+fAx := REAL_TO_LREAL(stAccelData.x);
+fAy := REAL_TO_LREAL(stAccelData.Y);
+fAz := REAL_TO_LREAL(stAccelData.z);
+fNorm := (fAx * fAx + fAy * fAy + fAz * fAz);
+IF fNorm > 1E-6 THEN
+    fNorm := SQRT(fNorm);
+    fAx := fAx / fNorm;
+    fAy := fAy / fNorm;
+    fAz := fAz / fNorm;
+END_IF
+
+// Estimated direction of gravity and magnetic field
+_2fQ0 := 2.0 * fQ0;
+_2fQ1 := 2.0 * fQ1;
+_2fQ2 := 2.0 * fQ2;
+_2fQ3 := 2.0 * fQ3;
+_4fQ0 := 4.0 * fQ0;
+_4fQ1 := 4.0 * fQ1;
+_4fQ2 := 4.0 * fQ2;
+_4fQ3 := 4.0 * fQ3;
+_8fQ1 := 8.0 * fQ1;
+_8fQ2 := 8.0 * fQ2;
+fQ0fQ0 := fQ0 * fQ0;
+fQ1fQ1 := fQ1 * fQ1;
+fQ2fQ2 := fQ2 * fQ2;
+fQ3fQ3 := fQ3 * fQ3;
+
+// Error is sum of cross product between estimated direction and measured direction of gravity
+fEx := (_2fQ1 * fQ3 - _2fQ0 * fQ2) - fAx;
+fEy := (_2fQ0 * fQ1 + _2fQ2 * fQ3) - fAy;
+fEz := (_2fQ0 * fQ3 - _4fQ1 * fQ1 - _4fQ2 * fQ2) - fAz;
+
+// Apply proportional feedback
+stGyroData.x := stGyroData.x + REAL_TO_LREAL(fKp) * LREAL_TO_REAL(fEx);
+stGyroData.y := stGyroData.y + REAL_TO_LREAL(fKp) * LREAL_TO_REAL(fEy);
+stGyroData.z := stGyroData.z + REAL_TO_LREAL(fKp) * LREAL_TO_REAL(fEz);
+
+// Convert gyroscope rates from °/s to rad/s
+fGyroRateX_rad := stGyroData.x * pi / 180.0;
+fGyroRateY_rad := stGyroData.y * pi / 180.0;
+fGyroRateZ_rad := stGyroData.z * pi / 180.0;
+
+// Integrate rate of change of quaternion
+fQ0 := fQ0 + 0.5 * (-fQ1 * REAL_TO_LREAL(fGyroRateX_rad) - fQ2 * REAL_TO_LREAL(fGyroRateY_rad) - fQ3 * REAL_TO_LREAL(fGyroRateZ_rad)) * REAL_TO_LREAL(fCycleTime);
+fQ1 := fQ1 + 0.5 * (fQ0 * REAL_TO_LREAL(fGyroRateX_rad) + fQ2 * REAL_TO_LREAL(fGyroRateZ_rad) - fQ3 * REAL_TO_LREAL(fGyroRateY_rad)) * REAL_TO_LREAL(fCycleTime);
+fQ2 := fQ2 + 0.5 * (fQ0 * REAL_TO_LREAL(fGyroRateY_rad) - fQ1 * REAL_TO_LREAL(fGyroRateZ_rad) + fQ3 * REAL_TO_LREAL(fGyroRateX_rad)) * REAL_TO_LREAL(fCycleTime);
+fQ3 := fQ3 + 0.5 * (fQ0 * REAL_TO_LREAL(fGyroRateZ_rad) + fQ1 * REAL_TO_LREAL(fGyroRateY_rad) - fQ2 * REAL_TO_LREAL(fGyroRateX_rad)) * REAL_TO_LREAL(fCycleTime);
+
+// Normalize quaternion
+fNorm := (fQ0 * fQ0 + fQ1 * fQ1 + fQ2 * fQ2 + fQ3 * fQ3);
+IF fNorm > 1E-6 THEN
+    fNorm := SQRT(fNorm);
+    fQ0 := fQ0 / fNorm;
+    fQ1 := fQ1 / fNorm;
+    fQ2 := fQ2 / fNorm;
+    fQ3 := fQ3 / fNorm;
+END_IF
+
+// Convert quaternion to Euler angles
+stEulerAngle_rad.y := (ATAN2(2.0 * (fQ0 * fQ1 + fQ2 * fQ3), 1.0 - 2.0 * (fQ1 * fQ1 + fQ2 * fQ2)));
+stEulerAngle_rad.x := (ASIN(2.0 * (fQ0 * fQ2 - fQ3 * fQ1)));
+stEulerAngle_rad.z := (ATAN2(2.0 * (fQ0 * fQ3 + fQ1 * fQ2), 1.0 - 2.0 * (fQ2 * fQ2 + fQ3 * fQ3)));
+
+// Convert radians to degrees
+stEulerAngle_deg.y := stEulerAngle_rad.y * 180.0 / pi;
+stEulerAngle_deg.x := stEulerAngle_rad.x * 180.0 / pi;
+stEulerAngle_deg.z := stEulerAngle_rad.z * 180.0 / pi;
+
+// Set reference position if flag is active
+IF bSetReference THEN
+    stRef_Angles_deg.X := stEulerAngle_deg.X;
+    stRef_Angles_deg.Y := stEulerAngle_deg.Y;
+    stRef_Angles_deg.Z := stEulerAngle_deg.Z;
+END_IF
+
+// Apply reference position
+stEulerAngle_deg.X := stEulerAngle_deg.X - (stRef_Angles_deg.X);
+stEulerAngle_deg.Y := stEulerAngle_deg.Y - (stRef_Angles_deg.Y);
+stEulerAngle_deg.Z := stEulerAngle_deg.Z - (stRef_Angles_deg.Z);
+
+stEulerAngle_rad.X := stEulerAngle_rad.X - (stRef_Angles_deg.X) * PI / 180.0;
+stEulerAngle_rad.Y := stEulerAngle_rad.Y - (stRef_Angles_deg.Y) * PI / 180.0;
+stEulerAngle_rad.Z := stEulerAngle_rad.Z - (stRef_Angles_deg.Z) * PI / 180.0;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_MahonyFilter">
+      <LineId Id="339" Count="5" />
+      <LineId Id="422" Count="0" />
+      <LineId Id="345" Count="31" />
+      <LineId Id="378" Count="12" />
+      <LineId Id="423" Count="0" />
+      <LineId Id="391" Count="14" />
+      <LineId Id="424" Count="0" />
+      <LineId Id="444" Count="13" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
