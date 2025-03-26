@@ -37,6 +37,8 @@ VAR
     fSinPitch, fCosPitch : LREAL;
     fSinYaw, fCosYaw : LREAL;
 	fGyroRateX_rad,fGyroRateY_rad, fGyroRateZ_rad:LREAL;
+	
+	fbSetReference: r_trig;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -109,8 +111,9 @@ stEulerAngle_deg.y := stEulerAngle_rad.y * 180.0 / pi;
 stEulerAngle_deg.x := stEulerAngle_rad.x * 180.0 / pi;
 stEulerAngle_deg.z := stEulerAngle_rad.z * 180.0 / pi;
 
+fbSetReference(clk:=bSetReference);
 // Set reference position if flag is active
-IF bSetReference THEN
+IF fbSetReference.q THEN
     stRef_Angles_deg.X := stEulerAngle_deg.X;
     stRef_Angles_deg.Y := stEulerAngle_deg.Y;
     stRef_Angles_deg.Z := stEulerAngle_deg.Z;
@@ -132,8 +135,9 @@ stEulerAngle_rad.Z := stEulerAngle_rad.Z - (stRef_Angles_deg.Z) * PI / 180.0;]]>
       <LineId Id="378" Count="12" />
       <LineId Id="423" Count="0" />
       <LineId Id="391" Count="14" />
-      <LineId Id="424" Count="0" />
-      <LineId Id="444" Count="13" />
+      <LineId Id="466" Count="0" />
+      <LineId Id="464" Count="1" />
+      <LineId Id="445" Count="12" />
       <LineId Id="9" Count="0" />
     </LineIds>
   </POU>

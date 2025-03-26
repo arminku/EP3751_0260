@@ -51,6 +51,9 @@
     <Compile Include="POUs\Filter\obsolete\FBiFilter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Filter\obsolete\FB_Complementary_Ex.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Helping Functions\ATAN2.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -69,10 +72,6 @@
     <Compile Include="Visualisierungsmanager.TcVMO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="VISUs\Visualization.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
-    </Compile>
     <Compile Include="VISUs\Visualization_all.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
@@ -80,18 +79,22 @@
     <Compile Include="VISUs\Visualization_Complementary.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
     </Compile>
     <Compile Include="VISUs\Visualization_Mahony.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
     </Compile>
     <Compile Include="VISUs\Visualization_Kalman.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
     </Compile>
     <Compile Include="VISUs\Visualization_Madgwick.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
     </Compile>
   </ItemGroup>
   <ItemGroup>

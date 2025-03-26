@@ -86,6 +86,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"603"</v>
+              <v n="TextDefault">"Complementary"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"288"</v>
               <v n="TextDefault">"Euler Angle Gamma%.3f"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -176,6 +181,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"368"</v>
+              <v n="TextDefault">"Kalman"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"298"</v>
+              <v n="TextDefault">"Madgwick"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"943"</v>
+              <v n="TextDefault">"Mahony"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"666"</v>
               <v n="TextDefault">"Read FIFO"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -218,6 +238,11 @@
             <o>
               <v n="TextID">"2"</v>
               <v n="TextDefault">"Use Sensorfusion"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"745"</v>
+              <v n="TextDefault">"Without Fusion"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

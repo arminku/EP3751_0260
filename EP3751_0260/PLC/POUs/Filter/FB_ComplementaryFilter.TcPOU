@@ -17,13 +17,15 @@ END_VAR
 
 VAR
 	stRef_Angles_deg :ST_3d_values; // Reference orientation (bSetReference; angles in degrees)
-
+	
     fAccAngleRoll : REAL;
     fAccAnglePitch : REAL;
 	
     fGyroAngleRoll : REAL;
     fGyroAnglePitch : REAL;
     fGyroAngleYaw : REAL;
+	
+	fbSetReference: r_trig;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -55,8 +57,9 @@ stEulerAngle_deg.X := stEulerAngle_rad.X * 180.0 / pi;
 stEulerAngle_deg.Y := stEulerAngle_rad.Y * 180.0 / pi;
 stEulerAngle_deg.Z := stEulerAngle_rad.Z * 180.0 / pi;
 
+fbSetReference(clk:=bSetReference);
 // Set reference position if flag is active
-IF bSetReference THEN
+IF fbSetReference.q THEN
     stRef_Angles_deg.X := stEulerAngle_deg.X;
     stRef_Angles_deg.Y := stEulerAngle_deg.Y;
     stRef_Angles_deg.Z := stEulerAngle_deg.Z;
@@ -87,7 +90,9 @@ stEulerAngle_rad.Z := stEulerAngle_rad.Z - (stRef_Angles_deg.Z) * pi / 180.0;]]>
       <LineId Id="284" Count="2" />
       <LineId Id="288" Count="0" />
       <LineId Id="316" Count="0" />
-      <LineId Id="289" Count="3" />
+      <LineId Id="289" Count="0" />
+      <LineId Id="388" Count="0" />
+      <LineId Id="290" Count="2" />
       <LineId Id="320" Count="0" />
       <LineId Id="293" Count="0" />
       <LineId Id="295" Count="3" />

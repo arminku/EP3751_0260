@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="FB_Complementary_Ex" Id="{1d9b3668-d868-4b37-b87e-c8fecf71ae7e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION FB_Complementary_Ex : real
+VAR_INPUT
+    stAccelData : ST_3D_values; // Acceleration Data in (g)
+    stGyroData : ST_3D_values; // Gyroscope Data in (°/s)
+    fCycleTime : REAL; // Cycle Time (s)
+    fAlpha : REAL := 0.98; // Filter coefficient
+    bSetReference : BOOL; // Flag to set reference position
+END_VAR
+VAR
+	   
+	    fAccAngleRoll 	: REAL;
+        fAccAnglePitch 	: REAL;
+   
+		fGyroAngleRoll : REAL;
+    	fGyroAnglePitch : REAL;
+    	fGyroAngleYaw : REAL;
+
+		fIntegrator_Pitch 	: REAL;
+	    fIntegrator_Roll : REAL;
+        fIntegrator_Yaw 	: REAL;
+		
+		droll	: LREAL;
+		dpitch	: LREAL;
+		dyaw	: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//	Deg[z] := fIntegrator_Pitch * 360.0;
+fIntegrator_Pitch	:= fIntegrator_Pitch + (stAccelData.X * fCycleTime /360.0);
+fIntegrator_Roll 	:= fIntegrator_Roll + (stAccelData.Y* fCycleTime /360.0);
+fIntegrator_Yaw 	:= fIntegrator_Yaw + (stAccelData.Z* fCycleTime /360.0);
+
+
+
+(* calculate the delta movements *)
+droll := actualRoll;
+dpitch := actualPitch;
+dyaw := actualYaw;
+
+actualRoll := fIntegrator_Pitch * 2 * PI;
+actualPitch := fIntegrator_Roll * 2 * PI;
+actualYaw := fIntegrator_Yaw * 2 * PI;
+
+droll := actualRoll - droll;
+dpitch := actualPitch - dpitch;
+dyaw := actualYaw - dyaw;
+
+(* Axis correction *)
+dyaw := dyaw;
+temp := dpitch;
+dpitch := -droll;
+droll := temp;
+
+(* Calculate the euler speeds *)
+fphi := droll + SIN(actualPhi)*TAN(actualTheta)*dpitch + COS(actualPhi)*TAN(actualTheta)*dyaw;
+ftheta := COS(actualPhi)*dpitch-SIN(actualPhi)*dyaw;
+fPsi := (SIN(actualPhi)/COS(actualTheta)) * dpitch + (COS(actualPhi)/COS(actualTheta))*dyaw;
+
+
+(* Calculate new euler angles *)
+actualPhi := actualPhi + fphi;
+actualTheta := actualTheta + ftheta;
+actualPsi := actualPsi + fPsi;
+
+(* Collapse if passing thresholds of pi *)
+IF actualPhi < 0 THEN actualPhi := actualPhi + 2*PI; END_IF
+IF actualPhi >= 2*PI THEN actualPhi := actualPhi - 2*PI; END_IF
+IF actualTheta < 0 THEN	actualTheta := actualTheta + 2*PI; END_IF
+IF actualTheta >= 2*PI THEN	actualTheta := actualTheta - 2*PI; END_IF
+IF actualPsi < 0 THEN	actualPsi := actualPsi + 2*PI;END_IF
+IF actualPsi >= 2*PI THEN	actualPsi := actualPsi - 2*PI;END_IF
+
+(* Determine length of acceleration vector *)
+sumAcc := a_fAccAxis[0] * a_fAccAxis[0] + a_fAccAxis[1] * a_fAccAxis[1] + a_fAccAxis[2] * a_fAccAxis[2];
+sumAcc := SQRT(sumAcc);
+
+(* Normalize acceleration vector *)
+IF sumAcc <> 0 THEN
+	FOR z := 0 TO 2 DO
+		normalizedAcceleration[z] := a_fAccAxis[z] / sumAcc;
+	END_FOR
+END_IF
+
+(* Due to normalized values, we do no need to cut off higher values than 1 *)
+IF normalizedAcceleration[2] = 0 THEN
+	normalizedAcceleration[2] := 0.000001;
+END_IF
+AccPhi := -ATAN(normalizedAcceleration[0] / normalizedAcceleration[2]) + PI;
+IF (a_fAccAxis[2]) <=0 THEN
+	AccPhi := AccPhi + PI;
+END_IF
+IF AccPhi > 2*PI THEN AccPhi := AccPhi - 2*PI; END_IF;
+IF AccPhi < 0 THEN AccPhi := AccPhi + 2*PI; END_IF;
+AccTheta := ASIN(normalizedAcceleration[1]) + PI;
+(* Simple sensor fusion if we are not accelerated *)
+IF sumAcc >= (1.0 - fusionWindow) AND sumAcc <= (1.0 + fusionWindow)AND bUseSensorFusion THEN
+	(* The AccPhi calculation is good, as long as Axis[2] ist not close to 0 *)
+	IF normalizedAcceleration[2] < -fusionHorizontThreshold OR normalizedAcceleration[2] > fusionHorizontThreshold THEN
+		IF (actualPhi - AccPhi) > PI OR (actualPhi - AccPhi) < -PI THEN
+			IF AccPhi > actualPhi THEN
+				AccPhi := AccPhi - 2 * PI;
+			ELSE
+				AccPhi := AccPhi + 2 * PI;
+			END_IF
+		END_IF
+		actualPhi := ((fusionWeight-1) * actualPhi + AccPhi) /fusionWeight;
+		(* error Zero crossing not handled !!! *)
+	END_IF
+	(* AccTheta is always accurate *)
+	actualTheta := ((fusionWeight-1) * actualTheta + AccTheta) /fusionWeight;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Complementary_Ex">
+      <LineId Id="111" Count="0" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="15" Count="74" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="132" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

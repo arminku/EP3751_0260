@@ -3,29 +3,27 @@
   <POU Name="MAIN" Id="{5ed6dd28-4e50-4912-a842-bd2821892fe5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	a_fGyroAxis AT %I* : ARRAY [0..2] OF REAL;
-	corrAxis : ARRAY [0..2] OF REAL;
-	offset : ARRAY [0..2] OF REAL;
+	stGyroAxis AT %I* : ST_3d_values;
+	stcorrAxis : ST_3d_values;
+	stOffset	:ST_3d_values;
 
-	Integrator : ARRAY [0..2] OF REAL;
-	Deg : ARRAY [0..2] OF REAL;
-	z: INT;
+
 
 	fbMovingAverage_3D: FB_MovingAverageFilter_3D;
 	a_fBuffer : ARRAY[0..2] OF ARRAY[ 0..GVL_SensorFusion.buffersize_filter-1] OF REAL;
 	
 (* Accelerometer values *)
-	a_fAccAxis AT %I* : ARRAY [0..2] OF REAL;
+	stAccAxis AT %I* : ST_3d_values;
 	normalizedAcceleration : ARRAY [0..2] OF LREAL;
 
 (* Working variables *)
 	bWriteOffset: BOOL;
 	WriteOffsetState: INT;
 
-	slopeResetCalibration : R_TRIG;
+	fbStartOffsetCalibration : R_TRIG;
 	bReset: BOOL;
 
-	slopeResetAngle : R_TRIG;
+	fbOffsetSet : R_TRIG;
 	bResetAngle: BOOL;
 
 
@@ -79,6 +77,7 @@ Please be aware that functionalities/ PDOs / CoEs can differ in series variant.
 	fbMadgwickFilter:FB_MadgwickFilter;
 	fbComplementaryFilter:FB_ComplementaryFilter;
 	fbMahonyFilter:FB_MahonyFilter;
+	stEulerAngle_Gyro:ST_3D_Values;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -86,217 +85,99 @@ END_VAR
 IF nTaskIndex>0 THEN
 	fCycletime:=UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].CycleTime) / 10_000_000;
 END_IF
-SensorFusion();
-ResetPosition();
 
-fbKalmanFilter(
-	fGyroRateX:= corrAxis[0], 
-	fGyroRateY:= corrAxis[1], 
-	fGyroRateZ:= corrAxis[2], 
-	fAccelDataX:= a_fAccAxis[0], 
-	fAccelDataY:= a_fAccAxis[1], 
-	fAccelDataZ:= a_fAccAxis[2], 
-	fCycleTime:= fCycletime,
-	bSetReference:= bReset );
-	
-fbMadgwickFilter(
-	fAccelDataX:= a_fAccAxis[0], 
-	fAccelDataY:= a_fAccAxis[1], 
-	fAccelDataZ:= a_fAccAxis[2], 
-	fGyroRateX:=corrAxis[0] , 
-	fGyroRateY:=corrAxis[1] , 
-	fGyroRateZ:=corrAxis[2] ,  
-	fcycletime:=fCycletime , 
-	bSetReference:= bReset );
-	
-fbComplementaryFilter(
-	fAccelDataX:= a_fAccAxis[0], 
-	fAccelDataY:= a_fAccAxis[1], 
-	fAccelDataZ:= a_fAccAxis[2], 
-	fGyroRateX:=corrAxis[0] , 
-	fGyroRateY:=corrAxis[1] , 
-	fGyroRateZ:=corrAxis[2] ,  
-	fcycletime:=fCycletime , 
-	bSetReference:= bReset );
-	
-fbMahonyFilter(
-	fAccelDataX:= a_fAccAxis[0], 
-	fAccelDataY:= a_fAccAxis[1], 
-	fAccelDataZ:= a_fAccAxis[2], 
-	fGyroRateX:=corrAxis[0] , 
-	fGyroRateY:=corrAxis[1] , 
-	fGyroRateZ:=corrAxis[2] ,  
-	fcycletime:=fCycletime , 
-	bSetReference:= bReset );
+// get Sensoroffset
+fbStartOffsetCalibration(clk:=bReset);
 
-// calculation rad --> degree
-fdegPhi 		:= (actualPhi *360.0 /(2*PI));
-fdegTheta	:= (actualTheta *360.0 /(2*PI));
-fdegPsi		:= 360.0-(actualPsi *360.0 /(2*PI));]]></ST>
+fbMovingAverage_3D( stSampleData:=stGyroAxis, bEnable:=NOT fbStartOffsetCalibration.Q, a_fSamples:=a_fBuffer);
+fbOffsetSet(clk:=fbMovingAverage_3D.bBufferFilledX);
+IF fbOffsetSet.Q THEN
+	stOffset.x:=fbMovingAverage_3D.stAvgData.X;
+	stOffset.y:=fbMovingAverage_3D.stAvgData.y;
+	stOffset.z:=fbMovingAverage_3D.stAvgData.z;
+	stEulerAngle_Gyro.x:=0;
+	stEulerAngle_Gyro.y:=0;
+	stEulerAngle_Gyro.z:=0;
+END_IF
+bReady:=fbMovingAverage_3D.bBufferFilledX;
+
+//correct Gyro-Values with Offset
+stcorrAxis.X:= stGyroAxis.X - stOffset.x;
+stcorrAxis.Y:= stGyroAxis.Y - stOffset.y;
+stcorrAxis.Z:= stGyroAxis.Z - stOffset.z;
+
+
+	//Calculate Euler Angles by Sensorfusion
+	fbKalmanFilter(
+		stAccelData:= stAccAxis, 
+		stGyroData:= stcorrAxis,  
+		fCycleTime:= fCycletime,
+		bSetReference:=fbMovingAverage_3D.bBufferFilledX );
+		
+	fbMadgwickFilter(
+		stAccelData:= stAccAxis, 
+		stGyroData:= stcorrAxis,  
+		fcycletime:=fCycletime , 
+		bSetReference:= fbMovingAverage_3D.bBufferFilledX );
+		
+	fbComplementaryFilter(
+		stAccelData:= stAccAxis, 
+		stGyroData:= stcorrAxis,  
+		fcycletime:=fCycletime , 
+		bSetReference:= fbMovingAverage_3D.bBufferFilledX );
+		
+	fbMahonyFilter(
+		stAccelData:= stAccAxis, 
+		stGyroData:= stcorrAxis,  
+		fcycletime:=fCycletime , 
+		bSetReference:= fbMovingAverage_3D.bBufferFilledX );
+		
+stEulerAngle_Gyro.x := stEulerAngle_Gyro.x + stcorrAxis.x * fCycleTime;
+stEulerAngle_Gyro.y := stEulerAngle_Gyro.y + stcorrAxis.y * fCycleTime;
+stEulerAngle_Gyro.z := stEulerAngle_Gyro.z + stcorrAxis.Z * fCycleTime;
+]]></ST>
     </Implementation>
-    <Action Name="ResetPosition" Id="{34049b67-76d6-44c6-a4a8-0807fe7f998b}">
-      <Implementation>
-        <ST><![CDATA[(*
-Hint: Reference position is box laying flat on table and z-axis looking into sky.
-*)
-slopeResetCalibration(CLK := bReset);
-IF slopeResetCalibration.Q THEN
-	offset[0] := fbMovingAverage_3D.a_fAvgValues[0];
-	offset[1] := fbMovingAverage_3D.a_fAvgValues[1];
-	offset[2] := fbMovingAverage_3D.a_fAvgValues[2];
-	Integrator[0] := 0.5;
-	Integrator[1] := 0.5;
-	Integrator[2] := 0.5;
-	
-	actualRoll := PI;
-	actualPitch := PI;
-	actualYaw := PI;		
-	actualPhi := PI;
-	actualTheta := PI;
-	actualPsi := PI;
-	
-	bReferencePositionSetOnce:=TRUE;
-END_IF
-bReady:=fbMovingAverage_3D.bBufferFilledX AND bReferencePositionSetOnce;]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="SensorFusion" Id="{7fc0ffcc-2263-458c-a699-622ebd5e8736}">
-      <Implementation>
-        <ST><![CDATA[FOR z := 0 TO 2 DO
-	corrAxis[z] := a_fGyroAxis[z] - offset[z];	
-	Integrator[z] := Integrator[z] + (corrAxis[z] / ((1/fCycleTime)*360.0));	
-	Deg[z] := Integrator[z] * 360.0;
-END_FOR
-fbMovingAverage_3D(a_fNewValues:=a_fGyroAxis, bEnable:=TRUE, a_fSamples:=a_fBuffer);
-
-(* calculate the delta movements *)
-droll := actualRoll;
-dpitch := actualPitch;
-dyaw := actualYaw;
-
-actualRoll := (Deg[0] /360.0) * 2 * PI;
-actualPitch := (Deg[1] /360.0) * 2 * PI;
-actualYaw := (Deg[2] /360.0) * 2 * PI;
-
-droll := actualRoll - droll;
-dpitch := actualPitch - dpitch;
-dyaw := actualYaw - dyaw;
-
-(* Axis correction *)
-dyaw := dyaw;
-temp := dpitch;
-dpitch := -droll;
-droll := temp;
-
-(* Calculate the euler speeds *)
-fphi := droll + SIN(actualPhi)*TAN(actualTheta)*dpitch + COS(actualPhi)*TAN(actualTheta)*dyaw;
-ftheta := COS(actualPhi)*dpitch-SIN(actualPhi)*dyaw;
-fPsi := (SIN(actualPhi)/COS(actualTheta)) * dpitch + (COS(actualPhi)/COS(actualTheta))*dyaw;
-
-
-(* Calculate new euler angles *)
-actualPhi := actualPhi + fphi;
-actualTheta := actualTheta + ftheta;
-actualPsi := actualPsi + fPsi;
-
-(* Collapse if passing thresholds of pi *)
-IF actualPhi < 0 THEN actualPhi := actualPhi + 2*PI; END_IF
-IF actualPhi >= 2*PI THEN actualPhi := actualPhi - 2*PI; END_IF
-IF actualTheta < 0 THEN	actualTheta := actualTheta + 2*PI; END_IF
-IF actualTheta >= 2*PI THEN	actualTheta := actualTheta - 2*PI; END_IF
-IF actualPsi < 0 THEN	actualPsi := actualPsi + 2*PI;END_IF
-IF actualPsi >= 2*PI THEN	actualPsi := actualPsi - 2*PI;END_IF
-
-(* Determine length of acceleration vector *)
-sumAcc := a_fAccAxis[0] * a_fAccAxis[0] + a_fAccAxis[1] * a_fAccAxis[1] + a_fAccAxis[2] * a_fAccAxis[2];
-sumAcc := SQRT(sumAcc);
-
-(* Normalize acceleration vector *)
-IF sumAcc <> 0 THEN
-	FOR z := 0 TO 2 DO
-		normalizedAcceleration[z] := a_fAccAxis[z] / sumAcc;
-	END_FOR
-END_IF
-
-(* Due to normalized values, we do no need to cut off higher values than 1 *)
-IF normalizedAcceleration[2] = 0 THEN
-	normalizedAcceleration[2] := 0.000001;
-END_IF
-AccPhi := -ATAN(normalizedAcceleration[0] / normalizedAcceleration[2]) + PI;
-IF (a_fAccAxis[2]) <=0 THEN
-	AccPhi := AccPhi + PI;
-END_IF
-IF AccPhi > 2*PI THEN AccPhi := AccPhi - 2*PI; END_IF;
-IF AccPhi < 0 THEN AccPhi := AccPhi + 2*PI; END_IF;
-AccTheta := ASIN(normalizedAcceleration[1]) + PI;
-(* Simple sensor fusion if we are not accelerated *)
-IF sumAcc >= (1.0 - fusionWindow) AND sumAcc <= (1.0 + fusionWindow)AND bUseSensorFusion THEN
-	(* The AccPhi calculation is good, as long as Axis[2] ist not close to 0 *)
-	IF normalizedAcceleration[2] < -fusionHorizontThreshold OR normalizedAcceleration[2] > fusionHorizontThreshold THEN
-		IF (actualPhi - AccPhi) > PI OR (actualPhi - AccPhi) < -PI THEN
-			IF AccPhi > actualPhi THEN
-				AccPhi := AccPhi - 2 * PI;
-			ELSE
-				AccPhi := AccPhi + 2 * PI;
-			END_IF
-		END_IF
-		actualPhi := ((fusionWeight-1) * actualPhi + AccPhi) /fusionWeight;
-		(* error Zero crossing not handled !!! *)
-	END_IF
-	(* AccTheta is always accurate *)
-	actualTheta := ((fusionWeight-1) * actualTheta + AccTheta) /fusionWeight;
-END_IF]]></ST>
-      </Implementation>
-    </Action>
     <LineIds Name="MAIN">
       <LineId Id="1096" Count="0" />
       <LineId Id="1094" Count="0" />
       <LineId Id="1008" Count="0" />
       <LineId Id="1097" Count="0" />
-      <LineId Id="1009" Count="0" />
-      <LineId Id="1228" Count="0" />
+      <LineId Id="1385" Count="0" />
+      <LineId Id="1384" Count="0" />
+      <LineId Id="1417" Count="0" />
+      <LineId Id="1423" Count="0" />
       <LineId Id="1320" Count="0" />
-      <LineId Id="1324" Count="6" />
+      <LineId Id="1409" Count="1" />
+      <LineId Id="1414" Count="2" />
+      <LineId Id="1432" Count="2" />
+      <LineId Id="1412" Count="0" />
+      <LineId Id="1408" Count="0" />
+      <LineId Id="1387" Count="0" />
+      <LineId Id="1386" Count="0" />
+      <LineId Id="1394" Count="2" />
+      <LineId Id="1425" Count="0" />
+      <LineId Id="1388" Count="0" />
+      <LineId Id="1383" Count="0" />
+      <LineId Id="1327" Count="0" />
+      <LineId Id="1400" Count="1" />
       <LineId Id="1321" Count="0" />
       <LineId Id="1337" Count="1" />
-      <LineId Id="1341" Count="6" />
+      <LineId Id="1402" Count="1" />
+      <LineId Id="1347" Count="0" />
       <LineId Id="1349" Count="0" />
       <LineId Id="1339" Count="0" />
       <LineId Id="1360" Count="0" />
-      <LineId Id="1362" Count="7" />
+      <LineId Id="1404" Count="1" />
+      <LineId Id="1368" Count="1" />
       <LineId Id="1361" Count="0" />
       <LineId Id="1374" Count="0" />
-      <LineId Id="1382" Count="0" />
-      <LineId Id="1375" Count="6" />
+      <LineId Id="1406" Count="1" />
+      <LineId Id="1380" Count="1" />
       <LineId Id="1373" Count="0" />
-      <LineId Id="837" Count="0" />
-      <LineId Id="835" Count="0" />
-      <LineId Id="834" Count="0" />
-      <LineId Id="46" Count="0" />
+      <LineId Id="1431" Count="0" />
       <LineId Id="836" Count="0" />
-    </LineIds>
-    <LineIds Name="MAIN.ResetPosition">
-      <LineId Id="2" Count="1" />
-      <LineId Id="16" Count="2" />
-      <LineId Id="33" Count="2" />
-      <LineId Id="37" Count="3" />
-      <LineId Id="24" Count="5" />
-      <LineId Id="41" Count="0" />
-      <LineId Id="31" Count="0" />
-      <LineId Id="30" Count="0" />
-      <LineId Id="1" Count="0" />
-    </LineIds>
-    <LineIds Name="MAIN.SensorFusion">
-      <LineId Id="17" Count="0" />
-      <LineId Id="104" Count="0" />
-      <LineId Id="106" Count="0" />
-      <LineId Id="108" Count="0" />
-      <LineId Id="103" Count="0" />
-      <LineId Id="109" Count="0" />
-      <LineId Id="112" Count="0" />
-      <LineId Id="18" Count="18" />
-      <LineId Id="135" Count="56" />
-      <LineId Id="1" Count="0" />
+      <LineId Id="1429" Count="1" />
+      <LineId Id="1424" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

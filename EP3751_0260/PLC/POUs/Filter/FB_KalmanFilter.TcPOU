@@ -67,6 +67,8 @@ VAR
 	// Convert accelerometer data to angles (pitch, roll) in radians
     fPitchAccel_rad : LREAL;
     fRollAccel_rad : LREAL;
+	
+	fbSetReference: r_trig;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -148,8 +150,14 @@ fP_01Z := fP_01Z - fK_0Z * fP_01Z;
 fP_10Z := fP_10Z - fK_1Z * fP_00Z;
 fP_11Z := fP_11Z - fK_1Z * fP_01Z;
 
+// Convert radians to degrees for output
+stEulerAngle_deg.X := fAngle_prevX_rad * 180.0 / PI;
+stEulerAngle_deg.Y := fAngle_prevY_rad * 180.0 / PI;
+stEulerAngle_deg.Z := fAngle_prevZ_rad * 180.0 / PI;
+
+fbSetReference(clk:=bSetReference);
 // Set reference position if flag is active
-IF bSetReference THEN
+IF fbSetReference.q THEN
     stRef_Angles_deg.X := stEulerAngle_deg.X;
     stRef_Angles_deg.Y := stEulerAngle_deg.Y;
     stRef_Angles_deg.Z := stEulerAngle_deg.Z;
@@ -160,12 +168,17 @@ stEulerAngle_deg.X := stEulerAngle_deg.X - (stRef_Angles_deg.X);
 stEulerAngle_deg.Y := stEulerAngle_deg.Y - (stRef_Angles_deg.Y);
 stEulerAngle_deg.Z := stEulerAngle_deg.Z - (stRef_Angles_deg.Z);
 
-stEulerAngle_rad.X := stEulerAngle_rad.X - (stRef_Angles_deg.X) * PI / 180.0;
-stEulerAngle_rad.Y := stEulerAngle_rad.Y - (stRef_Angles_deg.Y) * PI / 180.0;
-stEulerAngle_rad.Z := stEulerAngle_rad.Z - (stRef_Angles_deg.Z) * PI / 180.0;]]></ST>
+stEulerAngle_rad.X := fAngle_prevX_rad - (stRef_Angles_deg.X) * PI / 180.0;
+stEulerAngle_rad.Y := fAngle_prevY_rad - (stRef_Angles_deg.Y) * PI / 180.0;
+stEulerAngle_rad.Z := fAngle_prevZ_rad - (stRef_Angles_deg.Z) * PI / 180.0;]]></ST>
     </Implementation>
     <LineIds Name="FB_KalmanFilter">
-      <LineId Id="943" Count="91" />
+      <LineId Id="943" Count="76" />
+      <LineId Id="1045" Count="3" />
+      <LineId Id="1043" Count="0" />
+      <LineId Id="1020" Count="0" />
+      <LineId Id="1038" Count="1" />
+      <LineId Id="1022" Count="12" />
       <LineId Id="9" Count="0" />
     </LineIds>
   </POU>

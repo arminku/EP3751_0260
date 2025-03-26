@@ -2,13 +2,26 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.59">
 	<DataTypes>
 		<DataType>
-			<Name GUID="{3A839D76-9D62-6922-50F1-CB23A3BED14A}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..2] OF REAL</Name>
+			<Name GUID="{045389D1-6D27-BA99-A163-89FB0B3B463D}" AutoDeleteType="true">ST_3D_Values</Name>
 			<BitSize>96</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-00000000000D}">REAL</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>3</Elements>
-			</ArrayInfo>
+			<SubItem>
+				<Name>X</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Y</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Z</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
 		</DataType>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
@@ -63,21 +76,33 @@
 		</System>
 		<Plc>
 			<Project GUID="{A4D08A90-99AB-43AA-A6B4-4C07F0ECFD01}" Name="PLC" PrjFilePath="PLC\PLC.plcproj" TmcFilePath="PLC\PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{5E494D69-B209-08FF-43EF-29449F2B510E}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{E9F2A051-1F46-D283-FB22-F55C7A4ECA7F}">
 					<Name>PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>MAIN.a_fGyroAxis</Name>
-							<Type GUID="{3A839D76-9D62-6922-50F1-CB23A3BED14A}">ARRAY [0..2] OF REAL</Type>
+							<Name>MAIN.stGyroAxis</Name>
+							<Type GUID="{045389D1-6D27-BA99-A163-89FB0B3B463D}">ST_3D_Values</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.a_fAccAxis</Name>
+							<Name>MAIN.stAccAxis</Name>
 							<Comment><![CDATA[ Accelerometer values ]]></Comment>
-							<Type GUID="{3A839D76-9D62-6922-50F1-CB23A3BED14A}">ARRAY [0..2] OF REAL</Type>
+							<Type GUID="{045389D1-6D27-BA99-A163-89FB0B3B463D}">ST_3D_Values</Type>
 						</Var>
 					</Vars>
+					<UnrestoredVarLinks ImportTime="2025-03-26T18:24:43">
+						<OwnerA Name="InputDst" Prefix="TIPC^PLC^PLC Instance" Type="1">
+							<OwnerB Name="TIID^Device 3 (EtherCAT)^Box 1 (EP3751-0260)">
+								<Link VarA="MAIN.a_fAccAxis[0]" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="AI Acc X Samples 1 (Real32)^Samples[0]" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.a_fAccAxis[1]" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="AI Acc Y Samples 1 (Real32)^Samples[0]" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.a_fAccAxis[2]" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="AI Acc Z Samples 1 (Real32)^Samples[0]" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.a_fGyroAxis[0]" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="AI Gyro X Samples 1 (Real32)^Samples[0]" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.a_fGyroAxis[1]" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="AI Gyro Y Samples 1 (Real32)^Samples[0]" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.a_fGyroAxis[2]" TypeA="REAL" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="AI Gyro Z Samples 1 (Real32)^Samples[0]" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<Contexts>
 						<Context>
 							<Id>0</Id>
@@ -111,7 +136,7 @@
 				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
 					<Name>Box 1 (EP3751-0260)</Name>
 					<ImageId>1000</ImageId>
-					<EtherCAT SlaveType="2" PdiType="#x0605" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x0ea74052" RevisionNo="#x00100104" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="17" SdoUploadWithMaxLength="true" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP3751-0260 Acceleration Sensor and Gyroscope" Desc="EP3751-0260" PortABoxInfo="#x00ffffff">
+					<EtherCAT SlaveType="2" PdiType="#x0605" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x0ea74052" RevisionNo="#x00100104" InfoDataAddr="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="17" SdoUploadWithMaxLength="true" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP3751-0260 Acceleration Sensor and Gyroscope" Desc="EP3751-0260" PortABoxInfo="#x00ffffff">
 						<SyncMan>001000012600010001000000800000010001001026010000</SyncMan>
 						<SyncMan>001100012200010002000000800000010001001122010000</SyncMan>
 						<SyncMan>001202002400010003000000000000000200001224010000</SyncMan>
@@ -120,6 +145,7 @@
 						<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
 						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010f400f410f400</BootStrapData>
+						<DcData>0007000090d0030000000000000000000000ffff010000000000000000000000</DcData>
 						<DcMode>53796e6368726f6e00000000000000004672656552756e2f534d2d53796e6368726f6e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e00000000000000000000000000000000000000000090d003000000000000000000ffff00070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<Pdo Name="AI Acc X Status" Index="#x1a00" Flags="#x0010" SyncMan="3">
@@ -4496,7 +4522,7 @@
 						<CoeProfile ProfileNo="18355081"/>
 					</EtherCAT>
 				</Box>
-				<EtherCAT/>
+				<EtherCAT DcSyncMode="3"/>
 			</Device>
 		</Io>
 	</Project>
@@ -4504,12 +4530,12 @@
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^PLC^PLC Instance">
 			<OwnerB Name="TIID^Device 3 (EtherCAT)^Box 1 (EP3751-0260)">
-				<Link VarA="PlcTask Inputs^MAIN.a_fAccAxis[0]" VarB="AI Acc X Samples 1 (Real32)^Samples[0]"/>
-				<Link VarA="PlcTask Inputs^MAIN.a_fAccAxis[1]" VarB="AI Acc Y Samples 1 (Real32)^Samples[0]"/>
-				<Link VarA="PlcTask Inputs^MAIN.a_fAccAxis[2]" VarB="AI Acc Z Samples 1 (Real32)^Samples[0]"/>
-				<Link VarA="PlcTask Inputs^MAIN.a_fGyroAxis[0]" VarB="AI Gyro X Samples 1 (Real32)^Samples[0]"/>
-				<Link VarA="PlcTask Inputs^MAIN.a_fGyroAxis[1]" VarB="AI Gyro Y Samples 1 (Real32)^Samples[0]"/>
-				<Link VarA="PlcTask Inputs^MAIN.a_fGyroAxis[2]" VarB="AI Gyro Z Samples 1 (Real32)^Samples[0]"/>
+				<Link VarA="PlcTask Inputs^MAIN.stAccAxis^X" VarB="AI Acc X Samples 1 (Real32)^Samples[0]"/>
+				<Link VarA="PlcTask Inputs^MAIN.stAccAxis^Y" VarB="AI Acc Y Samples 1 (Real32)^Samples[0]"/>
+				<Link VarA="PlcTask Inputs^MAIN.stAccAxis^Z" VarB="AI Acc Z Samples 1 (Real32)^Samples[0]"/>
+				<Link VarA="PlcTask Inputs^MAIN.stGyroAxis^X" VarB="AI Gyro X Samples 1 (Real32)^Samples[0]"/>
+				<Link VarA="PlcTask Inputs^MAIN.stGyroAxis^Y" VarB="AI Gyro Y Samples 1 (Real32)^Samples[0]"/>
+				<Link VarA="PlcTask Inputs^MAIN.stGyroAxis^Z" VarB="AI Gyro Z Samples 1 (Real32)^Samples[0]"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

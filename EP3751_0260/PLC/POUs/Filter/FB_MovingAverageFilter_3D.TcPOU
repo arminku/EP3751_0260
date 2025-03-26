@@ -5,7 +5,7 @@
 VAR_INPUT
     stSampleData : ST_3D_values; // New Data in 3 axes
     nNumSamples : UINT:= gvl_sensorFusion.buffersize_filter;              // Number of samples for the moving average
-    bEnable : BOOL;                   // Enable flag
+    bEnable 	: BOOL;                   // Execute flag
 END_VAR
 
 VAR_OUTPUT
@@ -20,12 +20,18 @@ VAR_IN_OUT
 END_VAR
 
 VAR
+	fbExecuteTrigger:r_trig;
+	bInit:BOOL;
     fbMovingAverageX : FB_MovingAverageFilter; // Instance for X axis
     fbMovingAverageY : FB_MovingAverageFilter; // Instance for Y axis
     fbMovingAverageZ : FB_MovingAverageFilter; // Instance for Z axis
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbMovingAverageX(
+      <ST><![CDATA[IF NOT bEnable THEN
+	bInit:=bInit;
+END_IF
+
+fbMovingAverageX(
     fInputValue := stSampleData.X,
     nNumSamples := nNumSamples,
     bEnable := bEnable,
@@ -53,6 +59,9 @@ fbMovingAverageZ(
 );]]></ST>
     </Implementation>
     <LineIds Name="FB_MovingAverageFilter_3D">
+      <LineId Id="276" Count="0" />
+      <LineId Id="278" Count="1" />
+      <LineId Id="277" Count="0" />
       <LineId Id="209" Count="24" />
       <LineId Id="9" Count="0" />
     </LineIds>
