@@ -5,7 +5,7 @@
 VAR_INPUT
     stAccelData : ST_3D_values; // Acceleration Data in (g)
     stGyroData : ST_3D_values; // Gyroscope Data in (°/s)
-	fCycleTime: REAL; 				   // CycleTime of sensor data in s
+	fCycleTime: REAL; 			// CycleTime of sensor data in s
 	fQ_angle : REAL := 0.001;     // Process noise variance for the angle
     fQ_bias : REAL := 0.003;      // Process noise variance for the bias
     fR_measure : REAL := 0.03;    // Measurement noise variance

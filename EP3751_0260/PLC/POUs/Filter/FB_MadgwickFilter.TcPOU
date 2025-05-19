@@ -118,13 +118,13 @@ fSinYaw := 2.0 * (fQ0 * fQ3 + fQ1 * fQ2);
 fCosYaw := 1.0 - 2.0 * (fQ3 * fQ3 + fQ2 * fQ2);
 
 // Convert trigonometric values to Euler angles using ATAN2 and ASIN in radians
-stEulerAngle_rad.y := LREAL_TO_REAL(ATAN2(fSinRoll, fCosRoll));
-stEulerAngle_rad.x := LREAL_TO_REAL(ASIN(fSinPitch));
+stEulerAngle_rad.x := LREAL_TO_REAL(ATAN2(fSinRoll, fCosRoll));
+stEulerAngle_rad.y := LREAL_TO_REAL(ASIN(fSinPitch));
 stEulerAngle_rad.Z := LREAL_TO_REAL(ATAN2(fSinYaw, fCosYaw));
 
 // Convert radians to degrees
-stEulerAngle_deg.y := stEulerAngle_rad.y * 180.0 / pi;
 stEulerAngle_deg.x := stEulerAngle_rad.x * 180.0 / pi;
+stEulerAngle_deg.y := stEulerAngle_rad.y * 180.0 / pi;
 stEulerAngle_deg.z := stEulerAngle_rad.z * 180.0 / pi;
 
 fbSetReference(clk:=bSetReference);

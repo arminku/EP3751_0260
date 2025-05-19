@@ -102,13 +102,13 @@ IF fNorm > 1E-6 THEN
 END_IF
 
 // Convert quaternion to Euler angles
-stEulerAngle_rad.y := (ATAN2(2.0 * (fQ0 * fQ1 + fQ2 * fQ3), 1.0 - 2.0 * (fQ1 * fQ1 + fQ2 * fQ2)));
-stEulerAngle_rad.x := (ASIN(2.0 * (fQ0 * fQ2 - fQ3 * fQ1)));
+stEulerAngle_rad.x := (ATAN2(2.0 * (fQ0 * fQ1 + fQ2 * fQ3), 1.0 - 2.0 * (fQ1 * fQ1 + fQ2 * fQ2)));
+stEulerAngle_rad.y := (ASIN(2.0 * (fQ0 * fQ2 - fQ3 * fQ1)));
 stEulerAngle_rad.z := (ATAN2(2.0 * (fQ0 * fQ3 + fQ1 * fQ2), 1.0 - 2.0 * (fQ2 * fQ2 + fQ3 * fQ3)));
 
 // Convert radians to degrees
-stEulerAngle_deg.y := stEulerAngle_rad.y * 180.0 / pi;
 stEulerAngle_deg.x := stEulerAngle_rad.x * 180.0 / pi;
+stEulerAngle_deg.y := stEulerAngle_rad.y * 180.0 / pi;
 stEulerAngle_deg.z := stEulerAngle_rad.z * 180.0 / pi;
 
 fbSetReference(clk:=bSetReference);
