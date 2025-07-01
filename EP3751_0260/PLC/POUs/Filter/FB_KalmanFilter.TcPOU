@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="FB_KalmanFilter" Id="{581c826b-cb6d-4d78-bee9-04712b3a631b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_KalmanFilter
+VAR_INPUT
+    stAccelData : ST_3D_values; // Acceleration Data in (g)
+    stGyroData : ST_3D_values; // Gyroscope Data in (°/s)
+	fCycleTime: REAL; 			// CycleTime of sensor data in s
+	fQ_angle : REAL := 0.001;     // Process noise variance for the angle
+    fQ_bias : REAL := 0.003;      // Process noise variance for the bias
+    fR_measure : REAL := 0.03;    // Measurement noise variance
+    bSetReference : BOOL := FALSE; // Flag to set the current position as the reference position
+END_VAR
+VAR_OUTPUT
+    stEulerAngle_deg : ST_3D_values; // Estimated Euler angle in degrees X= Pitch, Y=Roll, Z=Yaw
+    stEulerAngle_rad : ST_3D_values; // Estimated Euler angle in rad X= Pitch, Y=Roll, Z=Yaw
+END_VAR
+VAR
+	// Reference angles
+	stRef_Angles_deg :ST_3d_values; // Reference orientation (bSetReference; angles in degrees)
+	
+    // Variables for X-axis
+    fAngle_prevX_rad : LREAL := 0.0;   // Previous angle for X-axis in radians
+    fBiasX : LREAL := 0.0;             // Gyroscope bias for X-axis
+    fRateX : LREAL := 0.0;             // Rate of change of the angle for X-axis
+
+    fP_00X : LREAL := 1.0;             // Covariance matrix for X-axis
+    fP_01X : LREAL := 0.0;
+    fP_10X : LREAL := 0.0;
+    fP_11X : LREAL := 1.0;
+
+    fY_X : LREAL;                      // Angle difference for X-axis
+    fS_X : LREAL;                      // Estimate error for X-axis
+    fK_0X : LREAL;                     // Kalman gain for X-axis
+    fK_1X : LREAL;                     // Kalman gain for X-axis
+
+    // Variables for Y-axis
+    fAngle_prevY_rad : LREAL := 0.0;   // Previous angle for Y-axis in radians
+    fBiasY : LREAL := 0.0;             // Gyroscope bias for Y-axis
+    fRateY : LREAL := 0.0;             // Rate of change of the angle for Y-axis
+
+    fP_00Y : LREAL := 1.0;             // Covariance matrix for Y-axis
+    fP_01Y : LREAL := 0.0;
+    fP_10Y : LREAL := 0.0;
+    fP_11Y : LREAL := 1.0;
+
+    fY_Y : LREAL;                      // Angle difference for Y-axis
+    fS_Y : LREAL;                      // Estimate error for Y-axis
+    fK_0Y : LREAL;                     // Kalman gain for Y-axis
+    fK_1Y : LREAL;                     // Kalman gain for Y-axis
+
+    // Variables for Z-axis
+    fAngle_prevZ_rad : LREAL := 0.0;   // Previous angle for Z-axis in radians
+    fBiasZ : LREAL := 0.0;             // Gyroscope bias for Z-axis
+    fRateZ : LREAL := 0.0;             // Rate of change of the angle for Z-axis
+
+    fP_00Z : LREAL := 1.0;             // Covariance matrix for Z-axis
+    fP_01Z : LREAL := 0.0;
+    fP_10Z : LREAL := 0.0;
+    fP_11Z : LREAL := 1.0;
+
+    fY_Z : LREAL;                      // Angle difference for Z-axis
+    fS_Z : LREAL;                      // Estimate error for Z-axis
+    fK_0Z : LREAL;                     // Kalman gain for Z-axis
+    fK_1Z : LREAL;                     // Kalman gain for Z-axis
+	
+	// Convert accelerometer data to angles (pitch, roll) in radians
+    fPitchAccel_rad : LREAL;
+    fRollAccel_rad : LREAL;
+	
+	fbSetReference: r_trig;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Calculate accelerometer angles using ATAN2, which returns radians
+IF (stAccelData.X * stAccelData.X + stAccelData.Z * stAccelData.Z > 0.0) THEN 
+    fPitchAccel_rad := ATAN(stAccelData.Y / SQRT(stAccelData.X * stAccelData.X + stAccelData.Z * stAccelData.Z));
+END_IF
+IF (stAccelData.Y * stAccelData.Y + stAccelData.Z * stAccelData.Z > 0.0) THEN 
+    fRollAccel_rad := ATAN(stAccelData.X / SQRT(stAccelData.Y * stAccelData.Y + stAccelData.Z * stAccelData.Z));
+END_IF
+
+// Prediction step for X-axis (Pitch)
+fRateX := stGyroData.X - fBiasX;
+fAngle_prevX_rad := fAngle_prevX_rad + fCycleTime * fRateX * PI / 180.0; // Conversion of rate from degrees/second to radians/second
+
+fP_00X := fP_00X + fCycleTime * (fCycleTime * fP_11X - fP_01X - fP_10X + fQ_angle);
+fP_01X := fP_01X - fCycleTime * fP_11X;
+fP_10X := fP_10X - fCycleTime * fP_11X;
+fP_11X := fP_11X + fQ_bias * fCycleTime;
+
+// Measurement update for X-axis (Pitch)
+fY_X := fPitchAccel_rad - fAngle_prevX_rad; // Using the pitch angle in radians
+fS_X := fP_00X + fR_measure;
+fK_0X := fP_00X / fS_X;
+fK_1X := fP_10X / fS_X;
+
+fAngle_prevX_rad := fAngle_prevX_rad + fK_0X * fY_X;
+fBiasX := fBiasX + fK_1X * fY_X;
+
+fP_00X := fP_00X - fK_0X * fP_00X;
+fP_01X := fP_01X - fK_0X * fP_01X;
+fP_10X := fP_10X - fK_1X * fP_00X;
+fP_11X := fP_11X - fK_1X * fP_01X;
+
+// Prediction step for Y-axis (Roll)
+fRateY := stGyroData.Y - fBiasY;
+fAngle_prevY_rad := fAngle_prevY_rad + fCycleTime * fRateY * PI / 180.0; // Conversion of rate from degrees/second to radians/second
+
+fP_00Y := fP_00Y + fCycleTime * (fCycleTime * fP_11Y - fP_01Y - fP_10Y + fQ_angle);
+fP_01Y := fP_01Y - fCycleTime * fP_11Y;
+fP_10Y := fP_10Y - fCycleTime * fP_11Y;
+fP_11Y := fP_11Y + fQ_bias * fCycleTime;
+
+// Measurement update for Y-axis (Roll)
+fY_Y := fRollAccel_rad - fAngle_prevY_rad; // Using the roll angle in radians
+fS_Y := fP_00Y + fR_measure;
+fK_0Y := fP_00Y / fS_Y;
+fK_1Y := fP_10Y / fS_Y;
+
+fAngle_prevY_rad := fAngle_prevY_rad + fK_0Y * fY_Y;
+fBiasY := fBiasY + fK_1Y * fY_Y;
+
+fP_00Y := fP_00Y - fK_0Y * fP_00Y;
+fP_01Y := fP_01Y - fK_0Y * fP_01Y;
+fP_10Y := fP_10Y - fK_1Y * fP_00Y;
+fP_11Y := fP_11Y - fK_1Y * fP_01Y;
+
+// Prediction step for Z-axis (Yaw)
+fRateZ := stGyroData.Z - fBiasZ;
+fAngle_prevZ_rad := fAngle_prevZ_rad + fCycleTime * fRateZ * PI / 180.0; // Conversion of rate from degrees/second to radians/second
+
+fP_00Z := fP_00Z + fCycleTime * (fCycleTime * fP_11Z - fP_01Z - fP_10Z + fQ_angle);
+fP_01Z := fP_01Z - fCycleTime * fP_11Z;
+fP_10Z := fP_10Z - fCycleTime * fP_11Z;
+fP_11Z := fP_11Z + fQ_bias * fCycleTime;
+
+// Measurement update for Z-axis (Yaw)
+// Since the accelerometer does not provide a direct yaw measurement, we use gyroscope data for the yaw update.
+fY_Z := fRateZ; // Gyroscope rate in degrees/second
+fS_Z := fP_00Z + fR_measure;
+fK_0Z := fP_00Z / fS_Z;
+fK_1Z := fP_10Z / fS_Z;
+
+fAngle_prevZ_rad := fAngle_prevZ_rad + fK_0Z * fY_Z * fCycleTime * PI / 180.0; // Updating the yaw angle with gyroscope data and conversion to radians
+fBiasZ := fBiasZ + fK_1Z * fY_Z * fCycleTime * PI / 180.0;
+
+fP_00Z := fP_00Z - fK_0Z * fP_00Z;
+fP_01Z := fP_01Z - fK_0Z * fP_01Z;
+fP_10Z := fP_10Z - fK_1Z * fP_00Z;
+fP_11Z := fP_11Z - fK_1Z * fP_01Z;
+
+// Convert radians to degrees for output
+stEulerAngle_deg.X := fAngle_prevX_rad * 180.0 / PI;
+stEulerAngle_deg.Y := fAngle_prevY_rad * 180.0 / PI;
+stEulerAngle_deg.Z := fAngle_prevZ_rad * 180.0 / PI;
+
+fbSetReference(clk:=bSetReference);
+// Set reference position if flag is active
+IF fbSetReference.q THEN
+    stRef_Angles_deg.X := stEulerAngle_deg.X;
+    stRef_Angles_deg.Y := stEulerAngle_deg.Y;
+    stRef_Angles_deg.Z := stEulerAngle_deg.Z;
+END_IF
+
+// Apply reference position
+stEulerAngle_deg.X := stEulerAngle_deg.X - (stRef_Angles_deg.X);
+stEulerAngle_deg.Y := stEulerAngle_deg.Y - (stRef_Angles_deg.Y);
+stEulerAngle_deg.Z := stEulerAngle_deg.Z - (stRef_Angles_deg.Z);
+
+stEulerAngle_rad.X := fAngle_prevX_rad - (stRef_Angles_deg.X) * PI / 180.0;
+stEulerAngle_rad.Y := fAngle_prevY_rad - (stRef_Angles_deg.Y) * PI / 180.0;
+stEulerAngle_rad.Z := fAngle_prevZ_rad - (stRef_Angles_deg.Z) * PI / 180.0;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_KalmanFilter">
+      <LineId Id="943" Count="76" />
+      <LineId Id="1045" Count="3" />
+      <LineId Id="1043" Count="0" />
+      <LineId Id="1020" Count="0" />
+      <LineId Id="1038" Count="1" />
+      <LineId Id="1022" Count="12" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

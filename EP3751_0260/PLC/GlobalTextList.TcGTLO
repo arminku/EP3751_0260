@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <GlobalTextList Name="GlobalTextList" Id="{eee78555-5d69-40e1-acfe-a70cececba73}">
     <XmlArchive>
       <Data>
         <o xml:space="preserve" t="GlobalTextListObject">
           <l n="TextList" t="ArrayList" cet="TextListRow">
+            <o>
+              <v n="TextID">"896"</v>
+              <v n="TextDefault">"%.2f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
             <o>
               <v n="TextID">"216"</v>
               <v n="TextDefault">"%.3f"</v>
@@ -13,6 +18,11 @@
             <o>
               <v n="TextID">"253"</v>
               <v n="TextDefault">"%d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"460"</v>
+              <v n="TextDefault">"%f"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -26,13 +36,28 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"797"</v>
+              <v n="TextDefault">"Accel X-Axis: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"669"</v>
               <v n="TextDefault">"Accel Y-Axis: %.0f"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"525"</v>
+              <v n="TextDefault">"Accel Y-Axis: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"265"</v>
               <v n="TextDefault">"Accel Z-Axis: %.0f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"89"</v>
+              <v n="TextDefault">"Accel Z-Axis: %.3f"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -61,6 +86,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"603"</v>
+              <v n="TextDefault">"Complementary"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"288"</v>
+              <v n="TextDefault">"Euler Angle Gamma%.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"833"</v>
               <v n="TextDefault">"Euler Angle Gamma: %.3f"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -68,6 +103,16 @@
             <o>
               <v n="TextID">"868"</v>
               <v n="TextDefault">"Euler Angle Phi: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"3"</v>
+              <v n="TextDefault">"Euler Angle Psi%.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"605"</v>
+              <v n="TextDefault">"Euler Angle Psi: %.3f"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -111,13 +156,43 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"434"</v>
+              <v n="TextDefault">"Gyro X-Axis: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"598"</v>
               <v n="TextDefault">"Gyro Y-Axis: %.0f"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"123"</v>
+              <v n="TextDefault">"Gyro Y-Axis: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"740"</v>
               <v n="TextDefault">"Gyro Z-Axis: %.0f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"955"</v>
+              <v n="TextDefault">"Gyro Z-Axis: %.3f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"368"</v>
+              <v n="TextDefault">"Kalman"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"298"</v>
+              <v n="TextDefault">"Madgwick"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"943"</v>
+              <v n="TextDefault">"Mahony"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -163,6 +238,11 @@
             <o>
               <v n="TextID">"2"</v>
               <v n="TextDefault">"Use Sensorfusion"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"745"</v>
+              <v n="TextDefault">"Without Fusion"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

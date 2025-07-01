@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="ATAN2" Id="{a4d6befc-dc9e-46d1-bb50-0e6ce5389424}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION ATAN2 : LREAL //in rad
+VAR_INPUT	
+    y : REAL; // y-coordinate
+    x : REAL; // x-coordinate
+END_VAR
+VAR_OUTPUT
+   
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF x > 0 THEN
+    ATAN2 := ATAN(y / x);
+ELSIF x < 0 AND y >= 0 THEN
+    ATAN2 := ATAN(y / x) + pi;
+ELSIF x < 0 AND y < 0 THEN
+    ATAN2 := ATAN(y / x) - pi;
+ELSIF x = 0 AND y > 0 THEN
+    ATAN2 := pi / 2;
+ELSIF x = 0 AND y < 0 THEN
+    ATAN2 := -pi / 2;
+ELSIF x = 0 AND y = 0 THEN
+    ATAN2 := 0.0; // Undefined, but conventionally set to 0
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="ATAN2">
+      <LineId Id="12" Count="11" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
