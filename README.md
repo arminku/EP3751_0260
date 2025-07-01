@@ -11,4 +11,4 @@ Application hints (tested configuration & best practice):
 - PLC cycletime 250us => full 4kSps of Sensor
 - Enable DC operation of box:![image](https://github.com/user-attachments/assets/b24720d0-aecc-44f6-9d42-feff7825d100)
 
-For questions/feedback: A.Kulla@beckhoff.com
+
