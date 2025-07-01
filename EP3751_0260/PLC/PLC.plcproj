@@ -76,26 +76,6 @@
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
     </Compile>
-    <Compile Include="VISUs\Visualization_Complementary.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
-      <ExcludeFromBuild>true</ExcludeFromBuild>
-    </Compile>
-    <Compile Include="VISUs\Visualization_Mahony.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
-      <ExcludeFromBuild>true</ExcludeFromBuild>
-    </Compile>
-    <Compile Include="VISUs\Visualization_Kalman.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
-      <ExcludeFromBuild>true</ExcludeFromBuild>
-    </Compile>
-    <Compile Include="VISUs\Visualization_Madgwick.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
-      <ExcludeFromBuild>true</ExcludeFromBuild>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
