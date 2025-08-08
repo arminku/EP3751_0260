@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_MovingAverageFilter_3D" Id="{cfc77347-1872-41de-ac52-a9ef65cd48b5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MovingAverageFilter_3D
+VAR_INPUT
+    stSampleData : ST_3D_values; // New Data in 3 axes
+    nNumSamples : UINT:= gvl_sensorFusion.buffersize_filter;              // Number of samples for the moving average
+    bEnable 	: BOOL;                   // Execute flag
+END_VAR
+
+VAR_OUTPUT
+    stAvgData : ST_3D_values; // New Data in 3 axes
+    bBufferFilledX : BOOL;            // Flag indicating if the buffer for X axis is filled
+    bBufferFilledY : BOOL;            // Flag indicating if the buffer for Y axis is filled
+    bBufferFilledZ : BOOL;            // Flag indicating if the buffer for Z axis is filled
+END_VAR
+
+VAR_IN_OUT
+    a_fSamples : ARRAY[0..2] OF ARRAY[ 0..GVL_SensorFusion.buffersize_filter-1] OF REAL; // Array of arrays to store samples for three axes
+END_VAR
+
+VAR
+	fbExecuteTrigger:r_trig;
+	bInit:BOOL;
+    fbMovingAverageX : FB_MovingAverageFilter; // Instance for X axis
+    fbMovingAverageY : FB_MovingAverageFilter; // Instance for Y axis
+    fbMovingAverageZ : FB_MovingAverageFilter; // Instance for Z axis
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT bEnable THEN
+	bInit:=bInit;
+END_IF
+
+fbMovingAverageX(
+    fInputValue := stSampleData.X,
+    nNumSamples := nNumSamples,
+    bEnable := bEnable,
+    fAvgValue => stAvgData.x,
+    bBufferFilled => bBufferFilledX,
+    a_fSamples := a_fSamples[0]
+);
+
+fbMovingAverageY(
+    fInputValue := stSampleData.y,
+    nNumSamples := nNumSamples,
+    bEnable := bEnable,
+    fAvgValue => stAvgData.y,
+    bBufferFilled => bBufferFilledY,
+    a_fSamples := a_fSamples[1]
+);
+
+fbMovingAverageZ(
+    fInputValue := stSampleData.z,
+    nNumSamples := nNumSamples,
+    bEnable := bEnable,
+    fAvgValue => stAvgData.z,
+    bBufferFilled => bBufferFilledZ,
+    a_fSamples := a_fSamples[2]
+);]]></ST>
+    </Implementation>
+    <LineIds Name="FB_MovingAverageFilter_3D">
+      <LineId Id="276" Count="0" />
+      <LineId Id="278" Count="1" />
+      <LineId Id="277" Count="0" />
+      <LineId Id="209" Count="24" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

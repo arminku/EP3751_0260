@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="MAIN" Id="{5ed6dd28-4e50-4912-a842-bd2821892fe5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	stGyroAxis AT %I* : ST_3d_values;
 	stcorrAxis : ST_3d_values;
 	stOffset	:ST_3d_values;
-
-
 
 	fbMovingAverage_3D: FB_MovingAverageFilter_3D;
 	a_fBuffer : ARRAY[0..2] OF ARRAY[ 0..GVL_SensorFusion.buffersize_filter-1] OF REAL;
@@ -17,55 +15,11 @@ VAR
 	normalizedAcceleration : ARRAY [0..2] OF LREAL;
 
 (* Working variables *)
-	bWriteOffset: BOOL;
-	WriteOffsetState: INT;
-
 	fbStartOffsetCalibration : R_TRIG;
 	bReset: BOOL;
-
 	fbOffsetSet : R_TRIG;
-	bResetAngle: BOOL;
+	bResetAngles: BOOL;
 
-
-	bytesToRead :INT := 1;
-	rcvBytes : ARRAY [0..15] OF INT;
-	bytesLeft: INT;
-	
-	dps : LREAL := 2000.0; // full scale range of gyro in °/s (CoE F800:11; in prototype this is static)
-	
-	(* state variables *)
-	actualRoll : LREAL;
-	actualPitch : LREAL;
-	actualYaw : LREAL;
-	
-	actualPhi : LREAL;
-	actualTheta : LREAL;
-	actualPsi : LREAL;
-	
-	fdegPhi :LREAL;
-	fdegTheta :LREAL;
-	fdegPsi :LREAL;
-	
-	droll:LREAL;
-	dpitch:LREAL;
-	dyaw:LREAL;
-	
-	fPhi : LREAL;
-	fTheta : LREAL;
-	fPsi : LREAL;
-
-	temp : LREAL;
-	
-	AccPhi : LREAL;
-	AccTheta : LREAL;
-	
-	sumAcc : LREAL;
-	
-	bReferencePositionSetOnce: BOOL;
-	bUseSensorFusion		: BOOL;
-	fusionWeight 			: LREAL := 1024; // parameter of sensorfusion: higher values result in a lower influence of the accelerationsensors
-	fusionWindow 			: REAL 	:= 0.1;  // Check for resting position => Threshold for influence of accelerationsensors 
-	fusionHorizontThreshold : LREAL := 0.0004;  
 	fCycleTime 				: LREAL; // PLC cycle time in s (has to match with ODR of sensor => for prototype this is static 4000Hz)
 	nTaskIndex				: DINT;
 	bReady					: BOOL;
@@ -98,7 +52,13 @@ IF fbOffsetSet.Q THEN
 	stEulerAngle_Gyro.x:=0;
 	stEulerAngle_Gyro.y:=0;
 	stEulerAngle_Gyro.z:=0;
+ELSIF bResetAngles THEN
+	stEulerAngle_Gyro.x:=0;
+	stEulerAngle_Gyro.y:=0;
+	stEulerAngle_Gyro.z:=0;
+	bResetAngles:=FALSE;
 END_IF
+
 bReady:=fbMovingAverage_3D.bBufferFilledX;
 
 //correct Gyro-Values with Offset
@@ -150,7 +110,12 @@ stEulerAngle_Gyro.z := stEulerAngle_Gyro.z + stcorrAxis.Z * fCycleTime;
       <LineId Id="1409" Count="1" />
       <LineId Id="1414" Count="2" />
       <LineId Id="1432" Count="2" />
+      <LineId Id="1514" Count="0" />
+      <LineId Id="1517" Count="1" />
+      <LineId Id="1515" Count="0" />
+      <LineId Id="1521" Count="0" />
       <LineId Id="1412" Count="0" />
+      <LineId Id="1513" Count="0" />
       <LineId Id="1408" Count="0" />
       <LineId Id="1387" Count="0" />
       <LineId Id="1386" Count="0" />

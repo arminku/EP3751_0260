@@ -24,7 +24,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
 			<BitSize>10</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -33,7 +33,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
 			<BitSize>2</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -51,7 +51,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
 			<BitSize>13</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -76,7 +76,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{A4D08A90-99AB-43AA-A6B4-4C07F0ECFD01}" Name="PLC" PrjFilePath="PLC\PLC.plcproj" TmcFilePath="PLC\PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{99F415A1-22E5-DAFD-C724-D297B6541C2B}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{09A9946E-E988-5D15-9DDE-D2103815D189}">
 					<Name>PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -121,22 +121,22 @@
 			</Project>
 		</Plc>
 		<Io>
-			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="10.1.160.20.4.1" RemoteName="Gerät 3 (EtherCAT)" InfoImageId="2">
-				<Name>Gerät 3 (EtherCAT)</Name>
+			<Device Id="3" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="172.17.129.121.4.1" RemoteName="Device 3 (EtherCAT)" InfoImageId="3">
+				<Name>Device 3 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>
-						<DeviceDesc>Ethernet (TwinCAT-Intel PCI Ethernet Adapter (Gigab</DeviceDesc>
-						<DeviceName>\DEVICE\{6C32E7C7-162B-47AC-938B-1CB49618A28F}</DeviceName>
-						<DeviceData>000105385133</DeviceData>
+						<DeviceDesc>Ethernet 2 (TwinCAT-Intel PCI Ethernet Adapter (Gig</DeviceDesc>
+						<DeviceName>\DEVICE\{5C88910F-6E94-4C44-9905-94516518C6EE}</DeviceName>
+						<DeviceData>000105378238</DeviceData>
 					</Pnp>
 				</AddressInfo>
-				<Image Id="1" AddrType="9" ImageType="3">
-					<Name>Prozessabbild</Name>
+				<Image Id="2" AddrType="9" ImageType="3">
+					<Name>Image</Name>
 				</Image>
 				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
 					<Name>Box 1 (EP3751-0260)</Name>
 					<ImageId>1000</ImageId>
-					<EtherCAT SlaveType="2" PdiType="#x0605" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x0ea74052" RevisionNo="#x00100104" InfoDataAddr="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="17" SdoUploadWithMaxLength="true" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP3751-0260 Acceleration Sensor and Gyroscope" Desc="EP3751-0260" PortABoxInfo="#x00ffffff">
+					<EtherCAT SlaveType="2" PdiType="#x0605" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x0ea74052" RevisionNo="#x00100104" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="17" SdoUploadWithMaxLength="true" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EP3751-0260 Acceleration Sensor and Gyroscope" Desc="EP3751-0260" PortABoxInfo="#x00ffffff">
 						<SyncMan>001000012600010001000000800000010001001026010000</SyncMan>
 						<SyncMan>001100012200010002000000800000010001001122010000</SyncMan>
 						<SyncMan>001202002400010003000000000000000200001224010000</SyncMan>
@@ -145,7 +145,6 @@
 						<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
 						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010f400f410f400</BootStrapData>
-						<DcData>0007000090d0030000000000000000000000ffff010000000000000000000000</DcData>
 						<DcMode>53796e6368726f6e00000000000000004672656552756e2f534d2d53796e6368726f6e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e00000000000000000000000000000000000000000090d003000000000000000000ffff00070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<Pdo Name="AI Acc X Status" Index="#x1a00" Flags="#x0010" SyncMan="3">
@@ -229,7 +228,7 @@
 							</Entry>
 						</Pdo>
 						<Pdo Name="AI Acc X Samples 1 (Real32)" Index="#x1a04" Flags="#x0010" SyncMan="3">
-							<Entry Name="Samples__ARRAY [0]" Index="#x6003" Sub="#x01" Flags="#x00008020">
+							<Entry Name="Samples__ARRAY [0]" Index="#x6003" Sub="#x01">
 								<Type>REAL</Type>
 							</Entry>
 						</Pdo>
@@ -947,7 +946,7 @@
 							</Entry>
 						</Pdo>
 						<Pdo Name="AI Acc Y Samples 1 (Real32)" Index="#x1a24" Flags="#x0010" SyncMan="3">
-							<Entry Name="Samples__ARRAY [0]" Index="#x6013" Sub="#x01" Flags="#x00008020">
+							<Entry Name="Samples__ARRAY [0]" Index="#x6013" Sub="#x01">
 								<Type>REAL</Type>
 							</Entry>
 						</Pdo>
@@ -1665,7 +1664,7 @@
 							</Entry>
 						</Pdo>
 						<Pdo Name="AI Acc Z Samples 1 (Real32)" Index="#x1a44" Flags="#x0010" SyncMan="3">
-							<Entry Name="Samples__ARRAY [0]" Index="#x6023" Sub="#x01" Flags="#x00008020">
+							<Entry Name="Samples__ARRAY [0]" Index="#x6023" Sub="#x01">
 								<Type>REAL</Type>
 							</Entry>
 						</Pdo>
@@ -2383,7 +2382,7 @@
 							</Entry>
 						</Pdo>
 						<Pdo Name="AI Gyro X Samples 1 (Real32)" Index="#x1a64" Flags="#x0010" SyncMan="3">
-							<Entry Name="Samples__ARRAY [0]" Index="#x6033" Sub="#x01" Flags="#x00008020">
+							<Entry Name="Samples__ARRAY [0]" Index="#x6033" Sub="#x01">
 								<Type>REAL</Type>
 							</Entry>
 						</Pdo>
@@ -3101,7 +3100,7 @@
 							</Entry>
 						</Pdo>
 						<Pdo Name="AI Gyro Y Samples 1 (Real32)" Index="#x1a84" Flags="#x0010" SyncMan="3">
-							<Entry Name="Samples__ARRAY [0]" Index="#x6043" Sub="#x01" Flags="#x00008020">
+							<Entry Name="Samples__ARRAY [0]" Index="#x6043" Sub="#x01">
 								<Type>REAL</Type>
 							</Entry>
 						</Pdo>
@@ -3819,7 +3818,7 @@
 							</Entry>
 						</Pdo>
 						<Pdo Name="AI Gyro Z Samples 1 (Real32)" Index="#x1aa4" Flags="#x0010" SyncMan="3">
-							<Entry Name="Samples__ARRAY [0]" Index="#x6053" Sub="#x01" Flags="#x00008020">
+							<Entry Name="Samples__ARRAY [0]" Index="#x6053" Sub="#x01">
 								<Type>REAL</Type>
 							</Entry>
 						</Pdo>
@@ -4522,12 +4521,12 @@
 						<CoeProfile ProfileNo="18355081"/>
 					</EtherCAT>
 				</Box>
-				<EtherCAT DcSyncMode="3"/>
+				<EtherCAT/>
 			</Device>
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^PLC^PLC Instance">
 			<OwnerB Name="TIID^Device 3 (EtherCAT)^Box 1 (EP3751-0260)">
 				<Link VarA="PlcTask Inputs^MAIN.stAccAxis^X" VarB="AI Acc X Samples 1 (Real32)^Samples[0]"/>
