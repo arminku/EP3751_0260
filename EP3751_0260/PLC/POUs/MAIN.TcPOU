@@ -42,6 +42,7 @@ END_IF
 
 // get Sensoroffset
 fbStartOffsetCalibration(clk:=bReset);
+	
 
 fbMovingAverage_3D( stSampleData:=stGyroAxis, bEnable:=NOT fbStartOffsetCalibration.Q, a_fSamples:=a_fBuffer);
 fbOffsetSet(clk:=fbMovingAverage_3D.bBufferFilledX);
@@ -52,11 +53,11 @@ IF fbOffsetSet.Q THEN
 	stEulerAngle_Gyro.x:=0;
 	stEulerAngle_Gyro.y:=0;
 	stEulerAngle_Gyro.z:=0;
+	bResetAngles:=TRUE;
 ELSIF bResetAngles THEN
 	stEulerAngle_Gyro.x:=0;
 	stEulerAngle_Gyro.y:=0;
 	stEulerAngle_Gyro.z:=0;
-	bResetAngles:=FALSE;
 END_IF
 
 bReady:=fbMovingAverage_3D.bBufferFilledX;
@@ -72,26 +73,27 @@ stcorrAxis.Z:= stGyroAxis.Z - stOffset.z;
 		stAccelData:= stAccAxis, 
 		stGyroData:= stcorrAxis,  
 		fCycleTime:= fCycletime,
-		bSetReference:=fbMovingAverage_3D.bBufferFilledX );
+		bSetReference:=bResetAngles );
 		
 	fbMadgwickFilter(
 		stAccelData:= stAccAxis, 
 		stGyroData:= stcorrAxis,  
 		fcycletime:=fCycletime , 
-		bSetReference:= fbMovingAverage_3D.bBufferFilledX );
+		bSetReference:= bResetAngles );
 		
 	fbComplementaryFilter(
 		stAccelData:= stAccAxis, 
 		stGyroData:= stcorrAxis,  
 		fcycletime:=fCycletime , 
-		bSetReference:= fbMovingAverage_3D.bBufferFilledX );
+		bSetReference:= bResetAngles );
 		
 	fbMahonyFilter(
 		stAccelData:= stAccAxis, 
 		stGyroData:= stcorrAxis,  
 		fcycletime:=fCycletime , 
-		bSetReference:= fbMovingAverage_3D.bBufferFilledX );
-		
+		bSetReference:= bResetAngles );
+
+bResetAngles:=FALSE;
 stEulerAngle_Gyro.x := stEulerAngle_Gyro.x + stcorrAxis.x * fCycleTime;
 stEulerAngle_Gyro.y := stEulerAngle_Gyro.y + stcorrAxis.y * fCycleTime;
 stEulerAngle_Gyro.z := stEulerAngle_Gyro.z + stcorrAxis.Z * fCycleTime;
@@ -104,16 +106,17 @@ stEulerAngle_Gyro.z := stEulerAngle_Gyro.z + stcorrAxis.Z * fCycleTime;
       <LineId Id="1097" Count="0" />
       <LineId Id="1385" Count="0" />
       <LineId Id="1384" Count="0" />
-      <LineId Id="1417" Count="0" />
+      <LineId Id="1563" Count="0" />
+      <LineId Id="1562" Count="0" />
       <LineId Id="1423" Count="0" />
       <LineId Id="1320" Count="0" />
       <LineId Id="1409" Count="1" />
       <LineId Id="1414" Count="2" />
       <LineId Id="1432" Count="2" />
+      <LineId Id="1570" Count="0" />
       <LineId Id="1514" Count="0" />
       <LineId Id="1517" Count="1" />
-      <LineId Id="1515" Count="0" />
-      <LineId Id="1521" Count="0" />
+      <LineId Id="1557" Count="0" />
       <LineId Id="1412" Count="0" />
       <LineId Id="1513" Count="0" />
       <LineId Id="1408" Count="0" />
@@ -139,6 +142,7 @@ stEulerAngle_Gyro.z := stEulerAngle_Gyro.z + stcorrAxis.Z * fCycleTime;
       <LineId Id="1406" Count="1" />
       <LineId Id="1380" Count="1" />
       <LineId Id="1373" Count="0" />
+      <LineId Id="1572" Count="0" />
       <LineId Id="1431" Count="0" />
       <LineId Id="836" Count="0" />
       <LineId Id="1429" Count="1" />

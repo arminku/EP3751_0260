@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="FB_MahonyFilter" Id="{730646d9-7b7a-4ebf-924b-ca3f8915b5b0}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_MahonyFilter
 VAR_INPUT
@@ -38,6 +38,8 @@ VAR
     fSinYaw, fCosYaw : LREAL;
 	fGyroRateX_rad,fGyroRateY_rad, fGyroRateZ_rad:LREAL;
 	
+	q0, q1, q2, q3 :LREAL;
+	q0n, q1n, q2n, q3n :LREAL;
 	fbSetReference: r_trig;
 END_VAR
 ]]></Declaration>
@@ -101,10 +103,18 @@ IF fNorm > 1E-6 THEN
     fQ3 := fQ3 / fNorm;
 END_IF
 
-// Convert quaternion to Euler angles
-stEulerAngle_rad.x := (ATAN2(2.0 * (fQ0 * fQ1 + fQ2 * fQ3), 1.0 - 2.0 * (fQ1 * fQ1 + fQ2 * fQ2)));
-stEulerAngle_rad.y := (ASIN(2.0 * (fQ0 * fQ2 - fQ3 * fQ1)));
-stEulerAngle_rad.z := (ATAN2(2.0 * (fQ0 * fQ3 + fQ1 * fQ2), 1.0 - 2.0 * (fQ2 * fQ2 + fQ3 * fQ3)));
+// Calculate trigonometric values directly from quaternion components
+fSinRoll := 2.0 * (fQ0 * fQ1 + fQ2 * fQ3);
+fCosRoll := 1.0 - 2.0 * (fQ1 * fQ1 + fQ2 * fQ2);
+fSinPitch := 2.0 * (fQ0 * fQ2 - fQ3 * fQ1);
+fCosPitch := 1.0 - 2.0 * (fQ2 * fQ2 + fQ3 * fQ3);
+fSinYaw := 2.0 * (fQ0 * fQ3 + fQ1 * fQ2);
+fCosYaw := 1.0 - 2.0 * (fQ3 * fQ3 + fQ2 * fQ2);
+
+// Convert trigonometric values to Euler angles using ATAN2 and ASIN in radians
+stEulerAngle_rad.x := LREAL_TO_REAL(ATAN2(fSinRoll, fCosRoll));
+stEulerAngle_rad.y := LREAL_TO_REAL(ASIN(fSinPitch));
+stEulerAngle_rad.Z := LREAL_TO_REAL(ATAN2(fSinYaw, fCosYaw));
 
 // Convert radians to degrees
 stEulerAngle_deg.x := stEulerAngle_rad.x * 180.0 / pi;
@@ -126,7 +136,8 @@ stEulerAngle_deg.Z := stEulerAngle_deg.Z - (stRef_Angles_deg.Z);
 
 stEulerAngle_rad.X := stEulerAngle_rad.X - (stRef_Angles_deg.X) * PI / 180.0;
 stEulerAngle_rad.Y := stEulerAngle_rad.Y - (stRef_Angles_deg.Y) * PI / 180.0;
-stEulerAngle_rad.Z := stEulerAngle_rad.Z - (stRef_Angles_deg.Z) * PI / 180.0;]]></ST>
+stEulerAngle_rad.Z := stEulerAngle_rad.Z - (stRef_Angles_deg.Z) * PI / 180.0;
+]]></ST>
     </Implementation>
     <LineIds Name="FB_MahonyFilter">
       <LineId Id="339" Count="5" />
@@ -134,11 +145,15 @@ stEulerAngle_rad.Z := stEulerAngle_rad.Z - (stRef_Angles_deg.Z) * PI / 180.0;]]>
       <LineId Id="345" Count="31" />
       <LineId Id="378" Count="12" />
       <LineId Id="423" Count="0" />
-      <LineId Id="391" Count="14" />
+      <LineId Id="391" Count="5" />
+      <LineId Id="507" Count="10" />
+      <LineId Id="506" Count="0" />
+      <LineId Id="401" Count="4" />
       <LineId Id="466" Count="0" />
       <LineId Id="464" Count="1" />
       <LineId Id="445" Count="12" />
       <LineId Id="9" Count="0" />
+      <LineId Id="519" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -24,7 +24,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
 			<BitSize>10</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -33,7 +33,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
 			<BitSize>2</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -51,7 +51,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
 			<BitSize>13</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -63,10 +63,11 @@
 	<ImageDatas>
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080808000000080808000000080808000000080808000000000000000000000000000000000ff0000ff0000000000000000ff0000000000ff0000000000ff0000000000ff0000000000000000000000000000000000ff0000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080808000000080808000000080808000000080808000000000000000000000000000000000ff0000ff0000000000000000ff0000000000ff0000000000ff0000000000ff0000000000000000000000000000000000ff0000ff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{F86803D9-C064-4FBB-AF7F-9F72D3B26272}" Target64Bit="true" ShowHideConfigurations="#x3c7">
+	<Project ProjectGUID="{F86803D9-C064-4FBB-AF7F-9F72D3B26272}" TargetNetId="172.18.136.151.1.1" ShowHideConfigurations="#x3c7">
 		<System>
 			<Settings>
 				<Cpu BaseTime="2500"/>
+				<IoIdleTask CycleTime="2500"/>
 			</Settings>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="2500" AmsPort="350" AdtTasks="true">
@@ -76,7 +77,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{A4D08A90-99AB-43AA-A6B4-4C07F0ECFD01}" Name="PLC" PrjFilePath="PLC\PLC.plcproj" TmcFilePath="PLC\PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{09A9946E-E988-5D15-9DDE-D2103815D189}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{FF77C12E-1DE0-418F-225A-F270354D3F46}">
 					<Name>PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -121,7 +122,7 @@
 			</Project>
 		</Plc>
 		<Io>
-			<Device Id="3" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="172.17.129.121.4.1" RemoteName="Device 3 (EtherCAT)" InfoImageId="3">
+			<Device Id="3" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="172.18.136.151.4.1" RemoteName="Device 3 (EtherCAT)" InfoImageId="3">
 				<Name>Device 3 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>
